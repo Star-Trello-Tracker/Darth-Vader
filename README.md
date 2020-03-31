@@ -1,4 +1,4 @@
-# DarthVader
+# Darth Vader
 
 ![CI](https://github.com/Star-Trello-Tracker/Darth-Vader/workflows/CI/badge.svg)
 
