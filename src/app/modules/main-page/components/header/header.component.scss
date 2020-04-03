@@ -1,0 +1,65 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #3D5A80;
+
+  width: 100%;
+  height: auto;
+
+  &__logo {
+    margin-right: auto;
+    margin-left: 5px;
+    color: white;
+
+    font-size: 32px;
+    padding-left: 20px;
+
+    &_title {
+      margin-left: 20px;
+      font-family: 'Comic Neue', cursive;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__auth-buttons {
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+
+
+    &_auth {
+      display: inline-block;
+
+      padding: 10px 20px;
+      border-radius: 10px;
+      margin-right: 10px;
+
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    &_registration {
+      background-color: white;
+      color: #3D5A80;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    &__logo_title {
+      display: none;
+    }
+
+    &__auth-buttons_auth {
+      font-size: 14px;
+    }
+
+  }
+}
