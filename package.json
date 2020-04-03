@@ -11,7 +11,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "prettier --write src/app && prettier --check \"src/**/**.ts\" && npm run lint"
+      "pre-commit": "prettier --write src/app && prettier --check \"src/**/**.ts\" && git add . && npm run lint"
     }
   },
   "private": true,
