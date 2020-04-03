@@ -2,8 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background-color: #3D5A80;
+  background-color: #3d5a80;
 
   width: 100%;
   height: auto;
@@ -18,7 +17,7 @@
 
     &_title {
       margin-left: 20px;
-      font-family: 'Comic Neue', cursive;
+      font-family: "Comic Neue", cursive;
     }
 
     &:hover {
@@ -48,7 +47,7 @@
 
     &_registration {
       background-color: white;
-      color: #3D5A80;
+      color: #3d5a80;
     }
   }
 
