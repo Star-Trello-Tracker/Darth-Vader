@@ -1,0 +1,183 @@
+.main-page {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  &__content {
+    background-color: #e0fbfc;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 40px;
+
+    color: #293241;
+
+    &__text {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0 40px;
+
+      &_about {
+        width: 90%;
+        font-size: 40px;
+        margin-bottom: 30px;
+      }
+
+      &_purpose {
+        width: 90%;
+        font-size: 24px;
+
+        &_call {
+          margin-top: 25px;
+        }
+      }
+
+      &__registration {
+        width: 90%;
+        margin-top: 30px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        &_input {
+          padding: 10px;
+          font-size: 24px;
+          color: #293241;
+
+          border-radius: 10px;
+          margin-right: 20px;
+        }
+
+        &_button {
+          align-self: stretch;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          border-radius: 10px;
+
+          font-size: 20px;
+          color: #e0fbfc;
+
+          padding: 10px 20px;
+          background-color: #ee6c4d;
+
+          transition-property: transform;
+          transition-duration: 1s;
+
+          &:hover {
+            text-decoration: none;
+            transform: scale(1.05);
+
+            transition-property: transform;
+            transition-duration: 0.5s;
+          }
+        }
+      }
+    }
+
+    &__wow-image {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      align-self: flex-start;
+
+      &_size {
+        width: 80%;
+      }
+    }
+  }
+
+  &__footer {
+    padding: 10px 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__copyright {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .main-page {
+    &__content {
+      flex-direction: column;
+      padding: 0;
+
+      &__text {
+        width: 100%;
+        padding: 0;
+
+        &_about {
+          box-sizing: border-box;
+          width: 100%;
+          padding: 10px;
+          margin: 20px 0 10px 0;
+          font-size: 32px;
+        }
+
+        &_purpose {
+          box-sizing: border-box;
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 20px;
+          font-size: 24px;
+        }
+
+        &__registration {
+          width: 100%;
+          margin-top: 0;
+          margin-bottom: 20px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+
+          &_input {
+            font-size: 14px;
+            margin-right: 10px;
+          }
+
+          &_button {
+            font-size: 14px;
+          }
+        }
+      }
+
+      &__wow-image {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .main-page {
+    &__content {
+      &__text {
+        &__registration {
+          &_input {
+            margin-right: 0;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -4,5 +4,33 @@ body {
   padding: 0;
   margin: 0;
 
+  height: 100vh;
+  width: 100%;
+
   font-family: 'Roboto', sans-serif;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.project-title {
+  font-family: "Comic Neue", cursive;
+}
+
+@media screen and (max-width: 400px){
+  body {
+    height: auto;
+  }
 }
