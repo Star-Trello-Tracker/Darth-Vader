@@ -1,0 +1,62 @@
+<div class="login-page">
+  <app-header [showMainPageButton]="true"></app-header>
+  <div class="login-page__content">
+    <div class="login-page__content__login">
+      <div class="login-page__content__login__text">
+        Вход в <span class="project-title">Star Trello</span>
+      </div>
+
+      <div class="login-page__content__login__form">
+        <div class="login-page__content__login__form__logo">
+          <i
+            class="fas fa-calendar-alt login-page__content__login__form__logo_icon"
+          ></i>
+        </div>
+        <div class="login-page__content__login__form__input">
+          <input
+            type="email"
+            class="login-page__content__login__form__input_text"
+            placeholder="Электронная почта"
+            autocomplete="new-password"
+            [(ngModel)]="login"
+          />
+        </div>
+        <div class="login-page__content__login__form__input">
+          <input
+            type="password"
+            class="login-page__content__login__form__input_text"
+            placeholder="Пароль"
+            autocomplete="new-password"
+            [(ngModel)]="password"
+          />
+        </div>
+
+        <button
+          class="login-page__content__login__form__submit"
+          [class.login-page__content__login__form__submit_active]="
+            !isDisabled()
+          "
+          (click)="submit()"
+          [disabled]="isDisabled()"
+        >
+          Войти
+        </button>
+
+        <div class="login-page__content__login__form__horizontal"></div>
+
+        <div class="login-page__content__login__form__other-links">
+          <a
+            routerLink="/"
+            class="login-page__content__login__form__other-links_link"
+            >Зарегистрироваться</a
+          >
+          <a
+            routerLink="/"
+            class="login-page__content__login__form__other-links_link"
+            >Забыли пароль?</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
