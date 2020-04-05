@@ -6,28 +6,26 @@
         Вход в <span class="project-title">Star Trello</span>
       </div>
 
-      <div class="login-page__content__login__form">
+      <div
+        class="login-page__content__login__form"
+        [class.login-page__content__login__form_width]="deviceWidth === 320"
+      >
         <div class="login-page__content__login__form__logo">
           <i
             class="fas fa-calendar-alt login-page__content__login__form__logo_icon"
           ></i>
         </div>
-        <div class="login-page__content__login__form__input">
+
+        <div
+          class="login-page__content__login__form__input"
+          *ngFor="let input of inputs; let i = index"
+        >
           <input
-            type="email"
-            class="login-page__content__login__form__input_text"
-            placeholder="Электронная почта"
+            [type]="input.type"
+            [class]="input.class"
+            [placeholder]="input.placeholder"
             autocomplete="new-password"
-            [(ngModel)]="login"
-          />
-        </div>
-        <div class="login-page__content__login__form__input">
-          <input
-            type="password"
-            class="login-page__content__login__form__input_text"
-            placeholder="Пароль"
-            autocomplete="new-password"
-            [(ngModel)]="password"
+            [(ngModel)]="data[input.ngModel]"
           />
         </div>
 
@@ -46,15 +44,15 @@
 
         <div class="login-page__content__login__form__other-links">
           <a
-            routerLink="/"
+            routerLink="/registration"
             class="login-page__content__login__form__other-links_link"
-            >Зарегистрироваться</a
-          >
+            >Зарегистрироваться
+          </a>
           <a
             routerLink="/"
             class="login-page__content__login__form__other-links_link"
-            >Забыли пароль?</a
-          >
+            >Забыли пароль?
+          </a>
         </div>
       </div>
     </div>

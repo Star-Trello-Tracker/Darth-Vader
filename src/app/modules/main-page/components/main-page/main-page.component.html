@@ -28,10 +28,18 @@
           class="main-page__content__text__registration_input"
           type="email"
           placeholder="Электронная почта"
+          [(ngModel)]="login"
         />
-        <a class="main-page__content__text__registration_button" routerLink="/"
-          >Зарегистрироваться</a
+        <button
+          class="main-page__content__text__registration_button"
+          [class.main-page__content__text__registration_button_active]="
+            !isDisabled()
+          "
+          [disabled]="isDisabled()"
+          (click)="onSubmit()"
         >
+          Зарегистрироваться
+        </button>
       </div>
     </section>
     <aside class="main-page__content__wow-image">

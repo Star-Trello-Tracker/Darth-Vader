@@ -5,9 +5,15 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
-  declarations: [MainPageComponent, HeaderComponent, LoginComponent],
+  declarations: [
+    MainPageComponent,
+    HeaderComponent,
+    LoginComponent,
+    RegistrationComponent,
+  ],
   imports: [MainPageRoutingModule, CommonModule, FormsModule],
 })
 export class MainPageModule {}
