@@ -1,0 +1,71 @@
+<div class="registration-page">
+  <app-header [showMainPageButton]="true"></app-header>
+  <div class="registration-page__content">
+    <div class="registration-page__content__registration">
+      <div class="registration-page__content__registration__text">
+        Регистрация в <span class="project-title">Star Trello</span>
+      </div>
+
+      <div
+        class="registration-page__content__registration__form"
+        [class.registration-page__content__registration__form_width]="
+          deviceWidth === 320
+        "
+      >
+        <div class="registration-page__content__registration__form__logo">
+          <i
+            class="fas fa-calendar-alt registration-page__content__registration__form__logo_icon"
+          ></i>
+        </div>
+
+        <div
+          class="registration-page__content__registration__form__input"
+          *ngFor="let input of inputs; let i = index"
+        >
+          <input
+            [type]="input.type"
+            [class]="input.class"
+            [placeholder]="input.placeholder"
+            autocomplete="new-password"
+            [(ngModel)]="data[input.ngModel]"
+          />
+        </div>
+
+        <div
+          class="registration-page__content__registration__form__illegal-passwords"
+          [class.registration-page__content__registration__form__illegal-passwords_active]="
+            isInvalidPasswords()
+          "
+        >
+          Введенные пароли не совпадают!
+        </div>
+
+        <button
+          class="registration-page__content__registration__form__submit"
+          [class.registration-page__content__registration__form__submit_active]="
+            !isDisabled()
+          "
+          (click)="submit()"
+          [disabled]="isDisabled()"
+        >
+          Зарегистрироваться
+        </button>
+
+        <div
+          class="registration-page__content__registration__form__horizontal"
+        ></div>
+
+        <div
+          class="registration-page__content__registration__form__other-links"
+        >
+          <a
+            routerLink="/login"
+            class="registration-page__content__registration__form__other-links_link"
+          >
+            Уже есть аккаунт? Войти
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

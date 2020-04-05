@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { config } from './config';
 
 @Component({
   selector: 'app-login',
@@ -6,15 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  public login = '';
-  public password = '';
+  public inputs = config;
+  public data = {
+    login: '',
+    password: '',
+  };
+  public deviceWidth = window.innerWidth;
 
   constructor() {}
 
   ngOnInit(): void {}
 
   public isDisabled() {
-    return !this.login || !this.password;
+    return !this.data.login || !this.data.password;
   }
 
   public submit() {}
