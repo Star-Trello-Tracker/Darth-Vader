@@ -1,0 +1,224 @@
+.login-page {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  color: #293241;
+
+  &__content {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #e0fbfc;
+
+    &__login {
+      width: 100%;
+      height: 80%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+
+      &__text {
+        font-size: 32px;
+        margin-bottom: 10px;
+      }
+
+      &__form {
+        width: 30%;
+        height: 75%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        background-color: white;
+        border-radius: 10px;
+
+        &__logo {
+          margin-top: 10px;
+          font-size: 44px;
+        }
+
+        &__input {
+          width: 100%;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          &_text {
+            width: 80%;
+            font-size: 18px;
+            border-radius: 10px;
+
+            padding: 10px;
+          }
+        }
+
+        &__submit {
+          padding: 10px 20px;
+          border-radius: 10px;
+          font-size: 24px;
+
+          background-color: #3d5a80;
+          color: white;
+
+          transition-property: transform;
+          transition-duration: 0.5s;
+
+          opacity: 0.5;
+
+          &:active,
+          &:focus {
+            outline: none;
+          }
+
+          &_active {
+            opacity: 1;
+
+            &:hover {
+              cursor: pointer;
+              transform: scale(1.05);
+
+              transition-property: transform;
+              transition-duration: 0.5s;
+            }
+          }
+        }
+
+        &__horizontal {
+          width: 90%;
+          border-bottom: 1px solid #293241;
+        }
+
+        &__other-links {
+          width: 100%;
+          display: flex;
+          justify-content: space-around;
+
+          margin-bottom: 20px;
+
+          &_link {
+            color: #293241;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) and (min-width: 571px) {
+  .login-page {
+    &__content {
+      &__login {
+        height: 100%;
+        justify-content: center;
+
+        &__form {
+          width: 80%;
+
+          &__logo {
+            font-size: 50px;
+          }
+
+          &__input {
+            &_text {
+              font-size: 32px;
+            }
+          }
+
+          &__submit {
+            font-size: 32px;
+          }
+
+          &__other-links {
+            font-size: 24px;
+
+            &_link {
+              border: 1px solid #293241;
+
+              padding: 20px 10px;
+              display: inline-block;
+              border-radius: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .login-page {
+    &__content {
+      &__login {
+        height: 100%;
+        justify-content: center;
+
+        &__text {
+          font-size: 24px;
+        }
+
+        &__form {
+          width: 90%;
+
+          &__other-links {
+            flex-wrap: wrap;
+
+            &_link {
+              border: 1px solid #293241;
+              margin-bottom: 10px;
+
+              padding: 10px 5px;
+              display: inline-block;
+              border-radius: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .login-page {
+    height: auto;
+
+    &__content {
+      height: auto;
+
+      &__login {
+        height: auto;
+
+        &__text {
+          margin-top: 10px;
+          font-size: 24px;
+        }
+
+        &__form {
+          height: auto;
+          width: 50%;
+          margin-bottom: 20px;
+
+          &__logo,
+          &__input,
+          &__submit,
+          &__horizontal {
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+}
