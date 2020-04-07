@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { config } from './config';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   };
   public deviceWidth = window.innerWidth;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -22,5 +23,7 @@ export class LoginComponent implements OnInit {
     return !this.data.login || !this.data.password;
   }
 
-  public submit() {}
+  public submit() {
+    this.router.navigateByUrl('/dashboard');
+  }
 }
