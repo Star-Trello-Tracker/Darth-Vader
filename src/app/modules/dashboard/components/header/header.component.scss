@@ -1,0 +1,105 @@
+.header {
+  width: 100%;
+  height: auto;
+
+  background-color: #3d5a80;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 300px;
+    padding: 10px;
+
+    &__link {
+      display: inline-block;
+      padding: 10px 20px;
+
+      background-color: #e0fbfc;
+      color: #3d5a80;
+      border-radius: 10px;
+
+      transition-property: transform;
+      transition-duration: 0.5s;
+
+      &_margin {
+        margin-right: 10px;
+      }
+
+      &_text {
+        margin-right: 5px;
+      }
+
+      &:hover {
+        text-decoration: none;
+        transform: scale(1.05);
+
+        transition-property: transform;
+        transition-duration: 0.5s;
+      }
+    }
+  }
+
+  &__logo {
+    color: white;
+    font-size: 32px;
+
+    &_title {
+      margin-left: 20px;
+      font-family: "Comic Neue", cursive;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .header {
+    width: 100%;
+    height: 59px;
+
+    &__navigation {
+      min-width: auto;
+      margin-left: 0;
+
+      &__link {
+        &_text {
+          display: none;
+        }
+      }
+    }
+
+    &__logo_title {
+      display: none;
+    }
+
+    &__auth-buttons_auth {
+      font-size: 14px;
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .header {
+    &__navigation {
+      &__link {
+        padding: 5px 15px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .header {
+    &__logo_title {
+      display: none;
+    }
+  }
+}

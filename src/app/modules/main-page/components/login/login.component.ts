@@ -24,6 +24,6 @@ export class LoginComponent implements OnInit {
   }
 
   public submit() {
-    this.router.navigateByUrl('/dashboard');
+    this.router.navigateByUrl('/123');
   }
 }

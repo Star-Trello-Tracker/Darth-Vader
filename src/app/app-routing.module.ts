@@ -10,11 +10,9 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'dashboard',
+    path: ':userId',
     loadChildren: () =>
-      import('./modules/dashboard/dashboard.module').then(
-        (m) => m.DashboardModule
-      ),
+      import('./modules/user/user.module').then((m) => m.UserModule),
   },
 ];
 
