@@ -1,0 +1,15 @@
+<div class="dashboard-task-list">
+  <div class="dashboard-task-list__item dashboard-task-list__person">
+    <i class="fab fa-accessible-icon"></i>
+    Авдеев Иван
+  </div>
+  <div class="dashboard-task-list__item dashboard-task-list__task-list">
+    <i class="fas fa-tasks"></i>
+    Список задач
+  </div>
+  <app-dashboard-task-list-header></app-dashboard-task-list-header>
+  <app-dashboard-task-list-row
+    *ngFor="let item of list"
+    [data]="item"
+  ></app-dashboard-task-list-row>
+</div>

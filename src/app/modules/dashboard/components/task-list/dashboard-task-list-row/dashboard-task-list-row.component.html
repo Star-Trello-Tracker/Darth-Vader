@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="row__item row__priority">
+    <i class="fas fa-sort-up row__item_icon"></i>
+  </div>
+
+  <a class="row__item row__key">
+    {{ data.key }}
+  </a>
+
+  <a class="row__item row__title">
+    {{ data.title }}
+  </a>
+
+  <a class="row__item row__person row__creator">
+    {{ data.creator }}
+  </a>
+
+  <a class="row__item row__person">
+    {{ data.person }}
+  </a>
+
+  <div class="row__item row__status">
+    {{ data.status }}
+    <span *ngIf="data.comment" class="row__status_comment">{{
+      data.comment
+    }}</span>
+  </div>
+
+  <div class="row__item row__date">
+    {{ data.refresh }}
+  </div>
+</div>
