@@ -6,6 +6,7 @@ export interface ITask {
   status: string;
   comment?: string;
   refresh: string;
+  observer?: string;
 }
 
 export const data: ITask[] = [
@@ -17,6 +18,7 @@ export const data: ITask[] = [
     status: 'Решён',
     comment: 'Задача решена',
     refresh: '12 апр',
+    observer: 'Авдеев Иван',
   },
   {
     key: 'TASK-2',
@@ -30,7 +32,7 @@ export const data: ITask[] = [
     key: 'TASK-3',
     title: 'Сделать сортировки по столбцам',
     creator: 'Авдеев Иван',
-    person: 'Авдеев Иван',
+    person: 'Нет исполнителя',
     status: 'В работе',
     refresh: '12 апр',
   },
@@ -38,8 +40,8 @@ export const data: ITask[] = [
     key: 'TASK-4',
     title: 'Добавить иконки статуса для задач',
     creator: 'Авдеев Иван',
-    person: 'Авдеев Иван',
-    status: 'В работе',
+    person: 'Нет исполнителя',
+    status: 'Открыта',
     refresh: '12 апр',
   },
 ];

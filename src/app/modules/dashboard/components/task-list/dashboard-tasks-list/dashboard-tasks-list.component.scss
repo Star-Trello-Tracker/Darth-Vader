@@ -7,6 +7,37 @@
   justify-content: flex-start;
   align-items: center;
 
+  &__filters {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding: 10px 20px;
+
+    &_item {
+      display: flex;
+      padding: 5px 15px;
+
+      margin-right: 20px;
+
+      color: #293241;
+      border: 1px solid #293241;
+      border-radius: 5px;
+
+      &_active {
+        background-color: #e0fbfc;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
   &__item {
     box-sizing: border-box;
     width: 100%;
@@ -22,5 +53,13 @@
   &__task-list {
     padding: 10px 20px;
     border-bottom: 1px solid #293241;
+  }
+}
+
+@media screen and (max-device-width: 450px) {
+  .dashboard-task-list {
+    &__filters {
+      display: none;
+    }
   }
 }

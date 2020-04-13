@@ -7,6 +7,41 @@
     <i class="fas fa-tasks"></i>
     Список задач
   </div>
+
+  <div class="dashboard-task-list__filters">
+    <div
+      class="dashboard-task-list__filters_item"
+      [class.dashboard-task-list__filters_item_active]="all"
+      (click)="toggle('all')"
+    >
+      Все
+    </div>
+
+    <div
+      class="dashboard-task-list__filters_item"
+      [class.dashboard-task-list__filters_item_active]="author"
+      (click)="toggle('author')"
+    >
+      Я автор
+    </div>
+
+    <div
+      class="dashboard-task-list__filters_item"
+      [class.dashboard-task-list__filters_item_active]="person"
+      (click)="toggle('person')"
+    >
+      Я исполнитель
+    </div>
+
+    <div
+      class="dashboard-task-list__filters_item"
+      [class.dashboard-task-list__filters_item_active]="observer"
+      (click)="toggle('observer')"
+    >
+      Я наблюдатель
+    </div>
+  </div>
+
   <app-dashboard-task-list-header></app-dashboard-task-list-header>
   <app-dashboard-task-list-row
     *ngFor="let item of list"
