@@ -7,6 +7,8 @@ import { DashboardTasksListComponent } from './components/task-list/dashboard-ta
 import { DashboardTaskListHeaderComponent } from './components/task-list/dashboard-task-list-header/dashboard-task-list-header.component';
 import { DashboardTaskListRowComponent } from './components/task-list/dashboard-task-list-row/dashboard-task-list-row.component';
 import { DashboardTaskListService } from './services/dashboard-task-list.service';
+import { MainPageModule } from '../main-page/main-page.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,7 @@ import { DashboardTaskListService } from './services/dashboard-task-list.service
     DashboardTaskListHeaderComponent,
     DashboardTaskListRowComponent,
   ],
-  imports: [CommonModule, DashboardRoutingModule],
+  imports: [CommonModule, DashboardRoutingModule, MainPageModule, SharedModule],
   providers: [DashboardTaskListService],
 })
 export class DashboardModule {}

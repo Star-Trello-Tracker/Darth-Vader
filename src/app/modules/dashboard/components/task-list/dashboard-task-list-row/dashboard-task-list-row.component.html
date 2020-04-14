@@ -13,10 +13,19 @@
 
   <a class="row__item row__person row__creator">
     {{ data.creator }}
+    <div class="row__person__profile-layout">
+      <app-profile-layout></app-profile-layout>
+    </div>
   </a>
 
   <a class="row__item row__person">
     {{ data.person }}
+    <div
+      class="row__person__profile-layout"
+      *ngIf="data.person !== 'Нет исполнителя'"
+    >
+      <app-profile-layout></app-profile-layout>
+    </div>
   </a>
 
   <div class="row__item row__status">
