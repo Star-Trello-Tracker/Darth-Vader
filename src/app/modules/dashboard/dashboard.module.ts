@@ -6,6 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { DashboardTasksListComponent } from './components/task-list/dashboard-tasks-list/dashboard-tasks-list.component';
 import { DashboardTaskListHeaderComponent } from './components/task-list/dashboard-task-list-header/dashboard-task-list-header.component';
 import { DashboardTaskListRowComponent } from './components/task-list/dashboard-task-list-row/dashboard-task-list-row.component';
+import { DashboardTaskListService } from './services/dashboard-task-list.service';
 
 @NgModule({
   declarations: [
@@ -16,5 +17,6 @@ import { DashboardTaskListRowComponent } from './components/task-list/dashboard-
     DashboardTaskListRowComponent,
   ],
   imports: [CommonModule, DashboardRoutingModule],
+  providers: [DashboardTaskListService],
 })
 export class DashboardModule {}

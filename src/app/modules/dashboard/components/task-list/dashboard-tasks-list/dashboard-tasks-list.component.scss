@@ -54,6 +54,21 @@
     padding: 10px 20px;
     border-bottom: 1px solid #293241;
   }
+
+  &__no-tasks {
+    padding: 20px;
+    font-size: 24px;
+    color: #293241;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_icon {
+      font-size: 30px;
+      margin-left: 10px;
+    }
+  }
 }
 
 @media screen and (max-device-width: 450px) {
