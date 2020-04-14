@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { data, ITask } from './data';
+import { ITask } from '../../../services/data';
+import { Observable } from 'rxjs';
+import { DashboardTaskListService } from '../../../services/dashboard-task-list.service';
 
 @Component({
   selector: 'app-dashboard-tasks-list',
@@ -7,19 +9,18 @@ import { data, ITask } from './data';
   styleUrls: ['./dashboard-tasks-list.component.scss'],
 })
 export class DashboardTasksListComponent implements OnInit {
-  public list: ITask[] = data;
-  public data: ITask[] = data;
+  public list$: Observable<ITask[]>;
 
   public all = true;
   public author = false;
   public person = false;
   public observer = false;
 
-  private personData = 'Авдеев Иван';
+  constructor(private dashboardService: DashboardTaskListService) {}
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.list$ = this.dashboardService.getDefaultTaskList();
+  }
 
   public toggle(item: string) {
     if (item !== 'all') {
@@ -30,19 +31,15 @@ export class DashboardTasksListComponent implements OnInit {
       this.observer = false;
     }
     this[item] = !this[item];
-    this.list = this.filterData();
+    this.getData();
   }
 
-  private filterData() {
-    if (this.all) {
-      return this.data;
-    }
-    return this.data.filter((el) => {
-      return (
-        (this.author && el.creator === this.personData) ||
-        (this.person && el.person === this.personData) ||
-        (this.observer && el.observer === this.personData)
-      );
-    });
+  private getData() {
+    this.list$ = this.dashboardService.getFilteredData(
+      this.all,
+      this.author,
+      this.person,
+      this.observer
+    );
   }
 }

@@ -1,4 +1,4 @@
-<div class="dashboard-task-list">
+<div class="dashboard-task-list" *ngIf="list$ | async as list">
   <div class="dashboard-task-list__item dashboard-task-list__person">
     <i class="fab fa-accessible-icon"></i>
     Авдеев Иван
@@ -47,4 +47,8 @@
     *ngFor="let item of list"
     [data]="item"
   ></app-dashboard-task-list-row>
+  <div class="dashboard-task-list__no-tasks" *ngIf="list.length === 0">
+    Задач нет
+    <i class="far fa-frown dashboard-task-list__no-tasks_icon"></i>
+  </div>
 </div>
