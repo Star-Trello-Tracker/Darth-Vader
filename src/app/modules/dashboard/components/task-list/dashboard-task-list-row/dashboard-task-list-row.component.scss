@@ -12,6 +12,7 @@
 
   padding: 10px 20px;
   box-sizing: border-box;
+  position: relative;
 
   font-size: 14px;
 
@@ -22,6 +23,7 @@
     box-sizing: border-box;
 
     width: 180px;
+    position: relative;
 
     text-align: center;
     color: #293241;
@@ -48,6 +50,22 @@
 
   &__person {
     width: 240px;
+    position: relative;
+    overflow-x: initial;
+
+    &__profile-layout {
+      position: absolute;
+      display: none;
+      left: 75%;
+      bottom: 30%;
+      width: auto;
+      height: 300%;
+      z-index: 100;
+    }
+
+    &:hover &__profile-layout {
+      display: block;
+    }
   }
 
   &__status {
@@ -69,6 +87,12 @@
 
     &__item {
       padding: 10px;
+    }
+
+    &__person {
+      &:hover &__profile-layout {
+        display: none;
+      }
     }
   }
 }

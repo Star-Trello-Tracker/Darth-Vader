@@ -15,5 +15,6 @@ import { RegistrationComponent } from './components/registration/registration.co
     RegistrationComponent,
   ],
   imports: [MainPageRoutingModule, CommonModule, FormsModule],
+  exports: [MainPageComponent],
 })
 export class MainPageModule {}
