@@ -48,6 +48,10 @@
 
   &__person {
     font-size: 24px;
+
+    &_icon {
+      margin-right: 5px;
+    }
   }
 
   &__task-list {
