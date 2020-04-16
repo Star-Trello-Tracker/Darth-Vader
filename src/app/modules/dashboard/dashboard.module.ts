@@ -9,6 +9,10 @@ import { DashboardTaskListRowComponent } from './components/task-list/dashboard-
 import { DashboardTaskListService } from './services/dashboard-task-list.service';
 import { MainPageModule } from '../main-page/main-page.module';
 import { SharedModule } from '../shared/shared.module';
+import { MenuComponent } from './components/menu/menu.component';
+import { BoardsComponent } from './components/menu/boards/boards.component';
+import { QueuesComponent } from './components/menu/queues/queues.component';
+import { SearchComponent } from './components/menu/search/search.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +21,10 @@ import { SharedModule } from '../shared/shared.module';
     DashboardTasksListComponent,
     DashboardTaskListHeaderComponent,
     DashboardTaskListRowComponent,
+    MenuComponent,
+    BoardsComponent,
+    QueuesComponent,
+    SearchComponent,
   ],
   imports: [CommonModule, DashboardRoutingModule, MainPageModule, SharedModule],
   providers: [DashboardTaskListService],

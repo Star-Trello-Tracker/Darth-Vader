@@ -8,7 +8,7 @@
     Список задач
   </div>
 
-  <div class="dashboard-task-list__filters">
+  <div class="dashboard-task-list__filters" *ngIf="!dashboard">
     <div
       class="dashboard-task-list__filters_item"
       [class.dashboard-task-list__filters_item_active]="all"
