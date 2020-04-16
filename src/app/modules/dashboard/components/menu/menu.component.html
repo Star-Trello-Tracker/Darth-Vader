@@ -1,0 +1,49 @@
+<div class="menu">
+  <div class="menu__tabs">
+    <div
+      class="menu__tabs__item menu__tabs__boards"
+      [class.menu__tabs__item_active]="boards"
+      (click)="toggle('boards')"
+    >
+      <i class="fas fa-thumbtack"></i>
+      Доски
+    </div>
+
+    <div
+      class="menu__tabs__item menu__tabs__boards"
+      [class.menu__tabs__item_active]="queues"
+      (click)="toggle('queues')"
+    >
+      <i class="fas fa-key"></i>
+      Очереди
+    </div>
+
+    <div
+      class="menu__tabs__item menu__tabs__queues"
+      [class.menu__tabs__item_active]="tasks"
+      (click)="toggle('tasks')"
+    >
+      <i class="fas fa-tasks"></i>
+      Мои задачи
+    </div>
+
+    <div
+      class="menu__tabs__item menu__tabs__queues"
+      [class.menu__tabs__item_active]="search"
+      (click)="toggle('search')"
+    >
+      <i class="fas fa-search"></i>
+      Поиск
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <app-boards *ngIf="boards"></app-boards>
+  <app-queues *ngIf="queues"></app-queues>
+  <app-dashboard-tasks-list
+    *ngIf="tasks"
+    [dashboard]="true"
+  ></app-dashboard-tasks-list>
+  <app-search *ngIf="search"></app-search>
+</div>

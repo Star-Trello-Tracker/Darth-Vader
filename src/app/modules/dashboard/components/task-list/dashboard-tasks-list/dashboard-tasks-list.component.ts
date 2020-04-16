@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ITask } from '../../../services/data';
 import { Observable } from 'rxjs';
 import { DashboardTaskListService } from '../../../services/dashboard-task-list.service';
@@ -9,6 +9,8 @@ import { DashboardTaskListService } from '../../../services/dashboard-task-list.
   styleUrls: ['./dashboard-tasks-list.component.scss'],
 })
 export class DashboardTasksListComponent implements OnInit {
+  @Input() dashboard = false;
+
   public list$: Observable<ITask[]>;
 
   public all = true;
