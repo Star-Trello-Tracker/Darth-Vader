@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { data, ITask } from './data';
+import { data } from './data';
 import { of } from 'rxjs/internal/observable/of';
 import { Observable } from 'rxjs';
+import { ITask } from '../typings';
 
 @Injectable({
   providedIn: 'root',

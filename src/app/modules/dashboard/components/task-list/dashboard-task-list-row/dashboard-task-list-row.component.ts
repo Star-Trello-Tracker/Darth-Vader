@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ITask } from '../../../services/data';
+import { ITask } from '../../../typings';
 
 @Component({
   selector: 'app-dashboard-task-list-row',
