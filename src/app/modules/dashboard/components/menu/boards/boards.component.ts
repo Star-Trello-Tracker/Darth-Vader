@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IBoard } from '../../../typings';
+import { BoardsService } from '../../../services/boards.service';
 
 @Component({
   selector: 'app-boards',
@@ -6,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./boards.component.scss'],
 })
 export class BoardsComponent implements OnInit {
-  constructor() {}
+  public boards$: Observable<IBoard[]>;
+  public filterBoards: IBoard[] = [];
+  public search = '';
 
-  ngOnInit(): void {}
+  constructor(private boardsService: BoardsService) {}
+
+  ngOnInit() {
+    this.boards$ = this.boardsService.getPersonBoards();
+  }
+
+  public find() {
+    this.filterBoards = this.boardsService.searchBoard(this.search);
+  }
 }

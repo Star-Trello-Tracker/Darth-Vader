@@ -1,0 +1,44 @@
+:host {
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 250px;
+  height: 150px;
+
+  padding: 20px;
+  border: 1px solid #293241;
+  border-radius: 10px;
+
+  font-size: 24px;
+  color: white;
+
+  background: url("https://pbs.twimg.com/ext_tw_video_thumb/1134163412383096833/pu/img/wCgV6gx3PpHgevA6.jpg")
+    no-repeat center top;
+
+  transition-property: transform;
+  transition-duration: 1s;
+
+  position: relative;
+
+  &__creator {
+    font-size: 14px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    transform: scale(1.05);
+    transition-property: transform;
+    transition-duration: 1s;
+  }
+}

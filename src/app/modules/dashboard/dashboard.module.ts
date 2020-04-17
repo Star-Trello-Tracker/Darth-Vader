@@ -13,6 +13,9 @@ import { MenuComponent } from './components/menu/menu.component';
 import { BoardsComponent } from './components/menu/boards/boards.component';
 import { QueuesComponent } from './components/menu/queues/queues.component';
 import { SearchComponent } from './components/menu/search/search.component';
+import { BoardComponent } from './components/menu/board/board.component';
+import { BoardsService } from './services/boards.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,8 +28,15 @@ import { SearchComponent } from './components/menu/search/search.component';
     BoardsComponent,
     QueuesComponent,
     SearchComponent,
+    BoardComponent,
   ],
-  imports: [CommonModule, DashboardRoutingModule, MainPageModule, SharedModule],
-  providers: [DashboardTaskListService],
+  imports: [
+    CommonModule,
+    DashboardRoutingModule,
+    MainPageModule,
+    SharedModule,
+    FormsModule,
+  ],
+  providers: [DashboardTaskListService, BoardsService],
 })
 export class DashboardModule {}
