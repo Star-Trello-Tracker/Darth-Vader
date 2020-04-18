@@ -19,8 +19,7 @@
   font-size: 24px;
   color: white;
 
-  background: url("https://pbs.twimg.com/ext_tw_video_thumb/1134163412383096833/pu/img/wCgV6gx3PpHgevA6.jpg")
-    no-repeat center top;
+  background: url("~src/assets/images/board.jpg") no-repeat center top;
 
   transition-property: transform;
   transition-duration: 1s;
@@ -40,5 +39,12 @@
     transform: scale(1.05);
     transition-property: transform;
     transition-duration: 1s;
+  }
+}
+
+@media screen and (max-device-width: 450px) {
+  .board {
+    width: 200px;
+    height: 100px;
   }
 }
