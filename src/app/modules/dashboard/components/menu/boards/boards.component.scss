@@ -67,6 +67,8 @@
     flex-direction: column;
     justify-content: flex-start;
 
+    margin-top: 10px;
+
     &__label {
       margin-bottom: 20px;
     }
@@ -76,6 +78,29 @@
       font-size: 16px;
       padding: 10px;
       border-radius: 5px;
+    }
+  }
+}
+
+@media screen and (max-device-width: 450px) {
+  .boards {
+    &__title {
+      font-size: 18px;
+    }
+
+    &__list {
+      &__create {
+        min-width: 200px;
+        height: 100px;
+      }
+    }
+
+    &__search {
+      &_input {
+        width: 200px;
+        font-size: 14px;
+        padding: 5px;
+      }
     }
   }
 }
