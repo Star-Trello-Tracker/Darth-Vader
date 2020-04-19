@@ -6,5 +6,5 @@
 [![Build Status](https://travis-ci.org/Star-Trello-Tracker/Darth-Vader.svg?branch=dev)](https://travis-ci.org/Star-Trello-Tracker/Darth-Vader)
 
 
-The coolest Task Tracker by [me](https://github.com/avdeev1).
+The coolest Task Tracker by [avdeev1](https://github.com/avdeev1).
 Frontend was developed on Angular 9.
