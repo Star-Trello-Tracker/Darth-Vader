@@ -1,1 +1,36 @@
-<p>queues works!</p>
+<div class="queues" *ngIf="queues$ | async as queues">
+  <div class="queues__title">
+    Ваши очереди
+    <i class="fas fa-key"></i>
+  </div>
+
+  <div class="queues__list">
+    <div class="queues__list__create">
+      <i class="fas fa-plus queues__list__create_icon"></i>
+      Создать очередь
+    </div>
+
+    <app-queue *ngFor="let queue of queues" [queue]="queue"></app-queue>
+  </div>
+
+  <div class="queues__search">
+    <div class="queues__title">
+      Быстрый поиск по названию
+      <i class="fas fa-search"></i>
+    </div>
+
+    <label class="queues__search__label">
+      <input
+        class="queues__search_input"
+        placeholder="Введите название доски"
+        type="text"
+        [(ngModel)]="search"
+        (keyup)="find()"
+      />
+    </label>
+
+    <div class="queues__list">
+      <app-queue *ngFor="let queue of filterQueues" [queue]="queue"></app-queue>
+    </div>
+  </div>
+</div>

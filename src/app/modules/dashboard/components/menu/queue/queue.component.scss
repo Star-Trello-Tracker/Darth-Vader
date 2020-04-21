@@ -3,7 +3,7 @@
   margin-bottom: 20px;
 }
 
-.board {
+.queue {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,7 +15,7 @@
   font-size: 24px;
   color: white;
 
-  background: url("~src/assets/images/board.jpg") no-repeat top center;
+  background: url("~src/assets/images/queue.jpg") no-repeat center center;
 
   transition-property: transform;
   transition-duration: 1s;
@@ -54,7 +54,7 @@
 }
 
 @media screen and (max-device-width: 450px) {
-  .board_background {
+  .queue_background {
     width: 200px;
     height: 100px;
   }
