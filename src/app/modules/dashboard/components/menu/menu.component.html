@@ -1,49 +1,44 @@
 <div class="menu">
   <div class="menu__tabs">
-    <div
+    <a
       class="menu__tabs__item menu__tabs__boards"
-      [class.menu__tabs__item_active]="boards"
-      (click)="toggle('boards')"
+      routerLinkActive="menu__tabs__item_active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      routerLink="./boards"
     >
       <i class="fas fa-thumbtack"></i>
       Доски
-    </div>
+    </a>
 
-    <div
+    <a
       class="menu__tabs__item menu__tabs__boards"
-      [class.menu__tabs__item_active]="queues"
-      (click)="toggle('queues')"
+      routerLinkActive="menu__tabs__item_active"
+      routerLink="./queues"
     >
       <i class="fas fa-key"></i>
       Очереди
-    </div>
+    </a>
 
-    <div
+    <a
       class="menu__tabs__item menu__tabs__queues"
-      [class.menu__tabs__item_active]="tasks"
-      (click)="toggle('tasks')"
+      routerLinkActive="menu__tabs__item_active"
+      routerLink="./tasks"
     >
       <i class="fas fa-tasks"></i>
       Мои задачи
-    </div>
+    </a>
 
-    <div
+    <a
       class="menu__tabs__item menu__tabs__queues"
-      [class.menu__tabs__item_active]="search"
-      (click)="toggle('search')"
+      routerLinkActive="menu__tabs__item_active"
+      routerLink="./search"
     >
       <i class="fas fa-search"></i>
       Поиск
-    </div>
+    </a>
   </div>
 </div>
 
 <div class="content">
-  <app-boards *ngIf="boards"></app-boards>
-  <app-queues *ngIf="queues"></app-queues>
-  <app-dashboard-tasks-list
-    *ngIf="tasks"
-    [dashboard]="true"
-  ></app-dashboard-tasks-list>
-  <app-search *ngIf="search"></app-search>
+  <router-outlet></router-outlet>
 </div>
