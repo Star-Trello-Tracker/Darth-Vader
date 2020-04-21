@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IBoard } from '../../../typings';
+import { BoardsService } from '../../../services/boards.service';
 
 @Component({
   selector: 'app-queues',
@@ -6,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./queues.component.scss'],
 })
 export class QueuesComponent implements OnInit {
-  constructor() {}
+  public queues$: Observable<IBoard[]>;
+  public filterQueues: IBoard[] = [];
+  public search = '';
 
-  ngOnInit(): void {}
+  constructor(private boardsService: BoardsService) {}
+
+  ngOnInit() {
+    this.queues$ = this.boardsService.getPersonQueues();
+  }
+
+  public find() {
+    this.filterQueues = this.boardsService.searchQueues(this.search);
+  }
 }

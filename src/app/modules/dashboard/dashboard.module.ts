@@ -16,6 +16,7 @@ import { SearchComponent } from './components/menu/search/search.component';
 import { BoardComponent } from './components/menu/board/board.component';
 import { BoardsService } from './services/boards.service';
 import { FormsModule } from '@angular/forms';
+import { QueueComponent } from './components/menu/queue/queue.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     QueuesComponent,
     SearchComponent,
     BoardComponent,
+    QueueComponent,
   ],
   imports: [
     CommonModule,
