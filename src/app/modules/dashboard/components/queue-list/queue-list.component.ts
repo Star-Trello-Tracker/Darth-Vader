@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ITask } from '../../typings';
 import { QueuesTaskListService } from '../../services/queues-task-list.service';
 import { Router } from '@angular/router';
+import { IQueue } from '../../typings/IQueue';
 
 @Component({
   selector: 'app-queue-list',
@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./queue-list.component.scss'],
 })
 export class QueueListComponent implements OnInit {
-  public list$: Observable<ITask[]>;
-  public queue = this.router.url.split('/').pop();
+  public queue$: Observable<IQueue>;
+  public queueTitle = this.router.url.split('/').pop();
 
   constructor(
     private queuesTaskListService: QueuesTaskListService,
@@ -19,6 +19,6 @@ export class QueueListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.list$ = this.queuesTaskListService.getTaskListByQueue('');
+    this.queue$ = this.queuesTaskListService.getTaskListByQueue('');
   }
 }

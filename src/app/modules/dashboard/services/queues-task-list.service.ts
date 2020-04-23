@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { queueTaskList } from './queues-task-list';
+import { queue } from './queues-task-list';
 import { of } from 'rxjs/internal/observable/of';
 import { Observable } from 'rxjs';
-import { ITask } from '../typings';
+import { IQueue } from '../typings/IQueue';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ import { ITask } from '../typings';
 export class QueuesTaskListService {
   constructor() {}
 
-  public getTaskListByQueue(queue: string): Observable<ITask[]> {
-    return of(queueTaskList);
+  public getTaskListByQueue(queueName: string): Observable<IQueue> {
+    return of(queue);
   }
 }

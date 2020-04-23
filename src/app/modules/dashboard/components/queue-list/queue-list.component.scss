@@ -15,6 +15,34 @@
     color: #293241;
   }
 
+  &__creator {
+    align-self: flex-start;
+    display: flex;
+    padding: 10px 20px;
+
+    width: auto;
+
+    position: relative;
+
+    &_link {
+      margin-left: 5px;
+
+      &__profile-layout {
+        position: absolute;
+        display: none;
+        left: 100%;
+        bottom: 30%;
+        width: auto;
+        height: 300%;
+        z-index: 100;
+      }
+    }
+
+    &:hover &_link__profile-layout {
+      display: block;
+    }
+  }
+
   &__person {
     font-size: 24px;
 
@@ -52,5 +80,27 @@
 
   &_link {
     display: inline-block;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &_icon {
+      margin-right: 5px;
+    }
+  }
+}
+
+@media screen and (max-device-width: 850px) {
+  .queues-list {
+    &__item {
+      padding: 10px 20px;
+    }
+
+    &__creator {
+      &:hover &_link__profile-layout {
+        display: none;
+      }
+    }
   }
 }
