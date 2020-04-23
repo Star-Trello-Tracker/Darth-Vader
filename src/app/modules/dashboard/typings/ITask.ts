@@ -1,10 +1,12 @@
+import { IUser } from './IUser';
+
 export interface ITask {
   key: string;
   title: string;
-  creator: string;
-  person: string;
+  creator: IUser;
+  person?: IUser;
   status: string;
   comment?: string;
   refresh: string;
-  observer?: string;
+  observer?: IUser[];
 }

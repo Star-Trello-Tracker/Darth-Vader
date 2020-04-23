@@ -43,3 +43,14 @@
     }
   }
 }
+
+.back-to-queues {
+  display: flex;
+  padding: 20px;
+
+  align-self: flex-start;
+
+  &_link {
+    display: inline-block;
+  }
+}
