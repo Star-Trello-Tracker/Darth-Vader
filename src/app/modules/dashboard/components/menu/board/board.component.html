@@ -1,4 +1,4 @@
-<div class="board">
+<a class="board" [routerLink]="['/', '123', 'dashboard', 'board', board.link]">
   <div class="board_background">
     <div class="board__title">
       {{ board.title }}
@@ -8,4 +8,4 @@
       {{ board.creator }}
     </div>
   </div>
-</div>
+</a>

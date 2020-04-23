@@ -7,6 +7,7 @@ import { QueuesComponent } from './components/menu/queues/queues.component';
 import { SearchComponent } from './components/menu/search/search.component';
 import { BoardsComponent } from './components/menu/boards/boards.component';
 import { QueueListComponent } from './components/queue-list/queue-list.component';
+import { BoardPageComponent } from './components/board-page/board-page.component';
 
 const routes = [
   {
@@ -43,6 +44,10 @@ const routes = [
             pathMatch: 'full',
           },
         ],
+      },
+      {
+        path: 'board/:id',
+        component: BoardPageComponent,
       },
       {
         path: ':queueId',

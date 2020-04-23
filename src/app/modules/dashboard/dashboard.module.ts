@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { QueueComponent } from './components/menu/queue/queue.component';
 import { QueueListComponent } from './components/queue-list/queue-list.component';
 import { QueuesTaskListService } from './services/queues-task-list.service';
+import { BoardPageComponent } from './components/board-page/board-page.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { QueuesTaskListService } from './services/queues-task-list.service';
     BoardComponent,
     QueueComponent,
     QueueListComponent,
+    BoardPageComponent,
   ],
   imports: [
     CommonModule,
