@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ITask } from '../../typings';
+import { QueuesTaskListService } from '../../services/queues-task-list.service';
 
 @Component({
   selector: 'app-queue-list',
@@ -6,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./queue-list.component.scss'],
 })
 export class QueueListComponent implements OnInit {
-  constructor() {}
+  public list$: Observable<ITask[]>;
 
-  ngOnInit(): void {}
+  constructor(private queuesTaskListService: QueuesTaskListService) {}
+
+  ngOnInit(): void {
+    this.list$ = this.queuesTaskListService.getTaskListByQueue('');
+  }
 }

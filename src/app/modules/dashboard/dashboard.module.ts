@@ -18,6 +18,7 @@ import { BoardsService } from './services/boards.service';
 import { FormsModule } from '@angular/forms';
 import { QueueComponent } from './components/menu/queue/queue.component';
 import { QueueListComponent } from './components/queue-list/queue-list.component';
+import { QueuesTaskListService } from './services/queues-task-list.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,6 @@ import { QueueListComponent } from './components/queue-list/queue-list.component
     SharedModule,
     FormsModule,
   ],
-  providers: [DashboardTaskListService, BoardsService],
+  providers: [DashboardTaskListService, BoardsService, QueuesTaskListService],
 })
 export class DashboardModule {}
