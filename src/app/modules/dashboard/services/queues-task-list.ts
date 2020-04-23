@@ -1,7 +1,8 @@
 import { ITask } from '../typings';
 import { user } from './user';
+import { IQueue } from '../typings/IQueue';
 
-export const queueTaskList: ITask[] = [
+const queueTaskList: ITask[] = [
   {
     key: 'TASK-1',
     title: 'Сделать таблицу',
@@ -34,3 +35,10 @@ export const queueTaskList: ITask[] = [
     refresh: '12 апр',
   },
 ];
+
+export const queue: IQueue = {
+  title: 'TASK',
+  description: 'Очередь для задач в таком-то проекте',
+  creator: user,
+  taskList: queueTaskList,
+};

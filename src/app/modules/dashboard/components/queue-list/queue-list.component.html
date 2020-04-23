@@ -1,20 +1,35 @@
-<div class="queues-list" *ngIf="list$ | async as list">
+<div class="queues-list" *ngIf="queue$ | async as queue">
   <div class="back-to-queues">
-    <a routerLink="/123/dashboard/menu/queues" class="back-to-queues_link"
-      >Назад к списку очередей</a
-    >
+    <a routerLink="/123/dashboard/menu/queues" class="back-to-queues_link">
+      <i class="fas fa-arrow-left back-to-queues_link_icon"></i>
+      Назад к списку очередей
+    </a>
   </div>
+
   <div class="queues-list__item queues-list__person">
     <i class="fas fa-key queues-list__person_icon"></i>
-    {{ queue.toUpperCase() }}
+    {{ queueTitle.toUpperCase() }}
+  </div>
+
+  <div class="queues-list__creator queues-list__item">
+    Создатель:
+    <a class="queues-list__creator_link"> {{ queue.creator.name }}</a>
+
+    <div class="queues-list__creator_link__profile-layout">
+      <app-profile-layout [user]="queue.creator"></app-profile-layout>
+    </div>
+  </div>
+
+  <div class="queues-list__item queues-list__description">
+    {{ queue.description }}
   </div>
 
   <app-dashboard-task-list-header></app-dashboard-task-list-header>
   <app-dashboard-task-list-row
-    *ngFor="let item of list"
+    *ngFor="let item of queue.taskList"
     [data]="item"
   ></app-dashboard-task-list-row>
-  <div class="queues-list__no-tasks" *ngIf="list.length === 0">
+  <div class="queues-list__no-tasks" *ngIf="queue.taskList.length === 0">
     Задач нет
     <i class="far fa-frown queues-list__no-tasks_icon"></i>
   </div>
