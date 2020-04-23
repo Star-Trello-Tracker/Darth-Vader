@@ -3,9 +3,9 @@ import { IBoard } from '../typings';
 export const queues: IBoard[] = [
   {
     id: 1,
-    title: 'Очередь-1',
+    title: 'TASK',
     creator: 'Avdeev Ivan',
-    link: 'queue-1',
+    link: 'task',
   },
   {
     id: 2,

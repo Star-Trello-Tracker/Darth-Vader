@@ -1,1 +1,16 @@
-<p>queue-list works!</p>
+<div class="queues-list" *ngIf="list$ | async as list">
+  <div class="queues-list__item queues-list__person">
+    <i class="fas fa-key queues-list__person_icon"></i>
+    TASK
+  </div>
+
+  <app-dashboard-task-list-header></app-dashboard-task-list-header>
+  <app-dashboard-task-list-row
+    *ngFor="let item of list"
+    [data]="item"
+  ></app-dashboard-task-list-row>
+  <div class="queues-list__no-tasks" *ngIf="list.length === 0">
+    Задач нет
+    <i class="far fa-frown queues-list__no-tasks_icon"></i>
+  </div>
+</div>
