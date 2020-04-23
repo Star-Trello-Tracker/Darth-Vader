@@ -1,7 +1,12 @@
 <div class="queues-list" *ngIf="list$ | async as list">
+  <div class="back-to-queues">
+    <a routerLink="/123/dashboard/menu/queues" class="back-to-queues_link"
+      >Назад к списку очередей</a
+    >
+  </div>
   <div class="queues-list__item queues-list__person">
     <i class="fas fa-key queues-list__person_icon"></i>
-    TASK
+    {{ queue.toUpperCase() }}
   </div>
 
   <app-dashboard-task-list-header></app-dashboard-task-list-header>

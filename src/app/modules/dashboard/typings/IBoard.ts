@@ -1,6 +1,8 @@
+import { IUser } from './IUser';
+
 export interface IBoard {
   id: number;
   title: string;
-  creator: string;
+  creator: IUser;
   link: string | number;
 }

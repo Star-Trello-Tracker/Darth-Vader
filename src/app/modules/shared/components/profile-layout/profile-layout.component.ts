@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IUser } from '../../../dashboard/typings/IUser';
 
 @Component({
   selector: 'app-profile-layout',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-layout.component.scss'],
 })
 export class ProfileLayoutComponent implements OnInit {
+  @Input() user: IUser;
   constructor() {}
 
   ngOnInit(): void {}
