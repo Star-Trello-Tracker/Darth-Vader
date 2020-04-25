@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IQueue, IUser } from '../../typings';
-import { BoardsService } from '../../services/boards.service';
 import { Router } from '@angular/router';
+import { QueuesService } from '../../services/queues/queues.service';
 
 @Component({
   selector: 'app-create-queue',
@@ -21,7 +21,7 @@ export class CreateQueueComponent implements OnInit {
     offline: 1123,
   };
 
-  constructor(private queuesService: BoardsService, private router: Router) {}
+  constructor(private queuesService: QueuesService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -41,10 +41,12 @@ export class CreateQueueComponent implements OnInit {
     }
 
     const queue: IQueue = {
+      id: 1,
       title: this.title,
       description: this.description,
       creator: this.creator,
       link: this.title,
+      taskList: [],
     };
 
     this.queuesService.createQueue(queue).subscribe((res) => {

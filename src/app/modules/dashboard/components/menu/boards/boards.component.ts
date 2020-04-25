@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IBoard } from '../../../typings';
-import { BoardsService } from '../../../services/boards.service';
+import { BoardsService } from '../../../services/boards/boards.service';
 
 @Component({
   selector: 'app-boards',

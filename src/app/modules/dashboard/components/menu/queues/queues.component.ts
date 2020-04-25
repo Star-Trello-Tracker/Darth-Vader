@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IQueue } from '../../../typings';
-import { BoardsService } from '../../../services/boards.service';
+import { QueuesService } from '../../../services/queues/queues.service';
 
 @Component({
   selector: 'app-queues',
@@ -13,13 +13,13 @@ export class QueuesComponent implements OnInit {
   public filterQueues: IQueue[] = [];
   public search = '';
 
-  constructor(private boardsService: BoardsService) {}
+  constructor(private queuesService: QueuesService) {}
 
   ngOnInit() {
-    this.queues$ = this.boardsService.getPersonQueues();
+    this.queues$ = this.queuesService.getPersonQueues();
   }
 
   public find() {
-    this.filterQueues = this.boardsService.searchQueues(this.search);
+    this.filterQueues = this.queuesService.searchQueues(this.search);
   }
 }

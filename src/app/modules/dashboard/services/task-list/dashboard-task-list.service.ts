@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { data } from './data';
+import { taskList } from './task-list';
 import { of } from 'rxjs/internal/observable/of';
 import { Observable } from 'rxjs';
-import { ITask } from '../typings';
-import { IUser } from '../typings/IUser';
+import { ITask, IUser } from '../../typings';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +13,7 @@ export class DashboardTaskListService {
   constructor() {}
 
   public getDefaultTaskList(): Observable<ITask[]> {
-    return of(data);
+    return of(taskList);
   }
 
   public getFilteredData(
@@ -28,7 +27,7 @@ export class DashboardTaskListService {
     }
 
     return of(
-      data.filter((el) => {
+      taskList.filter((el) => {
         return (
           (author && el.creator.name === this.personData) ||
           (person && el.person.name === this.personData) ||
