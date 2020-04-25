@@ -3,7 +3,7 @@ import { boards } from './boards';
 import { queues } from './queues';
 import { of } from 'rxjs/internal/observable/of';
 import { Observable } from 'rxjs';
-import { IBoard } from '../typings';
+import { IBoard, IQueue } from '../typings';
 
 @Injectable({
   providedIn: 'root',
@@ -25,11 +25,11 @@ export class BoardsService {
     });
   }
 
-  public getPersonQueues(): Observable<IBoard[]> {
+  public getPersonQueues(): Observable<IQueue[]> {
     return of(queues);
   }
 
-  public searchQueues(name: string): IBoard[] {
+  public searchQueues(name: string): IQueue[] {
     if (name === '') {
       return [];
     }
@@ -37,5 +37,10 @@ export class BoardsService {
     return queues.filter((b) => {
       return b.title.toLowerCase().includes(name.toLowerCase());
     });
+  }
+
+  public createQueue(queue: IQueue): Observable<IQueue> {
+    queues.push(queue);
+    return of(queue);
   }
 }

@@ -1,7 +1,7 @@
-import { IBoard } from '../typings';
+import { IQueue } from '../typings';
 import { user } from './user';
 
-export const queues: IBoard[] = [
+export const queues: IQueue[] = [
   {
     id: 1,
     title: 'TASK',

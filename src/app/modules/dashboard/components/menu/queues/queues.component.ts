@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IBoard } from '../../../typings';
+import { IQueue } from '../../../typings';
 import { BoardsService } from '../../../services/boards.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { BoardsService } from '../../../services/boards.service';
   styleUrls: ['./queues.component.scss'],
 })
 export class QueuesComponent implements OnInit {
-  public queues$: Observable<IBoard[]>;
-  public filterQueues: IBoard[] = [];
+  public queues$: Observable<IQueue[]>;
+  public filterQueues: IQueue[] = [];
   public search = '';
 
   constructor(private boardsService: BoardsService) {}
