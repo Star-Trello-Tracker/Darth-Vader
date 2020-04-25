@@ -1,0 +1,168 @@
+.back-to-queues {
+  display: flex;
+  padding: 20px;
+
+  align-self: flex-start;
+
+  &_link {
+    display: inline-block;
+
+    color: #ee6c4d;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &_icon {
+      margin-right: 5px;
+    }
+  }
+}
+
+.create-queue {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding: 20px;
+
+  color: #293241;
+
+  &__title {
+    align-self: flex-start;
+
+    box-sizing: border-box;
+
+    font-size: 28px;
+    padding: 30px 20px;
+  }
+
+  &__form {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    &__item {
+      font-size: 22px;
+      padding: 20px;
+
+      box-sizing: border-box;
+
+      &_input {
+        padding: 5px;
+
+        font-size: 18px;
+        border-radius: 5px;
+        margin-left: 5px;
+
+        width: 300px;
+
+        &_invalid {
+          border: 2px solid red;
+        }
+      }
+    }
+
+    &__title {
+      &_help {
+        font-size: 16px;
+        margin-left: 10px;
+      }
+    }
+
+    &_help {
+      padding: 10px 20px;
+
+      font-size: 16px;
+    }
+
+    &__submit {
+      padding: 10px 20px;
+      font-size: 18px;
+
+      border-radius: 10px;
+
+      background-color: #3d5a80;
+      color: white;
+
+      margin: 20px 0 0 20px;
+
+      transition-property: transform;
+      transition-duration: 0.5s;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+
+        transition-property: transform;
+        transition-duration: 0.5s;
+      }
+    }
+  }
+}
+
+@media screen and (max-device-width: 800px) {
+  .create-queue {
+    &__form {
+      &__title {
+        &_help {
+          display: block;
+          margin-top: 10px;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-device-width: 450px) {
+  .back-to-queues {
+    align-self: center;
+  }
+
+  .create-queue {
+    padding: 0;
+
+    &__title {
+      align-self: center;
+    }
+
+    &__form {
+      align-self: center;
+      align-items: center;
+
+      &__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &_input {
+          margin-top: 5px;
+          margin-left: 0;
+        }
+      }
+
+      &__title {
+        &_help {
+          margin-left: 0;
+          margin-top: 5px;
+        }
+      }
+
+      &__submit {
+        margin-left: 0;
+      }
+    }
+  }
+}

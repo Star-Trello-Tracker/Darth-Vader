@@ -8,6 +8,7 @@ import { SearchComponent } from './components/menu/search/search.component';
 import { BoardsComponent } from './components/menu/boards/boards.component';
 import { QueueListComponent } from './components/queue-list/queue-list.component';
 import { BoardPageComponent } from './components/board-page/board-page.component';
+import { CreateQueueComponent } from './components/create-queue/create-queue.component';
 
 const routes = [
   {
@@ -44,6 +45,10 @@ const routes = [
             pathMatch: 'full',
           },
         ],
+      },
+      {
+        path: 'create-queue',
+        component: CreateQueueComponent,
       },
       {
         path: 'board/:id',

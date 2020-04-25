@@ -5,7 +5,10 @@
   </div>
 
   <div class="queues__list">
-    <div class="queues__list__create">
+    <div
+      class="queues__list__create"
+      [routerLink]="['/', '123', 'dashboard', 'create-queue']"
+    >
       <i class="fas fa-plus queues__list__create_icon"></i>
       Создать очередь
     </div>

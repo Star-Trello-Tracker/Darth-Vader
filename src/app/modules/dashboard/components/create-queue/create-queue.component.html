@@ -1,0 +1,46 @@
+<div class="create-queue">
+  <div class="back-to-queues">
+    <a routerLink="/123/dashboard/menu/queues" class="back-to-queues_link">
+      <i class="fas fa-arrow-left back-to-queues_link_icon"></i>
+      Назад к списку очередей
+    </a>
+  </div>
+
+  <div class="create-queue__title">
+    Создание очереди
+    <i class="fas fa-plus queues__list__create_icon"></i>
+  </div>
+
+  <div class="create-queue__form">
+    <span class="create-queue__form_help">
+      Минимальная длина ключа - 4 символа
+    </span>
+    <label class="create-queue__form__title create-queue__form__item">
+      Название очереди:
+      <input
+        class="create-queue__form__title_input create-queue__form__item_input"
+        type="text"
+        [class.create-queue__form__item_input_invalid]="invalidTitle"
+        [(ngModel)]="title"
+      />
+      <span class="create-queue__form__title_help">
+        Ключ задач в этой очереди: {{ title
+        }}<span *ngIf="title.length > 3">-N</span>
+      </span>
+    </label>
+
+    <label class="create-queue__form__description create-queue__form__item">
+      Описание:
+      <input
+        class="create-queue__form__description_input create-queue__form__item_input"
+        type="text"
+        [class.create-queue__form__item_input_invalid]="invalidDescription"
+        [(ngModel)]="description"
+      />
+    </label>
+
+    <button class="create-queue__form__submit" (click)="submit()">
+      Создать очередь
+    </button>
+  </div>
+</div>

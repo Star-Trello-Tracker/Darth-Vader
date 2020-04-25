@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { QueuesTaskListService } from '../../services/queues-task-list.service';
 import { Router } from '@angular/router';
-import { IQueue } from '../../typings/IQueue';
+import { IQueue } from '../../typings';
 
 @Component({
   selector: 'app-queue-list',
