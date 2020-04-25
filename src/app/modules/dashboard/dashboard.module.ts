@@ -6,7 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { DashboardTasksListComponent } from './components/task-list/dashboard-tasks-list/dashboard-tasks-list.component';
 import { DashboardTaskListHeaderComponent } from './components/task-list/dashboard-task-list-header/dashboard-task-list-header.component';
 import { DashboardTaskListRowComponent } from './components/task-list/dashboard-task-list-row/dashboard-task-list-row.component';
-import { DashboardTaskListService } from './services/dashboard-task-list.service';
+import { DashboardTaskListService } from './services/task-list/dashboard-task-list.service';
 import { MainPageModule } from '../main-page/main-page.module';
 import { SharedModule } from '../shared/shared.module';
 import { MenuComponent } from './components/menu/menu.component';
@@ -14,13 +14,14 @@ import { BoardsComponent } from './components/menu/boards/boards.component';
 import { QueuesComponent } from './components/menu/queues/queues.component';
 import { SearchComponent } from './components/menu/search/search.component';
 import { BoardComponent } from './components/menu/board/board.component';
-import { BoardsService } from './services/boards.service';
+import { BoardsService } from './services/boards/boards.service';
 import { FormsModule } from '@angular/forms';
 import { QueueComponent } from './components/menu/queue/queue.component';
 import { QueueListComponent } from './components/queue-list/queue-list.component';
-import { QueuesTaskListService } from './services/queues-task-list.service';
+import { QueuesTaskListService } from './services/queues/queues-task-list.service';
 import { BoardPageComponent } from './components/board-page/board-page.component';
 import { CreateQueueComponent } from './components/create-queue/create-queue.component';
+import { QueuesService } from './services/queues/queues.service';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,11 @@ import { CreateQueueComponent } from './components/create-queue/create-queue.com
     SharedModule,
     FormsModule,
   ],
-  providers: [DashboardTaskListService, BoardsService, QueuesTaskListService],
+  providers: [
+    DashboardTaskListService,
+    BoardsService,
+    QueuesTaskListService,
+    QueuesService,
+  ],
 })
 export class DashboardModule {}

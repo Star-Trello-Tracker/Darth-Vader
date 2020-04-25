@@ -2,10 +2,10 @@ import { ITask } from './ITask';
 import { IUser } from './IUser';
 
 export interface IQueue {
-  id?: number;
+  id: number;
   title: string;
-  description?: string;
+  description: string;
   creator: IUser;
-  taskList?: ITask[];
+  taskList: ITask[];
   link: string;
 }

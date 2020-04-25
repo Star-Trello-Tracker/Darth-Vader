@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { boards } from './boards';
-import { queues } from './queues';
 import { of } from 'rxjs/internal/observable/of';
 import { Observable } from 'rxjs';
-import { IBoard, IQueue } from '../typings';
+import { IBoard } from '../../typings';
 
 @Injectable({
   providedIn: 'root',
@@ -23,24 +22,5 @@ export class BoardsService {
     return boards.filter((b) => {
       return b.title.toLowerCase().includes(name.toLowerCase());
     });
-  }
-
-  public getPersonQueues(): Observable<IQueue[]> {
-    return of(queues);
-  }
-
-  public searchQueues(name: string): IQueue[] {
-    if (name === '') {
-      return [];
-    }
-
-    return queues.filter((b) => {
-      return b.title.toLowerCase().includes(name.toLowerCase());
-    });
-  }
-
-  public createQueue(queue: IQueue): Observable<IQueue> {
-    queues.push(queue);
-    return of(queue);
   }
 }

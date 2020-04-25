@@ -1,5 +1,5 @@
-import { IBoard } from '../typings';
-import { user } from './user';
+import { IBoard } from '../../typings';
+import { user } from '../user';
 
 export const boards: IBoard[] = [
   {

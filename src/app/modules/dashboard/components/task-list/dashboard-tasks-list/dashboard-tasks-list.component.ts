@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DashboardTaskListService } from '../../../services/dashboard-task-list.service';
+import { DashboardTaskListService } from '../../../services/task-list/dashboard-task-list.service';
 import { ITask } from '../../../typings';
 
 @Component({

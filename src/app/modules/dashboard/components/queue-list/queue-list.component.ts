@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { QueuesTaskListService } from '../../services/queues-task-list.service';
+import { QueuesTaskListService } from '../../services/queues/queues-task-list.service';
 import { Router } from '@angular/router';
 import { IQueue } from '../../typings';
 
