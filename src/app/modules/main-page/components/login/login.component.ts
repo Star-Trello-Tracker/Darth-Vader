@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { config } from './config';
-import { Router } from '@angular/router';
+import { AuthService } from '../../../../auth-services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   };
   public deviceWidth = window.innerWidth;
 
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
 
@@ -24,6 +24,6 @@ export class LoginComponent implements OnInit {
   }
 
   public submit() {
-    this.router.navigateByUrl('/123');
+    this.authService.login();
   }
 }
