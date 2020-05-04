@@ -1,4 +1,4 @@
-import { IUser } from '../typings/IUser';
+import { IUser } from '../../../typings';
 
 export const user: IUser = {
   id: 1,

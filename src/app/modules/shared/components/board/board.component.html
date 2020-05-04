@@ -1,0 +1,14 @@
+<a
+  class="item board"
+  [routerLink]="['/', '123', 'dashboard', 'board', board.link]"
+>
+  <div class="item_background board_background">
+    <div class="item__title board__title">
+      {{ board.title }}
+    </div>
+
+    <div class="item__creator board__creator">
+      {{ board.creator.name }}
+    </div>
+  </div>
+</a>

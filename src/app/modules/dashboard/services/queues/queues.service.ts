@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { IQueue } from '../../typings';
+import { IQueue } from '../../../../typings';
 import { queues } from './queues';
 
 @Injectable({

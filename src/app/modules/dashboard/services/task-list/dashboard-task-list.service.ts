@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { taskList } from './task-list';
 import { of } from 'rxjs/internal/observable/of';
 import { Observable } from 'rxjs';
-import { ITask, IUser } from '../../typings';
+import { ITask, IUser } from '../../../../typings';
 
 @Injectable({
   providedIn: 'root',

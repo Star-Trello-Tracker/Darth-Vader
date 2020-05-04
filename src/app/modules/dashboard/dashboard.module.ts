@@ -3,21 +3,17 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
-import { DashboardTasksListComponent } from './components/task-list/dashboard-tasks-list/dashboard-tasks-list.component';
-import { DashboardTaskListHeaderComponent } from './components/task-list/dashboard-task-list-header/dashboard-task-list-header.component';
-import { DashboardTaskListRowComponent } from './components/task-list/dashboard-task-list-row/dashboard-task-list-row.component';
+import { DashboardTasksListComponent } from './components/dashboard-tasks-list/dashboard-tasks-list.component';
 import { DashboardTaskListService } from './services/task-list/dashboard-task-list.service';
 import { MainPageModule } from '../main-page/main-page.module';
 import { SharedModule } from '../shared/shared.module';
 import { MenuComponent } from './components/menu/menu.component';
-import { BoardsComponent } from './components/menu/boards/boards.component';
-import { QueuesComponent } from './components/menu/queues/queues.component';
+import { BoardsListComponent } from './components/boards-list/boards-list.component';
+import { QueuesListComponent } from './components/queues-list/queues-list.component';
 import { SearchComponent } from './components/menu/search/search.component';
-import { BoardComponent } from './components/menu/board/board.component';
 import { BoardsService } from './services/boards/boards.service';
 import { FormsModule } from '@angular/forms';
-import { QueueComponent } from './components/menu/queue/queue.component';
-import { QueueListComponent } from './components/queue-list/queue-list.component';
+import { QueueTaskListComponent } from './components/queue-task-list/queue-task-list.component';
 import { QueuesTaskListService } from './services/queues/queues-task-list.service';
 import { BoardPageComponent } from './components/board-page/board-page.component';
 import { CreateQueueComponent } from './components/create-queue/create-queue.component';
@@ -28,15 +24,11 @@ import { QueuesService } from './services/queues/queues.service';
     DashboardComponent,
     HeaderComponent,
     DashboardTasksListComponent,
-    DashboardTaskListHeaderComponent,
-    DashboardTaskListRowComponent,
     MenuComponent,
-    BoardsComponent,
-    QueuesComponent,
+    BoardsListComponent,
+    QueuesListComponent,
     SearchComponent,
-    BoardComponent,
-    QueueComponent,
-    QueueListComponent,
+    QueueTaskListComponent,
     BoardPageComponent,
     CreateQueueComponent,
   ],
