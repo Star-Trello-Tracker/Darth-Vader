@@ -1,0 +1,9 @@
+@media screen and (max-device-width: 450px) {
+  .queues {
+    &__list {
+      &__create {
+        font-size: 20px;
+      }
+    }
+  }
+}

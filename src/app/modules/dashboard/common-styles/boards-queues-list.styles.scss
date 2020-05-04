@@ -1,4 +1,4 @@
-.queues {
+.item {
   width: 100%;
   height: auto;
   padding: 20px;
@@ -83,7 +83,7 @@
 }
 
 @media screen and (max-device-width: 450px) {
-  .queues {
+  .item {
     &__title {
       font-size: 18px;
     }
@@ -92,8 +92,6 @@
       &__create {
         min-width: 200px;
         height: 100px;
-
-        font-size: 20px;
       }
     }
 

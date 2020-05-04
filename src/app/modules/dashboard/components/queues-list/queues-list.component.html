@@ -1,30 +1,32 @@
-<div class="queues" *ngIf="queues$ | async as queues">
-  <div class="queues__title">
+<div class="queues item" *ngIf="queues$ | async as queues">
+  <div class="item__title queues__title">
     Ваши очереди
     <i class="fas fa-key"></i>
   </div>
 
-  <div class="queues__list">
+  <div class="item__list queues__list">
     <div
-      class="queues__list__create"
+      class="item__list__create queues__list__create"
       [routerLink]="['/', '123', 'dashboard', 'create-queue']"
     >
-      <i class="fas fa-plus queues__list__create_icon"></i>
+      <i
+        class="fas fa-plus item__list__create_icon queues__list__create_icon"
+      ></i>
       Создать очередь
     </div>
 
     <app-queue *ngFor="let queue of queues" [queue]="queue"></app-queue>
   </div>
 
-  <div class="queues__search">
-    <div class="queues__title">
+  <div class="item__search queues__search">
+    <div class="item__title queues__title">
       Быстрый поиск по названию
       <i class="fas fa-search"></i>
     </div>
 
-    <label class="queues__search__label">
+    <label class="item__search__label queues__search__label">
       <input
-        class="queues__search_input"
+        class="item__search_input queues__search_input"
         placeholder="Введите название доски"
         type="text"
         [(ngModel)]="search"
@@ -32,7 +34,7 @@
       />
     </label>
 
-    <div class="queues__list">
+    <div class="item__list queues__list">
       <app-queue *ngFor="let queue of filterQueues" [queue]="queue"></app-queue>
     </div>
   </div>

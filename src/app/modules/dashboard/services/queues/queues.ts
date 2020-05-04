@@ -1,4 +1,4 @@
-import { IQueue } from '../../typings';
+import { IQueue } from '../../../../typings';
 import { user } from '../user';
 
 export const queues: IQueue[] = [

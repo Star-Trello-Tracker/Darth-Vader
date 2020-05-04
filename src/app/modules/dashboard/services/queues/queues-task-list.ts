@@ -1,4 +1,4 @@
-import { ITask, IQueue } from '../../typings';
+import { ITask, IQueue } from '../../../../typings';
 import { user } from '../user';
 
 const queueTaskList: ITask[] = [

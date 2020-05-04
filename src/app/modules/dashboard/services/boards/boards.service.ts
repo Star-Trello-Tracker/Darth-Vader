@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { boards } from './boards';
 import { of } from 'rxjs/internal/observable/of';
 import { Observable } from 'rxjs';
-import { IBoard } from '../../typings';
+import { IBoard } from '../../../../typings';
 
 @Injectable({
   providedIn: 'root',

@@ -1,12 +1,14 @@
-<div class="boards" *ngIf="boards$ | async as boards">
-  <div class="boards__title">
+<div class="item boards" *ngIf="boards$ | async as boards">
+  <div class="item__title boards__title">
     Ваши доски
     <i class="fas fa-thumbtack"></i>
   </div>
 
-  <div class="boards__list">
-    <div class="boards__list__create">
-      <i class="fas fa-plus boards__list__create_icon"></i>
+  <div class="item__list boards__list">
+    <div class="item__list__create boards__list__create">
+      <i
+        class="fas fa-plus item__list__create_icon boards__list__create_icon"
+      ></i>
       Создать доску
     </div>
 
@@ -16,15 +18,15 @@
     ></app-dashboard-board>
   </div>
 
-  <div class="boards__search">
-    <div class="boards__title">
+  <div class="item__search__label boards__search">
+    <div class="item__title boards__title">
       Быстрый поиск по названию
       <i class="fas fa-search"></i>
     </div>
 
-    <label class="boards__search__label">
+    <label class="item__search__label boards__search__label">
       <input
-        class="boards__search_input"
+        class="item__search_input boards__search_input"
         placeholder="Введите название доски"
         type="text"
         [(ngModel)]="search"
@@ -32,7 +34,7 @@
       />
     </label>
 
-    <div class="boards__list">
+    <div class="item__list boards__list">
       <app-dashboard-board
         *ngFor="let board of filterBoards"
         [board]="board"

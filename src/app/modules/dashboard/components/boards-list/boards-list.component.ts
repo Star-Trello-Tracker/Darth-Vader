@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IBoard } from '../../../typings';
-import { BoardsService } from '../../../services/boards/boards.service';
+import { IBoard } from '../../../../typings';
+import { BoardsService } from '../../services/boards/boards.service';
 
 @Component({
   selector: 'app-boards',
-  templateUrl: './boards.component.html',
-  styleUrls: ['./boards.component.scss'],
+  templateUrl: './boards-list.component.html',
+  styleUrls: [
+    './boards-list.component.scss',
+    '../../common-styles/boards-queues-list.styles.scss',
+  ],
 })
-export class BoardsComponent implements OnInit {
+export class BoardsListComponent implements OnInit {
   public boards$: Observable<IBoard[]>;
   public filterBoards: IBoard[] = [];
   public search = '';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IQueue, IUser } from '../../typings';
+import { IQueue, IUser } from '../../../../typings';
 import { Router } from '@angular/router';
 import { QueuesService } from '../../services/queues/queues.service';
 
@@ -51,7 +51,7 @@ export class CreateQueueComponent implements OnInit {
 
     this.queuesService.createQueue(queue).subscribe((res) => {
       console.log(res);
-      this.router.navigateByUrl('/123/dashboard/menu/queues');
+      this.router.navigateByUrl('/123/dashboard/menu/queues-list');
     });
   }
 }

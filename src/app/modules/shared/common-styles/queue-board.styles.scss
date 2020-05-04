@@ -3,7 +3,7 @@
   margin-bottom: 20px;
 }
 
-.queue {
+.item {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,8 +14,6 @@
 
   font-size: 24px;
   color: white;
-
-  background: url("~src/assets/images/queue.jpg") no-repeat center center;
 
   transition-property: transform;
   transition-duration: 1s;
@@ -54,7 +52,7 @@
 }
 
 @media screen and (max-device-width: 450px) {
-  .queue_background {
+  .item_background {
     width: 200px;
     height: 100px;
   }

@@ -1,4 +1,4 @@
-import { ITask } from '../../typings';
+import { ITask } from '../../../../typings';
 import { user } from '../user';
 
 export const taskList: ITask[] = [
