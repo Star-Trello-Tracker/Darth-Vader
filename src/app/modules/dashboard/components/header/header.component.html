@@ -36,7 +36,7 @@
         aria-hidden="true"
       ></i>
     </a>
-    <a routerLink="/" class="header__navigation__link">
+    <a tabindex="0" (click)="logout()" class="header__navigation__link">
       <span class="header__navigation__link_text">Выйти</span>
       <i class="fas fa-sign-out-alt header__navigation__link_icon"></i>
     </a>

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MainPageModule } from './modules/main-page/main-page.module';
 import { UserModule } from './modules/user/user.module';
 import { SharedModule } from './modules/shared/shared.module';
+import { AuthService } from './auth-services/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +17,7 @@ import { SharedModule } from './modules/shared/shared.module';
     UserModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
