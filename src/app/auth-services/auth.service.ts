@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   userName = new BehaviorSubject(!!localStorage.getItem('userName'));
   isAuth = new BehaviorSubject(!!localStorage.getItem('isAuth'));
+  isNotAuth = new BehaviorSubject(!!!localStorage.getItem('isAuth'));
 
   constructor(private router: Router) {}
 
@@ -17,6 +18,7 @@ export class AuthService {
     localStorage.setItem('userName', 'Авдеев Иван');
     localStorage.setItem('token', '123456');
     this.isAuth.next(true);
+    this.isNotAuth.next(false);
 
     this.router.navigateByUrl(`/${localStorage.getItem('id')}/dashboard`);
   }
@@ -27,6 +29,7 @@ export class AuthService {
     localStorage.removeItem('userName');
     localStorage.removeItem('token');
     this.isAuth.next(false);
+    this.isNotAuth.next(true);
 
     this.router.navigateByUrl(`/`);
   }
