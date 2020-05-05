@@ -4,7 +4,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardTasksListComponent } from './components/dashboard-tasks-list/dashboard-tasks-list.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { QueuesListComponent } from './components/queues-list/queues-list.component';
-import { SearchComponent } from './components/menu/search/search.component';
+import { SearchComponent } from './components/search/search.component';
 import { BoardsListComponent } from './components/boards-list/boards-list.component';
 import { QueueTaskListComponent } from './components/queue-task-list/queue-task-list.component';
 import { BoardPageComponent } from './components/board-page/board-page.component';

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IQueue, IUser } from '../../../../typings';
 import { Router } from '@angular/router';
 import { QueuesService } from '../../services/queues/queues.service';
+import { AuthService } from '../../../../auth-services/auth.service';
 
 @Component({
   selector: 'app-create-queue',
@@ -21,7 +22,15 @@ export class CreateQueueComponent implements OnInit {
     offline: 1123,
   };
 
-  constructor(private queuesService: QueuesService, private router: Router) {}
+  public get back2Queues() {
+    return `/${this.authService.getId()}/dashboard/menu/queues`;
+  }
+
+  constructor(
+    private queuesService: QueuesService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -51,7 +60,9 @@ export class CreateQueueComponent implements OnInit {
 
     this.queuesService.createQueue(queue).subscribe((res) => {
       console.log(res);
-      this.router.navigateByUrl('/123/dashboard/menu/queues-list');
+      this.router.navigateByUrl(
+        `/${this.authService.getId()}/dashboard/menu/queues-list`
+      );
     });
   }
 }
