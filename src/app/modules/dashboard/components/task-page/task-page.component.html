@@ -1,13 +1,37 @@
-<div class="task-page">
-  <div class="task-page__task-interface">
+<div class="tabs-for-phone">
+  <div
+    class="tabs-for-phone__item"
+    [class.tabs-for-phone__item_show]="showTask"
+    (click)="toggle(true)"
+  >
+    Задача
+  </div>
+
+  <div
+    class="tabs-for-phone__item"
+    [class.tabs-for-phone__item_show]="!showTask"
+    (click)="toggle(false)"
+  >
+    Информация
+  </div>
+</div>
+
+<div class="task-page" *ngIf="task$ | async as task">
+  <div
+    class="task-page__task-interface task-page__task-interface__touch"
+    [class.task-page__task-interface__touch_show]="showTask"
+  >
     <div class="task-page__task-interface__title">
       <span class="task-page__task-interface__title_queue">
-        Очередь: <a routerLink="/">TASK</a>
+        Очередь:
+        <a [routerLink]="getQueueLink(task.key)">{{ getQueue(task.key) }}</a>
       </span>
 
       <span class="task-page__task-interface__title_task">
-        <span class="task-page__task-interface__title_task_key">TASK-1</span>:
-        Сделать таблицу
+        <span class="task-page__task-interface__title_task_key">{{
+          task.key
+        }}</span
+        >: Сделать таблицу
       </span>
 
       <div class="task-page__task-interface__title_edit">
@@ -52,12 +76,28 @@
           Вложения
         </div>
 
-        <div class="task-page__task-interface__description__attachments_toggle">
+        <div
+          class="task-page__task-interface__description__attachments_toggle"
+          *ngIf="!showAttachments"
+          (click)="toggleAttachments()"
+        >
           Показать вложения
           <i class="far fa-eye"></i>
         </div>
 
-        <div class="task-page__task-interface__description__attachments_show">
+        <div
+          class="task-page__task-interface__description__attachments_toggle"
+          *ngIf="showAttachments"
+          (click)="toggleAttachments()"
+        >
+          Скрыть вложения
+          <i class="fas fa-eye-slash"></i>
+        </div>
+
+        <div
+          class="task-page__task-interface__description__attachments_show"
+          *ngIf="showAttachments"
+        >
           Вложений нет
         </div>
       </div>
@@ -74,25 +114,40 @@
     </div>
   </div>
 
-  <div class="task-page__info">
+  <div
+    class="task-page__info task-page__info__touch"
+    [class.task-page__info__touch_show]="!showTask"
+  >
     <div class="task-page__info_title">
       Информация
     </div>
 
     <div class="task-page__info_item">
-      Создатель: Авдеев Иван
+      Создатель: <a>Авдеев Иван</a>
+      <div class="task-page__info_item__profile-layout">
+        <app-profile-layout [user]="task.creator"></app-profile-layout>
+      </div>
     </div>
 
     <div class="task-page__info_item">
-      Исполнитель: Авдеев Иван
+      Исполнитель: <a>Авдеев Иван</a>
+      <div *ngIf="task.person" class="task-page__info_item__profile-layout">
+        <app-profile-layout [user]="task.person"></app-profile-layout>
+      </div>
     </div>
 
     <div class="task-page__info_item">
-      Наблюдатели: Авдеев Иван
+      Наблюдатели: <a>Авдеев Иван</a>
+      <div *ngIf="task.observers" class="task-page__info_item__profile-layout">
+        <app-profile-layout [user]="task.observers[0]"></app-profile-layout>
+      </div>
     </div>
 
     <div class="task-page__info_item">
-      Нужен ответ пользователя: Авдеев Иван
+      Нужен ответ пользователей: <a>Авдеев Иван</a>
+      <div *ngIf="task.needAnswer" class="task-page__info_item__profile-layout">
+        <app-profile-layout [user]="task.needAnswer[0]"></app-profile-layout>
+      </div>
     </div>
 
     <div class="task-page__info_item">
@@ -100,7 +155,7 @@
     </div>
 
     <div class="task-page__info_item">
-      Спринт: Спринт 7 (05.02 - 05.18)
+      <a>Спринт: Спринт 7 (05.02 - 05.18)</a>
     </div>
   </div>
 </div>

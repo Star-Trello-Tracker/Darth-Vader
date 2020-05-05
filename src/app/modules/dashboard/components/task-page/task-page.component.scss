@@ -173,6 +173,185 @@
       width: 100%;
       padding: 20px;
       box-sizing: border-box;
+
+      position: relative;
+
+      &__profile-layout {
+        display: none;
+        background-color: white;
+
+        position: absolute;
+        left: 0;
+        bottom: 100%;
+      }
+
+      &:hover &__profile-layout {
+        display: flex;
+      }
+    }
+  }
+}
+
+.tabs-for-phone {
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #293241;
+
+  &__item {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+
+    &:first-of-type {
+      border-right: 1px solid #293241;
+    }
+
+    &_show {
+      background-color: #e0fbfc;
+    }
+  }
+}
+
+@media screen and (max-device-width: 800px) {
+  .tabs-for-phone {
+    display: flex;
+  }
+
+  .task-page {
+    padding: 0;
+
+    &__task-interface {
+      border-right: none;
+
+      &__title {
+        flex-direction: column;
+
+        &_edit,
+        &_queue {
+          margin: 0 0 10px 0;
+          font-size: 16px;
+        }
+
+        &_edit {
+          margin-bottom: 0;
+        }
+
+        &_task {
+          margin-bottom: 10px;
+          font-size: 20px;
+        }
+      }
+
+      &__touch {
+        display: none;
+
+        &_show {
+          display: flex;
+          width: 100%;
+        }
+      }
+
+      &__description {
+        margin-top: 0;
+
+        &_title-container {
+          flex-direction: column-reverse;
+
+          &_title {
+            margin-bottom: 10px;
+            font-size: 20px;
+          }
+
+          &_edit {
+            display: none;
+          }
+        }
+
+        &_text {
+          font-size: 16px;
+        }
+
+        &__attachments {
+          &_text {
+            font-size: 20px;
+          }
+
+          &_show {
+            font-size: 16px;
+          }
+        }
+      }
+
+      &__comments {
+        &_title {
+          font-size: 20px;
+        }
+
+        &__list {
+          font-size: 16px;
+        }
+      }
+    }
+
+    &__info {
+      font-size: 16px;
+
+      &_item {
+        &__profile-layout {
+          display: none;
+        }
+
+        &:hover &__profile-layout {
+          display: none;
+        }
+      }
+
+      &__touch {
+        display: none;
+
+        &_show {
+          display: flex;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-device-width: 450px) {
+  .task-page {
+    &__task-interface {
+      &__title {
+        &_edit,
+        &_queue {
+          font-size: 14px;
+        }
+      }
+
+      &__description {
+        &_text {
+          font-size: 14px;
+        }
+
+        &__attachments {
+          &_show {
+            font-size: 14px;
+          }
+        }
+      }
+
+      &__comments {
+        &__list {
+          font-size: 14px;
+        }
+      }
+    }
+
+    &__info {
+      font-size: 14px;
     }
   }
 }
