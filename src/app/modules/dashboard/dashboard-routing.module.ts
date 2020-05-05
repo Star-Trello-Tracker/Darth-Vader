@@ -9,6 +9,7 @@ import { BoardsListComponent } from './components/boards-list/boards-list.compon
 import { QueueTaskListComponent } from './components/queue-task-list/queue-task-list.component';
 import { BoardPageComponent } from './components/board-page/board-page.component';
 import { CreateQueueComponent } from './components/create-queue/create-queue.component';
+import { TaskPageComponent } from './components/task-page/task-page.component';
 
 const routes = [
   {
@@ -53,6 +54,10 @@ const routes = [
       {
         path: 'board/:id',
         component: BoardPageComponent,
+      },
+      {
+        path: 'task/:id',
+        component: TaskPageComponent,
       },
       {
         path: ':queueId',

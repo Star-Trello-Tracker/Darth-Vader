@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ITask } from '../../../../../typings';
+import { AuthService } from '../../../../../auth-services/auth.service';
 
 @Component({
   selector: 'app-dashboard-task-list-row',
@@ -9,7 +10,18 @@ import { ITask } from '../../../../../typings';
 export class DashboardTaskListRowComponent implements OnInit {
   @Input() data: ITask;
 
-  constructor() {}
+  public get queueUrl() {
+    return `/${this.authService.getId()}/dashboard/${this.data.key.slice(
+      0,
+      this.data.key.indexOf('-')
+    )}`;
+  }
+
+  public get taskUrl() {
+    return `./task/${this.data.key}`;
+  }
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
 }

@@ -3,11 +3,11 @@
     <i class="fas fa-sort-up row__item_icon"></i>
   </div>
 
-  <a class="row__item row__key">
+  <a [routerLink]="queueUrl" class="row__item row__key">
     {{ data.key }}
   </a>
 
-  <a class="row__item row__title">
+  <a [routerLink]="taskUrl" class="row__item row__title">
     {{ data.title }}
   </a>
 
