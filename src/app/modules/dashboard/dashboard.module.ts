@@ -10,7 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MenuComponent } from './components/menu/menu.component';
 import { BoardsListComponent } from './components/boards-list/boards-list.component';
 import { QueuesListComponent } from './components/queues-list/queues-list.component';
-import { SearchComponent } from './components/menu/search/search.component';
+import { SearchComponent } from './components/search/search.component';
 import { BoardsService } from './services/boards/boards.service';
 import { FormsModule } from '@angular/forms';
 import { QueueTaskListComponent } from './components/queue-task-list/queue-task-list.component';
