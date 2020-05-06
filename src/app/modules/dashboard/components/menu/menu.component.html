@@ -1,7 +1,7 @@
-<div class="menu">
-  <div class="menu__tabs">
+<div class="menu full-width flex">
+  <div class="menu__tabs full-size flex">
     <a
-      class="menu__tabs__item menu__tabs__boards"
+      class="menu__tabs__item menu__tabs__boards hover"
       routerLinkActive="menu__tabs__item_active"
       [routerLinkActiveOptions]="{ exact: true }"
       routerLink="./boards"
@@ -11,7 +11,7 @@
     </a>
 
     <a
-      class="menu__tabs__item menu__tabs__boards"
+      class="menu__tabs__item menu__tabs__boards hover"
       routerLinkActive="menu__tabs__item_active"
       routerLink="./queues"
     >
@@ -20,7 +20,7 @@
     </a>
 
     <a
-      class="menu__tabs__item menu__tabs__queues"
+      class="menu__tabs__item menu__tabs__queues hover"
       routerLinkActive="menu__tabs__item_active"
       routerLink="./tasks"
     >
@@ -29,7 +29,7 @@
     </a>
 
     <a
-      class="menu__tabs__item menu__tabs__queues"
+      class="menu__tabs__item menu__tabs__queues hover"
       routerLinkActive="menu__tabs__item_active"
       routerLink="./search"
     >
@@ -39,6 +39,6 @@
   </div>
 </div>
 
-<div class="content">
+<div class="content full-width">
   <router-outlet></router-outlet>
 </div>

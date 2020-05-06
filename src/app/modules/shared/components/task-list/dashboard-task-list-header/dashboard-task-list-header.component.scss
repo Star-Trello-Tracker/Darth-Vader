@@ -3,11 +3,8 @@
 }
 
 .header {
-  width: 100%;
   height: auto;
 
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
 
   box-sizing: border-box;
@@ -16,7 +13,6 @@
   border-bottom: 1px solid #293241;
 
   &__item {
-    display: flex;
     justify-content: center;
     align-items: center;
 
@@ -24,13 +20,7 @@
     width: 180px;
 
     text-align: center;
-    color: #293241;
-
     padding: 10px;
-
-    &:hover {
-      cursor: pointer;
-    }
 
     &_icon {
       margin-left: 5px;

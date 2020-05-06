@@ -1,17 +1,11 @@
 .back-to-queues {
   display: flex;
-  padding: 20px;
-
   align-self: flex-start;
+  padding: 20px;
 
   &_link {
     display: inline-block;
-
     color: #ee6c4d;
-
-    &:hover {
-      text-decoration: underline;
-    }
 
     &_icon {
       margin-right: 5px;
@@ -20,22 +14,12 @@
 }
 
 .create-queue {
-  width: 100%;
-
   box-sizing: border-box;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-
   padding: 20px;
-
-  color: #293241;
 
   &__title {
     align-self: flex-start;
-
     box-sizing: border-box;
 
     font-size: 28px;
@@ -43,19 +27,11 @@
   }
 
   &__form {
-    width: 100%;
-
     box-sizing: border-box;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
 
     &__item {
       font-size: 22px;
       padding: 20px;
-
       box-sizing: border-box;
 
       &_input {
@@ -91,7 +67,6 @@
       font-size: 18px;
 
       border-radius: 10px;
-
       background-color: #3d5a80;
       color: white;
 
@@ -101,7 +76,6 @@
       transition-duration: 0.5s;
 
       &:hover {
-        cursor: pointer;
         transform: scale(1.05);
 
         transition-property: transform;

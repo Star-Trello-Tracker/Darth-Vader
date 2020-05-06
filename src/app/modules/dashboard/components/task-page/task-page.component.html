@@ -1,4 +1,4 @@
-<div class="tabs-for-phone">
+<div class="tabs-for-phone full-width">
   <div
     class="tabs-for-phone__item"
     [class.tabs-for-phone__item_show]="showTask"
@@ -16,12 +16,12 @@
   </div>
 </div>
 
-<div class="task-page" *ngIf="task$ | async as task">
+<div class="task-page full-size flex" *ngIf="task$ | async as task">
   <div
-    class="task-page__task-interface task-page__task-interface__touch"
+    class="task-page__task-interface task-page__task-interface__touch full-height flex flex-column"
     [class.task-page__task-interface__touch_show]="showTask"
   >
-    <div class="task-page__task-interface__title">
+    <div class="task-page__task-interface__title full-width flex">
       <span class="task-page__task-interface__title_queue">
         Очередь:
         <a [routerLink]="getQueueLink(task.key)">{{ getQueue(task.key) }}</a>
@@ -34,21 +34,23 @@
         >: Сделать таблицу
       </span>
 
-      <div class="task-page__task-interface__title_edit">
+      <div class="task-page__task-interface__title_edit hover hover-underline">
         <i class="fas fa-edit task-page__task-interface__title_edit_icon"></i>
         Редактировать название
       </div>
     </div>
 
-    <div class="task-page__task-interface__description">
-      <div class="task-page__task-interface__description_title-container">
+    <div class="task-page__task-interface__description flex flex-column">
+      <div
+        class="task-page__task-interface__description_title-container full-width flex"
+      >
         <div
           class="task-page__task-interface__description_title-container_title"
         >
           Описание задачи
         </div>
         <div
-          class="task-page__task-interface__description_title-container_edit"
+          class="task-page__task-interface__description_title-container_edit hover hover-underline"
         >
           <i
             class="fas fa-edit task-page__task-interface__description_title-container_edit_icon"
@@ -71,13 +73,15 @@
         tenetur.
       </p>
 
-      <div class="task-page__task-interface__description__attachments">
+      <div
+        class="task-page__task-interface__description__attachments full-width flex flex-column"
+      >
         <div class="task-page__task-interface__description__attachments_text">
           Вложения
         </div>
 
         <div
-          class="task-page__task-interface__description__attachments_toggle"
+          class="task-page__task-interface__description__attachments_toggle hover hover-underline"
           *ngIf="!showAttachments"
           (click)="toggleAttachments()"
         >
@@ -86,7 +90,7 @@
         </div>
 
         <div
-          class="task-page__task-interface__description__attachments_toggle"
+          class="task-page__task-interface__description__attachments_toggle hover-underline"
           *ngIf="showAttachments"
           (click)="toggleAttachments()"
         >
@@ -103,58 +107,62 @@
       </div>
     </div>
 
-    <div class="task-page__task-interface__comments">
+    <div
+      class="task-page__task-interface__comments full-width flex flex-column"
+    >
       <div class="task-page__task-interface__comments_title">
         Комментарии
       </div>
 
-      <div class="task-page__task-interface__comments__list">
+      <div
+        class="task-page__task-interface__comments__list full-width flex flex-column"
+      >
         Комментариев нет
       </div>
     </div>
   </div>
 
   <div
-    class="task-page__info task-page__info__touch"
+    class="task-page__info task-page__info__touch flex flex-column"
     [class.task-page__info__touch_show]="!showTask"
   >
-    <div class="task-page__info_title">
+    <div class="task-page__info_title full-width">
       Информация
     </div>
 
-    <div class="task-page__info_item">
+    <div class="task-page__info_item full-width">
       Создатель: <a>Авдеев Иван</a>
       <div class="task-page__info_item__profile-layout">
         <app-profile-layout [user]="task.creator"></app-profile-layout>
       </div>
     </div>
 
-    <div class="task-page__info_item">
+    <div class="task-page__info_item full-width">
       Исполнитель: <a>Авдеев Иван</a>
       <div *ngIf="task.person" class="task-page__info_item__profile-layout">
         <app-profile-layout [user]="task.person"></app-profile-layout>
       </div>
     </div>
 
-    <div class="task-page__info_item">
+    <div class="task-page__info_item full-width">
       Наблюдатели: <a>Авдеев Иван</a>
       <div *ngIf="task.observers" class="task-page__info_item__profile-layout">
         <app-profile-layout [user]="task.observers[0]"></app-profile-layout>
       </div>
     </div>
 
-    <div class="task-page__info_item">
+    <div class="task-page__info_item full-width">
       Нужен ответ пользователей: <a>Авдеев Иван</a>
       <div *ngIf="task.needAnswer" class="task-page__info_item__profile-layout">
         <app-profile-layout [user]="task.needAnswer[0]"></app-profile-layout>
       </div>
     </div>
 
-    <div class="task-page__info_item">
+    <div class="task-page__info_item full-width">
       Story points: 10
     </div>
 
-    <div class="task-page__info_item">
+    <div class="task-page__info_item full-width">
       <a>Спринт: Спринт 7 (05.02 - 05.18)</a>
     </div>
   </div>

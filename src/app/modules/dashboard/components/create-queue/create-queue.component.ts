@@ -59,9 +59,8 @@ export class CreateQueueComponent implements OnInit {
     };
 
     this.queuesService.createQueue(queue).subscribe((res) => {
-      console.log(res);
       this.router.navigateByUrl(
-        `/${this.authService.getId()}/dashboard/menu/queues-list`
+        `/${this.authService.getId()}/dashboard/menu/queues`
       );
     });
   }

@@ -1,38 +1,38 @@
-<div class="row">
+<div class="row full-width flex">
   <div class="row__item row__priority">
     <i class="fas fa-sort-up row__item_icon"></i>
   </div>
 
-  <a [routerLink]="queueUrl" class="row__item row__key">
+  <a [routerLink]="queueUrl" class="row__item row__key flex">
     {{ data.key }}
   </a>
 
-  <a [routerLink]="taskUrl" class="row__item row__title">
+  <a [routerLink]="taskUrl" class="row__item row__title flex">
     {{ data.title }}
   </a>
 
-  <a class="row__item row__person row__creator">
+  <a class="row__item row__person row__creator flex">
     {{ data.creator.name }}
     <div class="row__person__profile-layout">
       <app-profile-layout [user]="data.creator"></app-profile-layout>
     </div>
   </a>
 
-  <a class="row__item row__person">
+  <a class="row__item row__person flex">
     {{ (data.person && data.person.name) || "Нет исполнителя" }}
     <div class="row__person__profile-layout" *ngIf="data.person">
       <app-profile-layout [user]="data.person"></app-profile-layout>
     </div>
   </a>
 
-  <div class="row__item row__status">
+  <div class="row__item row__status flex flex-column">
     {{ data.status }}
     <span *ngIf="data.comment" class="row__status_comment">{{
       data.comment
     }}</span>
   </div>
 
-  <div class="row__item row__date">
+  <div class="row__item row__date flex">
     {{ data.refresh }}
   </div>
 </div>

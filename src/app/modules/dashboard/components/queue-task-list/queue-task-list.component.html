@@ -1,4 +1,7 @@
-<div class="queues-list" *ngIf="queue$ | async as queue">
+<div
+  class="queues-list full-size flex flex-column"
+  *ngIf="queue$ | async as queue"
+>
   <div class="back-to-queues">
     <a [routerLink]="back2Queues" class="back-to-queues_link">
       <i class="fas fa-arrow-left back-to-queues_link_icon"></i>
@@ -6,12 +9,12 @@
     </a>
   </div>
 
-  <div class="queues-list__item queues-list__person">
+  <div class="queues-list__item queues-list__person full-width">
     <i class="fas fa-key queues-list__person_icon"></i>
     {{ queueTitle.toUpperCase() }}
   </div>
 
-  <div class="queues-list__creator queues-list__item">
+  <div class="queues-list__creator queues-list__item full-width">
     Создатель:
     <a class="queues-list__creator_link"> {{ queue.creator.name }}</a>
 
@@ -20,7 +23,7 @@
     </div>
   </div>
 
-  <div class="queues-list__item queues-list__description">
+  <div class="queues-list__item queues-list__description full-width">
     {{ queue.description }}
   </div>
 
@@ -29,7 +32,7 @@
     *ngFor="let item of queue.taskList"
     [data]="item"
   ></app-dashboard-task-list-row>
-  <div class="queues-list__no-tasks" *ngIf="queue.taskList.length === 0">
+  <div class="queues-list__no-tasks flex" *ngIf="queue.taskList.length === 0">
     Задач нет
     <i class="far fa-frown queues-list__no-tasks_icon"></i>
   </div>
