@@ -31,7 +31,12 @@
         <span class="task-page__task-interface__title_task_key">{{
           task.key
         }}</span
-        >: Сделать таблицу
+        >: {{ task.title }}
+        <i
+          *ngIf="hasClipboard"
+          class="fas fa-copy task-page__task-interface__title_task_key_copy hover"
+          (click)="copy(task)"
+        ></i>
       </span>
 
       <div class="task-page__task-interface__title_edit hover hover-underline">
@@ -59,18 +64,7 @@
         </div>
       </div>
       <p class="task-page__task-interface__description_text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid
-        distinctio, fugiat hic id ipsa, ipsum iste iure minima modi possimus
-        quam reiciendis saepe ullam ut vel voluptas. Blanditiis consequuntur
-        deleniti deserunt ducimus ea explicabo facere fugiat illo inventore,
-        itaque, molestias mollitia neque non officia perspiciatis possimus qui
-        quidem quos rem repellat reprehenderit sequi sit suscipit vitae
-        voluptatibus? Alias, amet consectetur debitis dicta doloribus maiores
-        molestias nobis officia perferendis porro, possimus provident qui quis
-        quisquam, repellendus sapiente temporibus ullam voluptatum. Dolore,
-        dolorum eveniet ex facere iure nihil nobis nostrum rem tenetur
-        voluptate. Deleniti doloribus, eius hic odit officiis reprehenderit
-        tenetur.
+        {{ task.description }}
       </p>
 
       <div
