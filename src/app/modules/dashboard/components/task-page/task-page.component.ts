@@ -13,6 +13,7 @@ export class TaskPageComponent implements OnInit {
   public showTask = true;
   public task$: Observable<ITaskPage>;
   public showAttachments = false;
+  public hasClipboard = !!navigator.clipboard;
 
   constructor(
     private taskPageService: TaskPageService,
@@ -40,5 +41,11 @@ export class TaskPageComponent implements OnInit {
       0,
       key.indexOf('-')
     )}`;
+  }
+
+  public copy(task: ITaskPage) {
+    navigator.clipboard.writeText(`${task.key}: ${task.title}`).catch((err) => {
+      console.log('Something went wrong', err);
+    });
   }
 }
