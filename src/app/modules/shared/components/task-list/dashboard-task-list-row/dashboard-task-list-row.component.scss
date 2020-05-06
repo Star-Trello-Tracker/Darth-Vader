@@ -3,11 +3,7 @@
 }
 
 .row {
-  width: 100%;
   height: auto;
-
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
 
   padding: 10px 20px;
@@ -17,7 +13,6 @@
   font-size: 14px;
 
   &__item {
-    display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
@@ -26,7 +21,6 @@
     position: relative;
 
     text-align: center;
-    color: #293241;
 
     padding: 10px;
 
@@ -69,8 +63,6 @@
   }
 
   &__status {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-content: center;
 

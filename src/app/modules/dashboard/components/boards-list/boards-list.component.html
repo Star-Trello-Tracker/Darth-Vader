@@ -1,11 +1,14 @@
-<div class="item boards" *ngIf="boards$ | async as boards">
+<div
+  class="item boards full-width flex flex-column"
+  *ngIf="boards$ | async as boards"
+>
   <div class="item__title boards__title">
     Ваши доски
     <i class="fas fa-thumbtack"></i>
   </div>
 
-  <div class="item__list boards__list">
-    <div class="item__list__create boards__list__create">
+  <div class="item__list boards__list full-width flex">
+    <div class="item__list__create boards__list__create flex hover">
       <i
         class="fas fa-plus item__list__create_icon boards__list__create_icon"
       ></i>
@@ -18,7 +21,7 @@
     ></app-dashboard-board>
   </div>
 
-  <div class="item__search boards__search">
+  <div class="item__search boards__search full-width flex flex-column">
     <div class="item__title boards__title">
       Быстрый поиск по названию
       <i class="fas fa-search"></i>
@@ -34,7 +37,7 @@
       />
     </label>
 
-    <div class="item__list boards__list">
+    <div class="item__list boards__list full-width flex">
       <app-dashboard-board
         *ngFor="let board of filterBoards"
         [board]="board"

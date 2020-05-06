@@ -18,7 +18,7 @@ export class DashboardTaskListRowComponent implements OnInit {
   }
 
   public get taskUrl() {
-    return `./task/${this.data.key}`;
+    return `/${this.authService.getId()}/dashboard/task/${this.data.key}`;
   }
 
   constructor(private authService: AuthService) {}

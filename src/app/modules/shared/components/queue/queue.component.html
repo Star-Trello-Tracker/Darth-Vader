@@ -1,5 +1,8 @@
-<a class="item queue" [routerLink]="['/', userId, 'dashboard', queue.link]">
-  <div class="item_background queue_background">
+<a
+  class="item queue flex flex-column border hover"
+  [routerLink]="['/', userId, 'dashboard', queue.link]"
+>
+  <div class="item_background queue_background flex flex-column">
     <div class="item__title queue__title">
       {{ queue.title }}
     </div>

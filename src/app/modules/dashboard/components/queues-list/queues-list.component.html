@@ -1,12 +1,15 @@
-<div class="queues item" *ngIf="queues$ | async as queues">
+<div
+  class="queues item full-width flex flex-column"
+  *ngIf="queues$ | async as queues"
+>
   <div class="item__title queues__title">
     Ваши очереди
     <i class="fas fa-key"></i>
   </div>
 
-  <div class="item__list queues__list">
+  <div class="item__list queues__list full-width flex">
     <div
-      class="item__list__create queues__list__create"
+      class="item__list__create queues__list__create flex hover"
       [routerLink]="['/', userId, 'dashboard', 'create-queue']"
     >
       <i
@@ -18,7 +21,7 @@
     <app-queue *ngFor="let queue of queues" [queue]="queue"></app-queue>
   </div>
 
-  <div class="item__search queues__search">
+  <div class="item__search queues__search full-width flex flex-column">
     <div class="item__title queues__title">
       Быстрый поиск по названию
       <i class="fas fa-search"></i>
@@ -34,7 +37,7 @@
       />
     </label>
 
-    <div class="item__list queues__list">
+    <div class="item__list queues__list full-width flex">
       <app-queue *ngFor="let queue of filterQueues" [queue]="queue"></app-queue>
     </div>
   </div>

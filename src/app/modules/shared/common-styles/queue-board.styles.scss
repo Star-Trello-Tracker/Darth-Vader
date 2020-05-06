@@ -4,12 +4,9 @@
 }
 
 .item {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  border: 1px solid #293241;
   border-radius: 10px;
 
   font-size: 24px;
@@ -24,8 +21,6 @@
     width: 250px;
     height: 150px;
 
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -43,8 +38,6 @@
   }
 
   &:hover {
-    cursor: pointer;
-
     transform: scale(1.05);
     transition-property: transform;
     transition-duration: 1s;
@@ -52,8 +45,12 @@
 }
 
 @media screen and (max-device-width: 450px) {
-  .item_background {
-    width: 200px;
-    height: 100px;
+  .item {
+    font-size: 20px;
+
+    &_background {
+      width: 200px;
+      height: 100px;
+    }
   }
 }

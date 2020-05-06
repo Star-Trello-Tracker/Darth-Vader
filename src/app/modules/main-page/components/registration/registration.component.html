@@ -1,13 +1,16 @@
-<div class="registration-page">
+<div class="registration-page full-size flex flex-column">
   <app-header [showMainPageButton]="true"></app-header>
-  <div class="registration-page__content">
-    <div class="registration-page__content__registration">
+
+  <div class="registration-page__content full-size flex flex-column">
+    <div
+      class="registration-page__content__registration full-width flex flex-column"
+    >
       <div class="registration-page__content__registration__text">
         Регистрация в <span class="project-title">Star Trello</span>
       </div>
 
       <div
-        class="registration-page__content__registration__form"
+        class="registration-page__content__registration__form flex flex-column"
         [class.registration-page__content__registration__form_width]="
           deviceWidth === 320
         "
@@ -18,8 +21,8 @@
           ></i>
         </div>
 
-        <div
-          class="registration-page__content__registration__form__input"
+        <label
+          class="registration-page__content__registration__form__input full-width flex flex-column"
           *ngFor="let input of inputs; let i = index"
         >
           <input
@@ -29,7 +32,7 @@
             autocomplete="new-password"
             [(ngModel)]="data[input.ngModel]"
           />
-        </div>
+        </label>
 
         <div
           class="registration-page__content__registration__form__illegal-passwords"
@@ -56,7 +59,7 @@
         ></div>
 
         <div
-          class="registration-page__content__registration__form__other-links"
+          class="registration-page__content__registration__form__other-links full-width flex"
         >
           <a
             routerLink="/login"

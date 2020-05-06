@@ -1,13 +1,14 @@
-<div class="login-page">
+<div class="login-page full-size flex flex-column">
   <app-header [showMainPageButton]="true"></app-header>
-  <div class="login-page__content">
-    <div class="login-page__content__login">
+
+  <div class="login-page__content full-size flex flex-column">
+    <div class="login-page__content__login full-width flex flex-column">
       <div class="login-page__content__login__text">
         Вход в <span class="project-title">Star Trello</span>
       </div>
 
       <div
-        class="login-page__content__login__form"
+        class="login-page__content__login__form flex flex-column"
         [class.login-page__content__login__form_width]="deviceWidth === 320"
       >
         <div class="login-page__content__login__form__logo">
@@ -16,8 +17,8 @@
           ></i>
         </div>
 
-        <div
-          class="login-page__content__login__form__input"
+        <label
+          class="login-page__content__login__form__input full-width flex flex-column"
           *ngFor="let input of inputs; let i = index"
         >
           <input
@@ -27,7 +28,7 @@
             autocomplete="new-password"
             [(ngModel)]="data[input.ngModel]"
           />
-        </div>
+        </label>
 
         <button
           class="login-page__content__login__form__submit"
@@ -42,7 +43,9 @@
 
         <div class="login-page__content__login__form__horizontal"></div>
 
-        <div class="login-page__content__login__form__other-links">
+        <div
+          class="login-page__content__login__form__other-links full-width flex"
+        >
           <a
             routerLink="/registration"
             class="login-page__content__login__form__other-links_link"

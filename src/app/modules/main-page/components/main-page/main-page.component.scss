@@ -1,26 +1,16 @@
 .main-page {
-  height: 100%;
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  align-items: center;
 
   &__content {
     background-color: #e0fbfc;
-    height: 100%;
 
-    display: flex;
     justify-content: center;
+    align-items: center;
 
     padding: 40px;
 
-    color: #293241;
-
     &__text {
       width: 50%;
-      display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       padding: 0 40px;
@@ -43,14 +33,11 @@
       &__registration {
         width: 90%;
         margin-top: 30px;
-        display: flex;
-        justify-content: flex-start;
         align-items: center;
 
         &_input {
           padding: 10px;
           font-size: 24px;
-          color: #293241;
 
           border-radius: 10px;
           margin-right: 20px;
@@ -58,7 +45,6 @@
 
         &_button {
           align-self: stretch;
-          display: flex;
           justify-content: center;
           align-items: center;
 
@@ -93,7 +79,6 @@
 
     &__wow-image {
       width: 50%;
-      display: flex;
       justify-content: center;
       align-items: center;
 
@@ -106,10 +91,9 @@
   &__footer {
     padding: 10px 20px;
 
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 
     &__copyright {
       margin-bottom: 10px;
