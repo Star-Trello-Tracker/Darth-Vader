@@ -30,8 +30,9 @@ export class DashboardTaskListService {
       taskList.filter((el) => {
         return (
           (author && el.creator.name === this.personData) ||
-          (person && el.person.name === this.personData) ||
+          (person && el.person && el.person.name === this.personData) ||
           (observer &&
+            el.observer &&
             el.observer.filter((u: IUser) => u.name === this.personData)
               .length > 0)
         );
