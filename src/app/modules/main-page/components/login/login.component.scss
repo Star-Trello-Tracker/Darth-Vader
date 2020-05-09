@@ -1,6 +1,9 @@
-.login-page {
-  color: #293241;
+:host {
+  height: 100%;
+  width: 100%;
+}
 
+.login-page {
   &__content {
     justify-content: center;
     align-items: center;
