@@ -8,6 +8,23 @@
   border: 1px solid #293241;
   border-radius: 5px;
 
+  &::before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border: 1px solid #293241;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    z-index: 10;
+
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    right: 50%;
+    transform: rotate(45deg);
+  }
+
   &__about {
     justify-content: space-around;
     align-items: center;
