@@ -6,6 +6,7 @@ import { DashboardTaskListRowComponent } from './components/task-list/dashboard-
 import { BoardComponent } from './components/board/board.component';
 import { RouterModule } from '@angular/router';
 import { QueueComponent } from './components/queue/queue.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { QueueComponent } from './components/queue/queue.component';
     DashboardTaskListRowComponent,
     BoardComponent,
     QueueComponent,
+    HeaderComponent,
   ],
   exports: [
     ProfileLayoutComponent,
@@ -21,6 +23,7 @@ import { QueueComponent } from './components/queue/queue.component';
     DashboardTaskListHeaderComponent,
     BoardComponent,
     QueueComponent,
+    HeaderComponent,
   ],
   imports: [CommonModule, RouterModule],
 })

@@ -1,6 +1,9 @@
-.registration-page {
-  color: #293241;
+:host {
+  width: 100%;
+  height: 100%;
+}
 
+.registration-page {
   &__content {
     justify-content: center;
     align-items: center;

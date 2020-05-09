@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { HeaderComponent } from './components/header/header.component';
 import { DashboardTasksListComponent } from './components/dashboard-tasks-list/dashboard-tasks-list.component';
 import { DashboardTaskListService } from './services/task-list/dashboard-task-list.service';
 import { MainPageModule } from '../main-page/main-page.module';
@@ -24,7 +23,6 @@ import { TaskPageService } from './services/task-page/task-page.service';
 @NgModule({
   declarations: [
     DashboardComponent,
-    HeaderComponent,
     DashboardTasksListComponent,
     MenuComponent,
     BoardsListComponent,

@@ -1,0 +1,66 @@
+<div class="header full-width flex" *ngIf="!isAuth">
+  <div class="header__logo" routerLink="/">
+    <i class="fas fa-calendar-alt header__logo_icon"></i>
+    <span class="header__logo_title">Star Trello</span>
+  </div>
+
+  <div class="header__auth-buttons">
+    <a routerLink="./login" class="header__auth-buttons_auth">
+      Войти
+    </a>
+    <a
+      routerLink="./registration"
+      class="header__auth-buttons_auth header__auth-buttons_registration"
+    >
+      Регистрация
+    </a>
+  </div>
+</div>
+
+<div class="auth-header full-width flex" *ngIf="isAuth">
+  <div class="auth-header__navigation flex">
+    <a
+      routerLink="."
+      class="auth-header__navigation__link auth-header__navigation__link_margin"
+    >
+      <span class="auth-header__navigation__link_text">На главную</span>
+      <i
+        class="fa fa-home auth-header__navigation__link_icon"
+        aria-hidden="true"
+      ></i>
+    </a>
+
+    <a
+      [routerLink]="['/', id, 'dashboard', 'menu']"
+      class="auth-header__navigation__link"
+    >
+      <span class="auth-header__navigation__link_text">Dashboard</span>
+      <i
+        class="fas fa-calendar-alt auth-header__navigation__link_icon"
+        aria-hidden="true"
+      ></i>
+    </a>
+  </div>
+
+  <div class="auth-header__logo" routerLink=".">
+    <i class="fas fa-calendar-alt auth-header__logo_icon"></i>
+    <span class="auth-header__logo_title">Star Trello</span>
+  </div>
+
+  <div class="auth-header__navigation flex">
+    <a
+      routerLink="."
+      class="auth-header__navigation__link auth-header__navigation__link_margin"
+    >
+      <span class="auth-header__navigation__link_text">Профиль</span>
+      <i
+        class="fa fa-user auth-header__navigation__link_icon"
+        aria-hidden="true"
+      ></i>
+    </a>
+    <a tabindex="0" (click)="logout()" class="auth-header__navigation__link">
+      <span class="auth-header__navigation__link_text">Выйти</span>
+      <i class="fas fa-sign-out-alt auth-header__navigation__link_icon"></i>
+    </a>
+  </div>
+</div>
