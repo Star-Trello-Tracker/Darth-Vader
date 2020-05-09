@@ -128,17 +128,23 @@
       box-sizing: border-box;
       position: relative;
 
-      &__profile-layout {
-        display: none;
-        background-color: white;
+      &_link {
+        display: inline-block;
+        position: relative;
+        padding: 5px;
 
-        position: absolute;
-        left: 0;
-        bottom: 100%;
-      }
+        &__profile-layout {
+          display: none;
+          background-color: white;
 
-      &:hover &__profile-layout {
-        display: flex;
+          position: absolute;
+          left: -140px;
+          bottom: 210%;
+        }
+
+        &:hover &__profile-layout {
+          display: flex;
+        }
       }
     }
   }
@@ -251,12 +257,14 @@
       font-size: 16px;
 
       &_item {
-        &__profile-layout {
-          display: none;
-        }
+        &_link {
+          &__profile-layout {
+            display: none;
+          }
 
-        &:hover &__profile-layout {
-          display: none;
+          &:hover &__profile-layout {
+            display: none;
+          }
         }
       }
 

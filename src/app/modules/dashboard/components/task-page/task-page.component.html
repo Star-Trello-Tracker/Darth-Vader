@@ -125,31 +125,52 @@
     </div>
 
     <div class="task-page__info_item full-width">
-      Создатель: <a>Авдеев Иван</a>
-      <div class="task-page__info_item__profile-layout">
-        <app-profile-layout [user]="task.creator"></app-profile-layout>
-      </div>
+      Создатель:
+      <a routerLink="." class="task-page__info_item_link profile-link">
+        {{ task.creator.name }}
+        <div class="task-page__info_item_link__profile-layout profile-layout">
+          <app-profile-layout [user]="task.creator"></app-profile-layout>
+        </div>
+      </a>
     </div>
 
     <div class="task-page__info_item full-width">
-      Исполнитель: <a>Авдеев Иван</a>
-      <div *ngIf="task.person" class="task-page__info_item__profile-layout">
-        <app-profile-layout [user]="task.person"></app-profile-layout>
-      </div>
+      Исполнитель:
+      <a routerLink="." class="task-page__info_item_link profile-link">
+        {{ task.person.name }}
+        <div
+          *ngIf="task.person"
+          class="task-page__info_item_link__profile-layout profile-layout"
+        >
+          <app-profile-layout [user]="task.person"></app-profile-layout>
+        </div>
+      </a>
     </div>
 
     <div class="task-page__info_item full-width">
-      Наблюдатели: <a>Авдеев Иван</a>
-      <div *ngIf="task.observers" class="task-page__info_item__profile-layout">
-        <app-profile-layout [user]="task.observers[0]"></app-profile-layout>
-      </div>
+      Наблюдатели:
+      <a routerLink="." class="task-page__info_item_link profile-link">
+        {{ task.observers[0].name }}
+        <div
+          *ngIf="task.observers"
+          class="task-page__info_item_link__profile-layout profile-layout"
+        >
+          <app-profile-layout [user]="task.observers[0]"></app-profile-layout>
+        </div>
+      </a>
     </div>
 
     <div class="task-page__info_item full-width">
-      Нужен ответ пользователей: <a>Авдеев Иван</a>
-      <div *ngIf="task.needAnswer" class="task-page__info_item__profile-layout">
-        <app-profile-layout [user]="task.needAnswer[0]"></app-profile-layout>
-      </div>
+      Нужен ответ пользователей:
+      <a routerLink="." class="task-page__info_item_link profile-link">
+        {{ task.observers[0].name }}
+        <div
+          *ngIf="task.needAnswer"
+          class="task-page__info_item_link__profile-layout profile-layout"
+        >
+          <app-profile-layout [user]="task.needAnswer[0]"></app-profile-layout>
+        </div>
+      </a>
     </div>
 
     <div class="task-page__info_item full-width">
