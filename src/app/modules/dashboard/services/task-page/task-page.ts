@@ -5,6 +5,7 @@ export const task: ITaskPage = {
   id: 1,
   key: 'TASK-1',
   title: 'Сделать таблицу',
+  status: 2,
   description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid
         distinctio, fugiat hic id ipsa, ipsum iste iure minima modi possimus
         quam reiciendis saepe ullam ut vel voluptas. Blanditiis consequuntur

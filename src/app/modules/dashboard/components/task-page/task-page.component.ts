@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ITaskPage } from '../../../../typings';
+import { ITaskPage, TaskStatus } from '../../../../typings';
 import { TaskPageService } from '../../services/task-page/task-page.service';
 import { AuthService } from '../../../../auth-services/auth.service';
 
@@ -15,6 +15,10 @@ export class TaskPageComponent implements OnInit {
   public showAttachments = false;
   public hasClipboard = !!navigator.clipboard;
 
+  public get statusList(): string[] {
+    return this.taskPageService.getTaskStatusList();
+  }
+
   constructor(
     private taskPageService: TaskPageService,
     private authService: AuthService
@@ -22,6 +26,10 @@ export class TaskPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.task$ = this.taskPageService.getTask();
+  }
+
+  public getTaskStatus(status: TaskStatus): string {
+    return this.taskPageService.getTaskStatus(status);
   }
 
   public toggle(tab: boolean) {
@@ -47,5 +55,18 @@ export class TaskPageComponent implements OnInit {
     navigator.clipboard.writeText(`${task.key}: ${task.title}`).catch((err) => {
       console.log('Something went wrong', err);
     });
+  }
+
+  public changeStatus(event: Event) {
+    this.taskPageService.changeTaskStatus(
+      // @ts-ignore
+      (event.target.options.selectedIndex + 1) as TaskStatus
+    );
+    this.task$ = this.taskPageService.getTask();
+  }
+
+  public closeTask() {
+    this.taskPageService.changeTaskStatus(7);
+    this.task$ = this.taskPageService.getTask();
   }
 }
