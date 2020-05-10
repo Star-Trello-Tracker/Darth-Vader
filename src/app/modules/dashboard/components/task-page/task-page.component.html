@@ -45,6 +45,40 @@
       </div>
     </div>
 
+    <div class="task-page__task-interface__status full-width flex">
+      <div class="task-page__task-interface__status_status">
+        <span class="task-page__task-interface__status_status_title"
+          >Статус:
+        </span>
+        <span class="task-page__task-interface__status_status_name">{{
+          getTaskStatus(task.status)
+        }}</span>
+      </div>
+
+      <label class="task-page__task-interface__status_change">
+        Изменить:
+        <select
+          class="task-page__task-interface__status_change_select"
+          (change)="changeStatus($event)"
+        >
+          <option
+            *ngFor="let status of statusList; let index = index"
+            [selected]="index + 1 === task.status"
+            value="index + 1"
+          >
+            {{ status }}
+          </option>
+        </select>
+      </label>
+
+      <div
+        class="task-page__task-interface__status_close border hover hover-underline"
+        (click)="closeTask()"
+      >
+        Закрыть задачу
+      </div>
+    </div>
+
     <div class="task-page__task-interface__description flex flex-column">
       <div
         class="task-page__task-interface__description_title-container full-width flex"
