@@ -358,6 +358,10 @@
         &_queue {
           font-size: 14px;
         }
+
+        &_edit {
+          margin-bottom: 10px;
+        }
       }
 
       &__task-status {
@@ -373,7 +377,7 @@
 
         &_close {
           margin-top: 5px;
-          margin-bottom: 0;
+          margin-bottom: 10px;
           margin-right: auto;
         }
       }
@@ -385,12 +389,15 @@
 
         &__attachments {
           &_show {
+            margin-top: 10px;
             font-size: 14px;
           }
         }
       }
 
       &__comments {
+        margin-top: 10px;
+
         &__list {
           font-size: 14px;
         }
