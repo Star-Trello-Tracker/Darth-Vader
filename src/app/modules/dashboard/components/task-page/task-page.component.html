@@ -45,20 +45,20 @@
       </div>
     </div>
 
-    <div class="task-page__task-interface__status full-width flex">
-      <div class="task-page__task-interface__status_status">
-        <span class="task-page__task-interface__status_status_title"
+    <div class="task-page__task-interface__task-status full-width flex">
+      <div class="task-page__task-interface__task-status_status">
+        <span class="task-page__task-interface__task-status_status_title"
           >Статус:
         </span>
-        <span class="task-page__task-interface__status_status_name">{{
+        <span class="task-page__task-interface__task-status_status_name">{{
           getTaskStatus(task.status)
         }}</span>
       </div>
 
-      <label class="task-page__task-interface__status_change">
+      <label class="task-page__task-interface__task-status_change">
         Изменить:
         <select
-          class="task-page__task-interface__status_change_select"
+          class="task-page__task-interface__task-status_change_select"
           (change)="changeStatus($event)"
         >
           <option
@@ -72,7 +72,7 @@
       </label>
 
       <div
-        class="task-page__task-interface__status_close border hover hover-underline"
+        class="task-page__task-interface__task-status_close border hover hover-underline"
         (click)="closeTask()"
       >
         Закрыть задачу
@@ -127,7 +127,7 @@
         </div>
 
         <div
-          class="task-page__task-interface__description__attachments_show"
+          class="task-page__task-interface__description__attachments_show hover-underline"
           *ngIf="showAttachments"
         >
           Вложений нет

@@ -58,8 +58,8 @@ export class TaskPageComponent implements OnInit {
   }
 
   public changeStatus(event: Event) {
-    // @ts-ignore
     this.taskPageService.changeTaskStatus(
+      // @ts-ignore
       (event.target.options.selectedIndex + 1) as TaskStatus
     );
     this.task$ = this.taskPageService.getTask();

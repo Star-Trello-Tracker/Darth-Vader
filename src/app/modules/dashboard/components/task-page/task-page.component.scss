@@ -54,7 +54,7 @@
       }
     }
 
-    &__status {
+    &__task-status {
       align-items: baseline;
       box-sizing: border-box;
 
@@ -261,7 +261,7 @@
         }
       }
 
-      &__status {
+      &__task-status {
         &_change {
           &_select {
             border: 2px solid #ee6c4d;
@@ -348,7 +348,7 @@
         }
       }
 
-      &__status {
+      &__task-status {
         flex-wrap: wrap;
 
         &_status {
@@ -392,7 +392,7 @@
 @media screen and (max-device-width: 350px) {
   .task-page {
     &__task-interface {
-      &__status {
+      &__task-status {
         &_status {
           font-size: 16px;
           min-width: auto;
