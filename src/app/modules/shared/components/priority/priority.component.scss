@@ -1,0 +1,37 @@
+i {
+  margin: 5px 0 0 5px;
+}
+
+.icon {
+  width: auto;
+  height: auto;
+  position: relative;
+
+  &__placeholder {
+    display: none;
+    width: auto;
+    height: auto;
+    background-color: white;
+    padding: 5px;
+
+    white-space: nowrap;
+    overflow-x: visible;
+
+    position: absolute;
+    z-index: 10;
+    bottom: 100%;
+    left: 0;
+  }
+
+  &:hover &__placeholder {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-device-width: 450px) {
+  .icon {
+    &:hover &__placeholder {
+      display: none;
+    }
+  }
+}

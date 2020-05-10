@@ -5,6 +5,7 @@ export const taskList: ITask[] = [
   {
     key: 'TASK-1',
     title: 'Сделать таблицу',
+    priority: 1,
     creator: user,
     person: user,
     status: 'Решён',
@@ -15,6 +16,7 @@ export const taskList: ITask[] = [
   {
     key: 'TASK-2',
     title: 'Сделать фильтр для таблицы',
+    priority: 2,
     creator: user,
     person: user,
     status: 'Решён',
@@ -25,6 +27,7 @@ export const taskList: ITask[] = [
   {
     key: 'TASK-3',
     title: 'Сделать сортировки по столбцам',
+    priority: 3,
     creator: user,
     person: user,
     status: 'В работе',
@@ -34,6 +37,25 @@ export const taskList: ITask[] = [
   {
     key: 'TASK-4',
     title: 'Добавить иконки статуса для задач',
+    priority: 4,
+    creator: user,
+    status: 'Открыта',
+    refresh: '12 апр',
+    observer: [],
+  },
+  {
+    key: 'BUG-1',
+    title: 'Фильтр задач не работает',
+    priority: 5,
+    creator: user,
+    status: 'Открыта',
+    refresh: '12 апр',
+    observer: [],
+  },
+  {
+    key: 'BUG-2',
+    title: 'Едет верстка на страничке с задачей на тачах',
+    priority: 6,
     creator: user,
     status: 'Открыта',
     refresh: '12 апр',

@@ -18,7 +18,14 @@ export class TaskPageService {
     'Закрыта',
   ];
 
-  private taskPriority: string[] = ['Минор', 'Средний', 'Высокий', 'Блокер'];
+  private taskPriority: string[] = [
+    'Минор',
+    'Средний',
+    'Высокий',
+    'Блокер',
+    'Баг',
+    'Критичный баг',
+  ];
 
   constructor() {}
 

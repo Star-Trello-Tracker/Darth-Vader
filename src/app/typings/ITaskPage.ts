@@ -1,7 +1,7 @@
 import { IUser } from './IUser';
 
 export type TaskStatus = 1 | 2 | 3 | 4 | 5 | 6 | 7;
-export type TaskPriority = 1 | 2 | 3 | 4;
+export type TaskPriority = 1 | 2 | 3 | 4 | 5 | 6;
 
 export interface ITaskPage {
   /**
@@ -37,6 +37,8 @@ export interface ITaskPage {
    * 2 - normal
    * 3 - high
    * 4 - blocker
+   * 5 - bug
+   * 6 - critical bug
    */
   priority: TaskPriority;
 

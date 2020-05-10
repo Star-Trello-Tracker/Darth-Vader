@@ -1,0 +1,15 @@
+<div class="icon">
+  <i *ngIf="priority === 1" class="fas fa-chevron-down hover"></i>
+  <i *ngIf="priority === 2" class="fas fa-chevron-up hover"></i>
+  <i *ngIf="priority === 3" class="fas fa-arrow-up color-red hover"></i>
+  <i *ngIf="priority === 4" class="fas fa-lock color-red hover"></i>
+  <i *ngIf="priority === 5" class="fas fa-bug hover"></i>
+  <i *ngIf="priority === 6" class="fas fa-bug color-red hover"></i>
+
+  <div class="icon__placeholder">
+    Приоритет:
+    <span [class.color-red]="priority === 3 || priority === 4 || priority == 6">
+      {{ placeholder }}
+    </span>
+  </div>
+</div>
