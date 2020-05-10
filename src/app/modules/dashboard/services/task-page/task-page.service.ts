@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ITaskPage, TaskStatus } from '../../../../typings';
+import { ITaskPage, TaskPriority, TaskStatus } from '../../../../typings';
 import { task } from './task-page';
 import { of } from 'rxjs/internal/observable/of';
 
@@ -18,6 +18,8 @@ export class TaskPageService {
     'Закрыта',
   ];
 
+  private taskPriority: string[] = ['Минор', 'Средний', 'Высокий', 'Блокер'];
+
   constructor() {}
 
   public getTask(): Observable<ITaskPage> {
@@ -34,5 +36,17 @@ export class TaskPageService {
 
   public changeTaskStatus(status: TaskStatus) {
     task.status = status;
+  }
+
+  public getTaskPriority(priority: TaskPriority): string {
+    return this.taskPriority[priority - 1];
+  }
+
+  public getTaskPriorityList(): string[] {
+    return this.taskPriority;
+  }
+
+  public changeTaskPriority(priority: TaskPriority) {
+    task.priority = priority;
   }
 }

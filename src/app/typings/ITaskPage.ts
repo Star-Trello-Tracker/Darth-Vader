@@ -1,6 +1,7 @@
 import { IUser } from './IUser';
 
 export type TaskStatus = 1 | 2 | 3 | 4 | 5 | 6 | 7;
+export type TaskPriority = 1 | 2 | 3 | 4;
 
 export interface ITaskPage {
   /**
@@ -29,6 +30,15 @@ export interface ITaskPage {
    * 7 - closed
    */
   status: TaskStatus;
+
+  /**
+   * Приоритет задачи
+   * 1 - minor
+   * 2 - normal
+   * 3 - high
+   * 4 - blocker
+   */
+  priority: TaskPriority;
 
   /**
    * Описание задачи

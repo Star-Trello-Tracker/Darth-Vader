@@ -46,30 +46,63 @@
     </div>
 
     <div class="task-page__task-interface__task-status full-width flex">
-      <div class="task-page__task-interface__task-status_status">
-        <span class="task-page__task-interface__task-status_status_title"
-          >Статус:
+      <div
+        class="task-page__task-interface__task-status__item task-page__task-interface__task-status__priority"
+      >
+        <span
+          class="task-page__task-interface__task-status__item_title task-page__task-interface__task-status__priority_title"
+        >
+          Приоритет:
         </span>
-        <span class="task-page__task-interface__task-status_status_name">{{
-          getTaskStatus(task.status)
-        }}</span>
+
+        <label
+          class="task-page__task-interface__task-status__item_name task-page__task-interface__task-status__priority_name"
+        >
+          {{ getTaskPriority(task.priority) }}
+
+          <select
+            class="task-page__task-interface__task-status__item_name_select task-page__task-interface__task-status__priority_select hover"
+            (change)="changePriority($event)"
+          >
+            <option
+              *ngFor="let status of priorityList; let index = index"
+              [selected]="index + 1 === task.priority"
+              value="index + 1"
+            >
+              {{ status }}
+            </option>
+          </select>
+        </label>
       </div>
 
-      <label class="task-page__task-interface__task-status_change">
-        Изменить:
-        <select
-          class="task-page__task-interface__task-status_change_select"
-          (change)="changeStatus($event)"
+      <div
+        class="task-page__task-interface__task-status__item task-page__task-interface__task-status_status"
+      >
+        <span
+          class="task-page__task-interface__task-status__item_title task-page__task-interface__task-status_status_title"
         >
-          <option
-            *ngFor="let status of statusList; let index = index"
-            [selected]="index + 1 === task.status"
-            value="index + 1"
+          Статус:
+        </span>
+
+        <label
+          class="task-page__task-interface__task-status__item_name task-page__task-interface__task-status_status_name hover hover-underline"
+        >
+          {{ getTaskStatus(task.status) }}
+
+          <select
+            class="task-page__task-interface__task-status__item_name_select task-page__task-interface__task-status_name_select hover"
+            (change)="changeStatus($event)"
           >
-            {{ status }}
-          </option>
-        </select>
-      </label>
+            <option
+              *ngFor="let status of statusList; let index = index"
+              [selected]="index + 1 === task.status"
+              value="index + 1"
+            >
+              {{ status }}
+            </option>
+          </select>
+        </label>
+      </div>
 
       <div
         class="task-page__task-interface__task-status_close border hover hover-underline"

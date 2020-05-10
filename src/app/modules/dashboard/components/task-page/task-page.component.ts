@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ITaskPage, TaskStatus } from '../../../../typings';
+import { ITaskPage, TaskPriority, TaskStatus } from '../../../../typings';
 import { TaskPageService } from '../../services/task-page/task-page.service';
 import { AuthService } from '../../../../auth-services/auth.service';
 
@@ -19,6 +19,10 @@ export class TaskPageComponent implements OnInit {
     return this.taskPageService.getTaskStatusList();
   }
 
+  public get priorityList(): string[] {
+    return this.taskPageService.getTaskPriorityList();
+  }
+
   constructor(
     private taskPageService: TaskPageService,
     private authService: AuthService
@@ -26,6 +30,10 @@ export class TaskPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.task$ = this.taskPageService.getTask();
+  }
+
+  public getTaskPriority(priority: TaskPriority): string {
+    return this.taskPageService.getTaskPriority(priority);
   }
 
   public getTaskStatus(status: TaskStatus): string {
@@ -67,6 +75,14 @@ export class TaskPageComponent implements OnInit {
 
   public closeTask() {
     this.taskPageService.changeTaskStatus(7);
+    this.task$ = this.taskPageService.getTask();
+  }
+
+  changePriority(event: Event) {
+    this.taskPageService.changeTaskPriority(
+      // @ts-ignore
+      (event.target.options.selectedIndex + 1) as TaskPriority
+    );
     this.task$ = this.taskPageService.getTask();
   }
 }
