@@ -1,6 +1,8 @@
 <div class="row full-width flex">
   <div class="row__item row__priority">
-    <i class="fas fa-sort-up row__item_icon"></i>
+    <div class="row__priority_icon">
+      <app-priority [priority]="data.priority"></app-priority>
+    </div>
   </div>
 
   <a [routerLink]="queueUrl" class="row__item row__key flex">

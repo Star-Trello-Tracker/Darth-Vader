@@ -7,6 +7,7 @@ import { BoardComponent } from './components/board/board.component';
 import { RouterModule } from '@angular/router';
 import { QueueComponent } from './components/queue/queue.component';
 import { HeaderComponent } from './components/header/header.component';
+import { PriorityComponent } from './components/priority/priority.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { HeaderComponent } from './components/header/header.component';
     BoardComponent,
     QueueComponent,
     HeaderComponent,
+    PriorityComponent,
   ],
   exports: [
     ProfileLayoutComponent,
