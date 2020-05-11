@@ -1,35 +1,50 @@
 <div class="header full-width flex">
-  <div class="header__item header__priority">
-    <i class="fas fa-sort-up header__item_icon"></i>
+  <div class="header__item header__priority hover" (click)="selectColumn(1)">
+    <span class="header__item_text hover hover-underline">
+      Приоритет
+      <i
+        *ngIf="selected === 1"
+        [class.rotate]="increase"
+        class="fas fa-sort-up header__item_icon"
+      ></i>
+    </span>
   </div>
 
-  <div class="header__item header__key flex hover">
-    Ключ
-    <i class="fas fa-sort-up header__item_icon"></i>
+  <div class="header__item header__key flex" (click)="selectColumn(2)">
+    <span class="header__item_text hover hover-underline">
+      Ключ
+      <i
+        *ngIf="selected === 2"
+        [class.rotate]="increase"
+        class="fas fa-sort-up header__item_icon"
+      ></i>
+    </span>
   </div>
 
-  <div class="header__item header__title flex hover">
-    Задача
-    <i class="fas fa-sort-up header__item_icon"></i>
+  <div class="header__item header__title flex">
+    <span class="hover hover-underline">Задача</span>
   </div>
 
-  <div class="header__item header__person flex hover">
-    Создатель
-    <i class="fas fa-sort-up header__item_icon"></i>
+  <div class="header__item header__person flex">
+    <span class="hover hover-underline">Создатель</span>
   </div>
 
-  <div class="header__item header__person flex hover">
-    Исполнитель
-    <i class="fas fa-sort-up header__item_icon"></i>
+  <div class="header__item header__person flex">
+    <span class="hover hover-underline">Исполнитель</span>
   </div>
 
-  <div class="header__item header__status flex hover">
-    Статус
-    <i class="fas fa-sort-up header__item_icon"></i>
+  <div class="header__item header__status flex">
+    <span class="hover hover-underline">Статус</span>
   </div>
 
-  <div class="header__item header__date flex hover">
-    Обновлено
-    <i class="fas fa-sort-up header__item_icon"></i>
+  <div class="header__item header__date flex" (click)="selectColumn(7)">
+    <span class="header__item_text hover hover-underline">
+      Обновлено
+      <i
+        *ngIf="selected === 7"
+        class="fas fa-sort-up header__item_icon"
+        [class.rotate]="increase"
+      ></i>
+    </span>
   </div>
 </div>

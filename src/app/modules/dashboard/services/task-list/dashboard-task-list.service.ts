@@ -9,6 +9,11 @@ import { ITask, IUser } from '../../../../typings';
 })
 export class DashboardTaskListService {
   private personData = 'Авдеев Иван';
+  private taskMap = {
+    1: 'priority',
+    2: 'key',
+    3: 'refresh',
+  };
 
   constructor() {}
 
@@ -36,6 +41,37 @@ export class DashboardTaskListService {
             el.observer.filter((u: IUser) => u.name === this.personData)
               .length > 0)
         );
+      })
+    );
+  }
+
+  public sortBySelectedColumn(
+    column: number,
+    order: boolean
+  ): Observable<ITask[]> {
+    const selected = this.taskMap[column];
+
+    if (column !== 2) {
+      return of(
+        taskList.sort((a: ITask, b: ITask) => {
+          return order ? a[selected] - b[selected] : b[selected] - a[selected];
+        })
+      );
+    }
+
+    return of(
+      taskList.sort((a: ITask, b: ITask) => {
+        if (a[selected] === b[selected]) {
+          return 0;
+        }
+
+        if (a[selected] > b[selected]) {
+          return (-1) ** (+order + 1);
+        }
+
+        if (a[selected] < b[selected]) {
+          return (-1) ** (+order + 2);
+        }
       })
     );
   }

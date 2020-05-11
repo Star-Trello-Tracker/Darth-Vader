@@ -35,7 +35,6 @@
   }
 
   &__priority {
-    width: 30px;
     overflow-x: visible;
   }
 
@@ -86,6 +85,14 @@
       &:hover &__profile-layout {
         display: none;
       }
+    }
+  }
+}
+
+@media screen and (max-device-width: 750px) {
+  .row {
+    &__priority {
+      width: 30px;
     }
   }
 }
