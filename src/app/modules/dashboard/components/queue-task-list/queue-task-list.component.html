@@ -27,7 +27,9 @@
     {{ queue.description }}
   </div>
 
-  <app-dashboard-task-list-header></app-dashboard-task-list-header>
+  <app-dashboard-task-list-header
+    (selectedColumn)="sortByColumn($event)"
+  ></app-dashboard-task-list-header>
   <app-dashboard-task-list-row
     *ngFor="let item of queue.taskList"
     [data]="item"
