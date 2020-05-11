@@ -3,6 +3,7 @@ import { user } from '../user';
 
 export const taskList: ITask[] = [
   {
+    id: 1,
     key: 'TASK-1',
     title: 'Сделать таблицу',
     priority: 1,
@@ -14,6 +15,7 @@ export const taskList: ITask[] = [
     observer: [],
   },
   {
+    id: 2,
     key: 'TASK-2',
     title: 'Сделать фильтр для таблицы',
     priority: 2,
@@ -25,6 +27,7 @@ export const taskList: ITask[] = [
     observer: [],
   },
   {
+    id: 3,
     key: 'TASK-3',
     title: 'Сделать сортировки по столбцам',
     priority: 3,
@@ -35,6 +38,7 @@ export const taskList: ITask[] = [
     observer: [],
   },
   {
+    id: 4,
     key: 'TASK-4',
     title: 'Добавить иконки статуса для задач',
     priority: 4,
@@ -44,6 +48,7 @@ export const taskList: ITask[] = [
     observer: [],
   },
   {
+    id: 5,
     key: 'BUG-1',
     title: 'Фильтр задач не работает',
     priority: 5,
@@ -53,6 +58,7 @@ export const taskList: ITask[] = [
     observer: [],
   },
   {
+    id: 6,
     key: 'BUG-2',
     title: 'Едет верстка на страничке с задачей на тачах',
     priority: 6,
