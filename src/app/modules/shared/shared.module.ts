@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { QueueComponent } from './components/queue/queue.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PriorityComponent } from './components/priority/priority.component';
+import { CommonService } from './services/common.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { PriorityComponent } from './components/priority/priority.component';
     QueueComponent,
     HeaderComponent,
   ],
+  providers: [CommonService],
   imports: [CommonModule, RouterModule],
 })
 export class SharedModule {}
