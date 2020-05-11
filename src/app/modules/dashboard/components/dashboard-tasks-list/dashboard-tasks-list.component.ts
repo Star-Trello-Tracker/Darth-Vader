@@ -17,6 +17,7 @@ export class DashboardTasksListComponent implements OnInit {
   public author = false;
   public person = false;
   public observer = false;
+  public closed = false;
 
   constructor(private dashboardService: DashboardTaskListService) {}
 
@@ -31,8 +32,13 @@ export class DashboardTasksListComponent implements OnInit {
       this.author = false;
       this.person = false;
       this.observer = false;
+      this.closed = false;
     }
     this[item] = !this[item];
+
+    if (!this.author && !this.person && !this.observer && !this.closed) {
+      this.all = true;
+    }
     this.getData();
   }
 
@@ -41,7 +47,8 @@ export class DashboardTasksListComponent implements OnInit {
       this.all,
       this.author,
       this.person,
-      this.observer
+      this.observer,
+      this.closed
     );
   }
 

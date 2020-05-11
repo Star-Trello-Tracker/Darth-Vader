@@ -8,7 +8,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class DashboardTaskListHeaderComponent implements OnInit {
   @Output() selectedColumn = new EventEmitter();
   public increase = true;
-  public selected = 7;
+  public selected = 4;
 
   constructor() {}
 
