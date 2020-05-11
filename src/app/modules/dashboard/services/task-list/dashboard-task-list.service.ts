@@ -12,7 +12,8 @@ export class DashboardTaskListService {
   private taskMap = {
     1: 'priority',
     2: 'key',
-    3: 'refresh',
+    3: 'status',
+    4: 'refresh',
   };
 
   constructor() {}
@@ -25,10 +26,19 @@ export class DashboardTaskListService {
     all: boolean,
     author: boolean,
     person: boolean,
-    observer: boolean
+    observer: boolean,
+    closed: boolean
   ): Observable<ITask[]> {
     if (all) {
       return this.getDefaultTaskList();
+    }
+
+    if (closed) {
+      return of(
+        taskList.filter((el: ITask) => {
+          return el.status === 6 || el.status === 7;
+        })
+      );
     }
 
     return of(

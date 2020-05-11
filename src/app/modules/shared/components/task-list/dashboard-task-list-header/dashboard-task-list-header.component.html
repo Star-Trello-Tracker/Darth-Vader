@@ -33,15 +33,22 @@
     <span class="hover hover-underline">Исполнитель</span>
   </div>
 
-  <div class="header__item header__status flex">
-    <span class="hover hover-underline">Статус</span>
+  <div class="header__item header__status flex" (click)="selectColumn(3)">
+    <span class="header__item_text hover hover-underline">
+      Статус
+      <i
+        *ngIf="selected === 3"
+        class="fas fa-sort-up header__item_icon"
+        [class.rotate]="increase"
+      ></i>
+    </span>
   </div>
 
-  <div class="header__item header__date flex" (click)="selectColumn(7)">
+  <div class="header__item header__date flex" (click)="selectColumn(4)">
     <span class="header__item_text hover hover-underline">
       Обновлено
       <i
-        *ngIf="selected === 7"
+        *ngIf="selected === 4"
         class="fas fa-sort-up header__item_icon"
         [class.rotate]="increase"
       ></i>

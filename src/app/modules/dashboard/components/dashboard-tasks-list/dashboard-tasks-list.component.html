@@ -45,6 +45,14 @@
     >
       Я наблюдатель
     </div>
+
+    <div
+      class="dashboard-task-list__filters_item hover border"
+      [class.dashboard-task-list__filters_item_active]="closed"
+      (click)="toggle('closed')"
+    >
+      Закрытые
+    </div>
   </div>
   <app-dashboard-task-list-header
     (selectedColumn)="sortByColumn($event)"

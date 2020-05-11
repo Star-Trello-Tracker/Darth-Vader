@@ -1,5 +1,5 @@
 import { IUser } from './IUser';
-import { TaskPriority } from './ITaskPage';
+import { TaskPriority, TaskStatus } from './ITaskPage';
 
 export interface ITask {
   id: number;
@@ -8,7 +8,7 @@ export interface ITask {
   priority: TaskPriority;
   creator: IUser;
   person?: IUser;
-  status: string;
+  status: TaskStatus;
   comment?: string;
   refresh: string;
   observer?: IUser[];

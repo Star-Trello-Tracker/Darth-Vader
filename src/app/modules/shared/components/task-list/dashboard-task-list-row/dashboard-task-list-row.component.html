@@ -28,7 +28,7 @@
   </a>
 
   <div class="row__item row__status flex flex-column">
-    {{ data.status }}
+    {{ getTaskStatus(data.status) }}
     <span *ngIf="data.comment" class="row__status_comment">{{
       data.comment
     }}</span>
