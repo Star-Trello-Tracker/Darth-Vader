@@ -67,7 +67,7 @@
             <option
               *ngFor="let status of priorityList; let index = index"
               [selected]="index + 1 === task.priority"
-              value="index + 1"
+              [value]="index + 1"
             >
               {{ status }}
             </option>
@@ -96,7 +96,7 @@
             <option
               *ngFor="let status of statusList; let index = index"
               [selected]="index + 1 === task.status"
-              value="index + 1"
+              [value]="index + 1"
             >
               {{ status }}
             </option>

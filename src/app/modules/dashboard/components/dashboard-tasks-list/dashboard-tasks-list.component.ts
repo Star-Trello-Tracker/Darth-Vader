@@ -19,10 +19,18 @@ export class DashboardTasksListComponent implements OnInit {
   public observer = false;
   public closed = false;
 
+  public queuesList: string[];
+  public selectedQueue = 0;
+
+  public get selected() {
+    return this.queuesList[this.selectedQueue];
+  }
+
   constructor(private dashboardService: DashboardTaskListService) {}
 
   ngOnInit(): void {
     this.list$ = this.dashboardService.getDefaultTaskList();
+    this.queuesList = this.dashboardService.getQueues();
   }
 
   public toggle(item: string) {
@@ -56,6 +64,18 @@ export class DashboardTasksListComponent implements OnInit {
     this.list$ = this.dashboardService.sortBySelectedColumn(
       selected.column,
       selected.order
+    );
+  }
+
+  public selectQueue(event: Event) {
+    // @ts-ignore
+    this.selectedQueue = event.target.options.selectedIndex;
+    if (this.selectedQueue === 0) {
+      this.list$ = this.dashboardService.getDefaultTaskList();
+      return;
+    }
+    this.list$ = this.dashboardService.getTasksByQueue(
+      this.queuesList[this.selectedQueue]
     );
   }
 }

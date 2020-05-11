@@ -3,6 +3,7 @@ import { taskList } from './task-list';
 import { of } from 'rxjs/internal/observable/of';
 import { Observable } from 'rxjs';
 import { ITask, IUser } from '../../../../typings';
+import { CommonService } from '../../../shared/services/common.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,30 @@ export class DashboardTaskListService {
     4: 'refresh',
   };
 
-  constructor() {}
+  constructor(private commonService: CommonService) {}
+
+  public getQueues(): string[] {
+    const queuesList = Array.from(
+      new Set(
+        taskList
+          .map((el: ITask) => {
+            return this.commonService.getQueueByTaskKey(el.key);
+          }, [])
+          .sort()
+      )
+    );
+    queuesList.splice(0, 0, 'Все');
+
+    return queuesList;
+  }
+
+  public getTasksByQueue(queue: string): Observable<ITask[]> {
+    return of(
+      taskList.filter((el: ITask) => {
+        return this.commonService.getQueueByTaskKey(el.key) === queue;
+      })
+    );
+  }
 
   public getDefaultTaskList(): Observable<ITask[]> {
     return of(taskList);

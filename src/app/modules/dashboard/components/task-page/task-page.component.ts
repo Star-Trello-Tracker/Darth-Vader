@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { ITaskPage, TaskPriority, TaskStatus } from '../../../../typings';
 import { TaskPageService } from '../../services/task-page/task-page.service';
 import { AuthService } from '../../../../auth-services/auth.service';
+import { CommonService } from '../../../shared/services/common.service';
 
 @Component({
   selector: 'app-task-page',
@@ -25,7 +26,8 @@ export class TaskPageComponent implements OnInit {
 
   constructor(
     private taskPageService: TaskPageService,
-    private authService: AuthService
+    private authService: AuthService,
+    private commonService: CommonService
   ) {}
 
   ngOnInit(): void {
@@ -49,13 +51,12 @@ export class TaskPageComponent implements OnInit {
   }
 
   public getQueue(key: string) {
-    return `${key.slice(0, key.indexOf('-'))}`;
+    return this.commonService.getQueueByTaskKey(key);
   }
 
   public getQueueLink(key: string) {
-    return `/${this.authService.getId()}/dashboard/${key.slice(
-      0,
-      key.indexOf('-')
+    return `/${this.authService.getId()}/dashboard/${this.commonService.getQueueByTaskKey(
+      key
     )}`;
   }
 

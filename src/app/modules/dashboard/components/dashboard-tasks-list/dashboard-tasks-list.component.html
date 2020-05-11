@@ -53,6 +53,27 @@
     >
       Закрытые
     </div>
+
+    <div class="dashboard-task-list__filters_queues">
+      Очереди:
+      <label
+        class="dashboard-task-list__filters_queues_selected hover hover-underline"
+      >
+        {{ selected }}
+        <select
+          class="dashboard-task-list__filters_queues_select hover"
+          (change)="selectQueue($event)"
+        >
+          <option
+            *ngFor="let queue of queuesList; let index = index"
+            [selected]="index === selectedQueue"
+            [value]="index"
+          >
+            {{ queue }}
+          </option>
+        </select>
+      </label>
+    </div>
   </div>
   <app-dashboard-task-list-header
     (selectedColumn)="sortByColumn($event)"

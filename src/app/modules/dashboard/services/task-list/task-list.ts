@@ -69,4 +69,14 @@ export const taskList: ITask[] = [
     refresh: '12 апр',
     observer: [],
   },
+  {
+    id: 7,
+    key: 'FIX-1',
+    title: 'Добавить интерфейс для очередей',
+    priority: 2,
+    creator: user,
+    status: 1,
+    refresh: '12 апр',
+    observer: [],
+  },
 ];

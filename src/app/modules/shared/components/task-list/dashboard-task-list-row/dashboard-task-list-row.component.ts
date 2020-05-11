@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ITask, TaskStatus } from '../../../../../typings';
 import { AuthService } from '../../../../../auth-services/auth.service';
 import { TaskPageService } from '../../../../dashboard/services/task-page/task-page.service';
+import { CommonService } from '../../../services/common.service';
 
 @Component({
   selector: 'app-dashboard-task-list-row',
@@ -12,9 +13,8 @@ export class DashboardTaskListRowComponent implements OnInit {
   @Input() data: ITask;
 
   public get queueUrl() {
-    return `/${this.authService.getId()}/dashboard/${this.data.key.slice(
-      0,
-      this.data.key.indexOf('-')
+    return `/${this.authService.getId()}/dashboard/${this.commonService.getQueueByTaskKey(
+      this.data.key
     )}`;
   }
 
@@ -24,7 +24,8 @@ export class DashboardTaskListRowComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private taskPageService: TaskPageService
+    private taskPageService: TaskPageService,
+    private commonService: CommonService
   ) {}
 
   public getTaskStatus(status: TaskStatus) {
