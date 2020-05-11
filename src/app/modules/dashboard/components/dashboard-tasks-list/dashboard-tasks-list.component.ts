@@ -44,4 +44,11 @@ export class DashboardTasksListComponent implements OnInit {
       this.observer
     );
   }
+
+  public sortByColumn(selected: { column: number; order: boolean }) {
+    this.list$ = this.dashboardService.sortBySelectedColumn(
+      selected.column,
+      selected.order
+    );
+  }
 }
