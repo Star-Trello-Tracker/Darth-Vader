@@ -90,6 +90,14 @@
   }
 }
 
+@media screen and (max-device-width: 550px) {
+  .row {
+    &__date {
+      display: none;
+    }
+  }
+}
+
 @media screen and (max-device-width: 450px) {
   .row {
     padding: 5px;
@@ -107,10 +115,6 @@
       &_comment {
         font-size: 10px;
       }
-    }
-
-    &__date {
-      display: none;
     }
   }
 }

@@ -4,10 +4,12 @@
 }
 
 .main-page {
+  box-sizing: border-box;
   align-items: center;
 
   &__content {
     background-color: #e0fbfc;
+    box-sizing: border-box;
 
     justify-content: center;
     align-items: center;
@@ -19,6 +21,7 @@
       justify-content: center;
       align-items: center;
       padding: 0 40px;
+      box-sizing: border-box;
 
       &_about {
         width: 90%;
@@ -49,7 +52,6 @@
         }
 
         &_button {
-          align-self: stretch;
           justify-content: center;
           align-items: center;
 
@@ -106,78 +108,6 @@
   }
 }
 
-@media screen and (max-device-width: 420px) {
-  .main-page {
-    height: auto;
-
-    &__content {
-      flex-direction: column;
-      padding: 0;
-
-      &__text {
-        width: 100%;
-        padding: 0;
-
-        &_about {
-          box-sizing: border-box;
-          width: 100%;
-          padding: 10px;
-          margin: 20px 0 10px 0;
-          font-size: 24px;
-        }
-
-        &_purpose {
-          box-sizing: border-box;
-          width: 100%;
-          padding: 10px;
-          margin-bottom: 20px;
-          font-size: 18px;
-        }
-
-        &__registration {
-          width: 100%;
-          margin-top: 0;
-          margin-bottom: 20px;
-
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-wrap: wrap;
-
-          &_input {
-            font-size: 14px;
-            margin-right: 10px;
-          }
-
-          &_button {
-            font-size: 14px;
-          }
-        }
-      }
-
-      &__wow-image {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-    }
-  }
-}
-
-@media screen and (max-device-width: 350px) {
-  .main-page {
-    &__content {
-      &__text {
-        &__registration {
-          &_input {
-            margin-right: 0;
-            margin-bottom: 10px;
-          }
-        }
-      }
-    }
-  }
-}
-
 @media screen and (max-device-width: 1024px) and (max-device-height: 1366px) and (min-device-height: 800px) and (min-device-width: 500px) {
   .main-page {
     &__content {
@@ -226,7 +156,105 @@
         &__registration {
           &_input,
           &_button {
-            font-size: 24px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-device-width: 800px) {
+  .main-page {
+    height: auto;
+
+    &__content {
+      flex-direction: column;
+      padding: 0;
+
+      &__text {
+        width: 90%;
+        align-items: center;
+        margin-bottom: 20px;
+
+        &__registration {
+          justify-content: center;
+        }
+      }
+
+      &__wow-image {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (max-device-width: 500px) {
+  .main-page {
+    height: auto;
+
+    &__content {
+      flex-direction: column;
+      padding: 0;
+
+      &__text {
+        width: 100%;
+        padding: 0;
+
+        &_about {
+          box-sizing: border-box;
+          width: 100%;
+          padding: 10px;
+          margin: 20px 0 10px 0;
+          font-size: 24px;
+        }
+
+        &_purpose {
+          box-sizing: border-box;
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 20px;
+          font-size: 18px;
+        }
+
+        &__registration {
+          width: 100%;
+          margin-top: 0;
+          margin-bottom: 20px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &_input {
+            font-size: 14px;
+            margin-right: 10px;
+          }
+
+          &_button {
+            font-size: 14px;
+          }
+        }
+      }
+
+      &__wow-image {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (max-device-width: 365px) {
+  .main-page {
+    &__content {
+      &__text {
+        &__registration {
+          flex-direction: column;
+
+          &_input {
+            margin-right: 0;
+            margin-bottom: 10px;
           }
         }
       }
