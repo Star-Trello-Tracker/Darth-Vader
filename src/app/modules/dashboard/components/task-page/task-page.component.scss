@@ -274,10 +274,18 @@
       }
 
       &__task-status {
-        &_change {
-          &_select {
-            border: 2px solid #ee6c4d;
+        flex-direction: column;
+
+        &__item {
+          margin: 0 0 10px 0;
+
+          &_name {
+            min-width: auto;
           }
+        }
+
+        &_close {
+          margin-left: 0;
         }
       }
 
@@ -365,7 +373,7 @@
       }
 
       &__task-status {
-        flex-wrap: wrap;
+        margin-top: 20px;
 
         &__item {
           margin: 0 0 15px 0;
@@ -383,6 +391,8 @@
       }
 
       &__description {
+        margin-top: 20px;
+
         &_text {
           font-size: 14px;
         }
