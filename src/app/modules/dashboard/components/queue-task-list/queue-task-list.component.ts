@@ -27,4 +27,11 @@ export class QueueTaskListComponent implements OnInit {
   ngOnInit(): void {
     this.queue$ = this.queuesTaskListService.getTaskListByQueue('');
   }
+
+  public sortByColumn(selected: { column: number; order: boolean }) {
+    this.queue$ = this.queuesTaskListService.sortBySelectedColumn(
+      selected.column,
+      selected.order
+    );
+  }
 }
