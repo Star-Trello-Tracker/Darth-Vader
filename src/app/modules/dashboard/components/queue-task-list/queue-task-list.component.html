@@ -5,7 +5,7 @@
   <div class="back-to-queues">
     <a [routerLink]="back2Queues" class="back-to-queues_link">
       <i class="fas fa-arrow-left back-to-queues_link_icon"></i>
-      Назад к списку очередей
+      К списку очередей
     </a>
   </div>
 
@@ -25,6 +25,48 @@
 
   <div class="queues-list__item queues-list__description full-width">
     {{ queue.description }}
+  </div>
+
+  <div class="queues-list__filters flex">
+    <div
+      class="queues-list__filters_item hover border"
+      [class.queues-list__filters_item_active]="all"
+      (click)="toggle('all')"
+    >
+      Все
+    </div>
+
+    <div
+      class="queues-list__filters_item hover border"
+      [class.queues-list__filters_item_active]="author"
+      (click)="toggle('author')"
+    >
+      Я автор
+    </div>
+
+    <div
+      class="queues-list__filters_item hover border"
+      [class.queues-list__filters_item_active]="person"
+      (click)="toggle('person')"
+    >
+      Я исполнитель
+    </div>
+
+    <div
+      class="queues-list__filters_item hover border"
+      [class.queues-list__filters_item_active]="observer"
+      (click)="toggle('observer')"
+    >
+      Я наблюдатель
+    </div>
+
+    <div
+      class="queues-list__filters_item hover border"
+      [class.dashboard-task-list__filters_item_active]="closed"
+      (click)="toggle('closed')"
+    >
+      Закрытые
+    </div>
   </div>
 
   <app-dashboard-task-list-header

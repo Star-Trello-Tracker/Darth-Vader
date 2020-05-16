@@ -14,6 +14,12 @@ export class QueueTaskListComponent implements OnInit {
   public queue$: Observable<IQueue>;
   public queueTitle = this.router.url.split('/').pop();
 
+  public all = true;
+  public author = false;
+  public person = false;
+  public observer = false;
+  public closed = false;
+
   public get back2Queues() {
     return `/${this.authService.getId()}/dashboard/menu/queues`;
   }
@@ -25,7 +31,17 @@ export class QueueTaskListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.queue$ = this.queuesTaskListService.getTaskListByQueue('');
+    this.getData();
+  }
+
+  private getData() {
+    this.queue$ = this.queuesTaskListService.getFilteredData(
+      this.all,
+      this.author,
+      this.person,
+      this.observer,
+      this.closed
+    );
   }
 
   public sortByColumn(selected: { column: number; order: boolean }) {
@@ -33,5 +49,22 @@ export class QueueTaskListComponent implements OnInit {
       selected.column,
       selected.order
     );
+  }
+
+  public toggle(item: string) {
+    if (item !== 'all') {
+      this.all = false;
+    } else {
+      this.author = false;
+      this.person = false;
+      this.observer = false;
+      this.closed = false;
+    }
+    this[item] = !this[item];
+
+    if (!this.author && !this.person && !this.observer && !this.closed) {
+      this.all = true;
+    }
+    this.getData();
   }
 }
