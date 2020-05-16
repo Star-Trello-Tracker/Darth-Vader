@@ -40,14 +40,19 @@
         aria-hidden="true"
       ></i>
     </a>
-  </div>
 
-  <div class="auth-header__logo" routerLink=".">
-    <i class="fas fa-calendar-alt auth-header__logo_icon"></i>
-    <span class="auth-header__logo_title">Star Trello</span>
-  </div>
+    <div class="auth-header__logo" routerLink=".">
+      <i class="fas fa-calendar-alt auth-header__logo_icon"></i>
+      <span class="auth-header__logo_title">Star Trello</span>
+    </div>
 
-  <div class="auth-header__navigation flex">
+    <div class="auth-header__navigation__notifications hover">
+      <i class="fas fa-bell"></i>
+      <span class="auth-header__navigation__notifications_push flex">
+        1
+      </span>
+    </div>
+
     <a
       routerLink="."
       class="auth-header__navigation__link auth-header__navigation__link_margin"
