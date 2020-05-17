@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { PriorityComponent } from './components/priority/priority.component';
 import { CommonService } from './services/common.service';
 import { TaskListPageComponent } from './components/task-list/task-list-page/task-list-page.component';
+import { UpdatePipe } from './pipes/update.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TaskListPageComponent } from './components/task-list/task-list-page/tas
     HeaderComponent,
     PriorityComponent,
     TaskListPageComponent,
+    UpdatePipe,
   ],
   exports: [
     ProfileLayoutComponent,
