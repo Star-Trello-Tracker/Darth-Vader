@@ -1,11 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard-task-list-header',
-  templateUrl: './dashboard-task-list-header.component.html',
-  styleUrls: ['./dashboard-task-list-header.component.scss'],
+  selector: 'app-task-list-header',
+  templateUrl: './task-list-header.component.html',
+  styleUrls: ['./task-list-header.component.scss'],
 })
-export class DashboardTaskListHeaderComponent implements OnInit {
+export class TaskListHeaderComponent implements OnInit {
   @Output() selectedColumn = new EventEmitter();
   public increase = true;
   public selected = 4;

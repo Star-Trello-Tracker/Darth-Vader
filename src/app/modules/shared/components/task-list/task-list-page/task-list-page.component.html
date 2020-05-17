@@ -1,0 +1,74 @@
+<div class="task-list full-size flex flex-column" *ngIf="list$ | async as list">
+  <div class="task-list__filters flex">
+    <div
+      class="task-list__filters_item hover border"
+      [class.task-list__filters_item_active]="all"
+      (click)="toggle('all')"
+    >
+      Все
+    </div>
+
+    <div
+      class="task-list__filters_item hover border"
+      [class.task-list__filters_item_active]="author"
+      (click)="toggle('author')"
+    >
+      Я автор
+    </div>
+
+    <div
+      class="task-list__filters_item hover border"
+      [class.task-list__filters_item_active]="person"
+      (click)="toggle('person')"
+    >
+      Я исполнитель
+    </div>
+
+    <div
+      class="task-list__filters_item hover border"
+      [class.task-list__filters_item_active]="observer"
+      (click)="toggle('observer')"
+    >
+      Я наблюдатель
+    </div>
+
+    <div
+      class="task-list__filters_item hover border"
+      [class.task-list__filters_item_active]="closed"
+      (click)="toggle('closed')"
+    >
+      Закрытые
+    </div>
+
+    <div class="task-list__filters_queues" *ngIf="!queue">
+      Очереди:
+      <label class="task-list__filters_queues_selected hover hover-underline">
+        {{ selected }}
+        <select
+          class="task-list__filters_queues_select hover"
+          (change)="selectQueue($event)"
+        >
+          <option
+            *ngFor="let queue of queuesList; let index = index"
+            [selected]="index === selectedQueue"
+            [value]="index"
+          >
+            {{ queue }}
+          </option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <app-task-list-header
+    (selectedColumn)="sortByColumn($event)"
+  ></app-task-list-header>
+  <app-task-list-row
+    *ngFor="let item of list"
+    [data]="item"
+  ></app-task-list-row>
+  <div class="task-list__no-tasks flex" *ngIf="list.length === 0">
+    Задач нет
+    <i class="far fa-frown task-list__no-tasks_icon"></i>
+  </div>
+</div>

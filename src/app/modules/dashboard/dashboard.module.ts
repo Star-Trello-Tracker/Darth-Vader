@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardTasksListComponent } from './components/dashboard-tasks-list/dashboard-tasks-list.component';
-import { DashboardTaskListService } from './services/task-list/dashboard-task-list.service';
+import { TaskListService } from './services/task-list/task-list.service';
 import { MainPageModule } from '../main-page/main-page.module';
 import { SharedModule } from '../shared/shared.module';
 import { MenuComponent } from './components/menu/menu.component';
@@ -41,7 +41,7 @@ import { TaskPageService } from './services/task-page/task-page.service';
     FormsModule,
   ],
   providers: [
-    DashboardTaskListService,
+    TaskListService,
     BoardsService,
     QueuesTaskListService,
     QueuesService,
