@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { taskList } from './task-list';
+import { queue } from '../queues/queues-task-list';
 import { of } from 'rxjs/internal/observable/of';
 import { Observable } from 'rxjs';
 import { ITask, IUser } from '../../../../typings';
@@ -8,7 +9,7 @@ import { CommonService } from '../../../shared/services/common.service';
 @Injectable({
   providedIn: 'root',
 })
-export class DashboardTaskListService {
+export class TaskListService {
   private personData = 'Авдеев Иван';
   private taskMap = {
     1: 'priority',
@@ -34,19 +35,32 @@ export class DashboardTaskListService {
     return queuesList;
   }
 
-  public getTasksByQueue(queue: string): Observable<ITask[]> {
+  public getTasksByQueue(queueName: string): Observable<ITask[]> {
     return of(
       taskList.filter((el: ITask) => {
-        return this.commonService.getQueueByTaskKey(el.key) === queue;
+        return this.commonService.getQueueByTaskKey(el.key) === queueName;
       })
     );
   }
 
-  public getDefaultTaskList(): Observable<ITask[]> {
+  public getDefaultTaskList(isQueue: boolean): Observable<ITask[]> {
+    if (!isQueue) {
+      return this.getAllTasksList();
+    }
+
+    return this.getQueueTasksList();
+  }
+
+  public getAllTasksList(): Observable<ITask[]> {
     return of(taskList);
   }
 
+  public getQueueTasksList(): Observable<ITask[]> {
+    return of(queue.taskList);
+  }
+
   public getFilteredData(
+    isQueue: boolean,
     all: boolean,
     author: boolean,
     person: boolean,
@@ -54,19 +68,21 @@ export class DashboardTaskListService {
     closed: boolean
   ): Observable<ITask[]> {
     if (all) {
-      return this.getDefaultTaskList();
+      return this.getDefaultTaskList(isQueue);
     }
+
+    const filtered = isQueue ? queue.taskList : taskList;
 
     if (closed) {
       return of(
-        taskList.filter((el: ITask) => {
+        filtered.filter((el: ITask) => {
           return el.status === 6 || el.status === 7;
         })
       );
     }
 
     return of(
-      taskList.filter((el) => {
+      filtered.filter((el) => {
         return (
           (author && el.creator.name === this.personData) ||
           (person && el.person && el.person.name === this.personData) ||
@@ -80,21 +96,23 @@ export class DashboardTaskListService {
   }
 
   public sortBySelectedColumn(
+    isQueue: boolean,
     column: number,
     order: boolean
   ): Observable<ITask[]> {
+    const filtered = isQueue ? queue.taskList : taskList;
     const selected = this.taskMap[column];
 
     if (column !== 2) {
       return of(
-        taskList.sort((a: ITask, b: ITask) => {
+        filtered.sort((a: ITask, b: ITask) => {
           return order ? a[selected] - b[selected] : b[selected] - a[selected];
         })
       );
     }
 
     return of(
-      taskList.sort((a: ITask, b: ITask) => {
+      filtered.sort((a: ITask, b: ITask) => {
         if (a[selected] === b[selected]) {
           return 0;
         }

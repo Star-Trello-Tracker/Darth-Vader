@@ -27,57 +27,5 @@
     {{ queue.description }}
   </div>
 
-  <div class="queues-list__filters flex">
-    <div
-      class="queues-list__filters_item hover border"
-      [class.queues-list__filters_item_active]="all"
-      (click)="toggle('all')"
-    >
-      Все
-    </div>
-
-    <div
-      class="queues-list__filters_item hover border"
-      [class.queues-list__filters_item_active]="author"
-      (click)="toggle('author')"
-    >
-      Я автор
-    </div>
-
-    <div
-      class="queues-list__filters_item hover border"
-      [class.queues-list__filters_item_active]="person"
-      (click)="toggle('person')"
-    >
-      Я исполнитель
-    </div>
-
-    <div
-      class="queues-list__filters_item hover border"
-      [class.queues-list__filters_item_active]="observer"
-      (click)="toggle('observer')"
-    >
-      Я наблюдатель
-    </div>
-
-    <div
-      class="queues-list__filters_item hover border"
-      [class.dashboard-task-list__filters_item_active]="closed"
-      (click)="toggle('closed')"
-    >
-      Закрытые
-    </div>
-  </div>
-
-  <app-dashboard-task-list-header
-    (selectedColumn)="sortByColumn($event)"
-  ></app-dashboard-task-list-header>
-  <app-dashboard-task-list-row
-    *ngFor="let item of queue.taskList"
-    [data]="item"
-  ></app-dashboard-task-list-row>
-  <div class="queues-list__no-tasks flex" *ngIf="queue.taskList.length === 0">
-    Задач нет
-    <i class="far fa-frown queues-list__no-tasks_icon"></i>
-  </div>
+  <app-task-list-page [queue]="true"></app-task-list-page>
 </div>

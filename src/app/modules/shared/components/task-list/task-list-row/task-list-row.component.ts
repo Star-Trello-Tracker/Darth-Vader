@@ -5,11 +5,11 @@ import { TaskPageService } from '../../../../dashboard/services/task-page/task-p
 import { CommonService } from '../../../services/common.service';
 
 @Component({
-  selector: 'app-dashboard-task-list-row',
-  templateUrl: './dashboard-task-list-row.component.html',
-  styleUrls: ['./dashboard-task-list-row.component.scss'],
+  selector: 'app-task-list-row',
+  templateUrl: './task-list-row.component.html',
+  styleUrls: ['./task-list-row.component.scss'],
 })
-export class DashboardTaskListRowComponent implements OnInit {
+export class TaskListRowComponent implements OnInit {
   @Input() data: ITask;
 
   public get queueUrl() {
