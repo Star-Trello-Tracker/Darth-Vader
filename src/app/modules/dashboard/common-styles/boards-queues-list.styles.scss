@@ -1,7 +1,5 @@
 .item {
   height: auto;
-  padding: 20px;
-
   box-sizing: border-box;
 
   &__title {
@@ -10,8 +8,6 @@
   }
 
   &__list {
-    padding: 10px;
-
     align-items: center;
     box-sizing: border-box;
     overflow: scroll;
@@ -23,25 +19,12 @@
       justify-content: center;
       align-items: center;
 
-      margin-right: 20px;
-      margin-bottom: 20px;
-      padding: 20px;
-      border: 1px solid #293241;
-      border-radius: 10px;
+      margin: 0 20px 20px 0;
 
       font-size: 24px;
 
-      transition-property: transform;
-      transition-duration: 1s;
-
       &_icon {
         margin-right: 10px;
-      }
-
-      &:hover {
-        transform: scale(1.05);
-        transition-property: transform;
-        transition-duration: 1s;
       }
     }
   }
@@ -56,7 +39,6 @@
     &_input {
       width: 250px;
       font-size: 16px;
-      padding: 10px;
       border-radius: 5px;
     }
   }

@@ -2,13 +2,11 @@
   &__item {
     box-sizing: border-box;
     text-align: left;
-    padding: 20px;
   }
 
   &__creator {
     align-self: flex-start;
     display: flex;
-    padding: 10px 20px;
 
     width: auto;
     position: relative;
@@ -19,8 +17,8 @@
       &__profile-layout {
         position: absolute;
         display: none;
-        left: 100%;
-        bottom: 30%;
+        left: -5%;
+        bottom: 110%;
         width: auto;
         height: 300%;
         z-index: 100;
@@ -39,26 +37,16 @@
       margin-right: 5px;
     }
   }
-
-  &__task-list {
-    padding: 10px 20px;
-    border-bottom: 1px solid #293241;
-  }
 }
 
 .back-to-queues {
   display: flex;
-  padding: 20px;
 
   align-self: flex-start;
 
   &_link {
     display: inline-block;
     color: #ee6c4d;
-
-    &:hover {
-      text-decoration: underline;
-    }
 
     &_icon {
       margin-right: 5px;

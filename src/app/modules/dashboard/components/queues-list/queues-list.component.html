@@ -1,5 +1,5 @@
 <div
-  class="queues item full-width flex flex-column"
+  class="queues item full-width flex flex-column padding-20"
   *ngIf="queues$ | async as queues"
 >
   <div class="item__title queues__title">
@@ -7,9 +7,9 @@
     <i class="fas fa-key"></i>
   </div>
 
-  <div class="item__list queues__list full-width flex">
+  <div class="item__list queues__list full-width flex padding-10">
     <div
-      class="item__list__create queues__list__create flex hover"
+      class="item__list__create queues__list__create flex hover border padding-20 scale radius-10"
       [routerLink]="['/', userId, 'dashboard', 'create-queue']"
     >
       <i
@@ -29,7 +29,7 @@
 
     <label class="item__search__label queues__search__label">
       <input
-        class="item__search_input queues__search_input"
+        class="item__search_input queues__search_input padding-10"
         placeholder="Введите название доски"
         type="text"
         [(ngModel)]="search"

@@ -1,7 +1,6 @@
 .task-page {
   justify-content: center;
 
-  padding: 20px;
   box-sizing: border-box;
   color: #293241;
 
@@ -14,7 +13,6 @@
     &__title {
       align-items: baseline;
 
-      padding: 20px;
       box-sizing: border-box;
       border-bottom: 1px solid #293241;
 
@@ -32,15 +30,9 @@
 
           &_copy {
             margin-left: 5px;
-            transition-property: transform;
-            transition-duration: 0.5s;
 
             &:hover {
               color: #ee6c4d;
-              transform: scale(1.05);
-
-              transition-property: transform;
-              transition-duration: 0.5s;
             }
           }
         }
@@ -58,7 +50,6 @@
       align-items: baseline;
       box-sizing: border-box;
 
-      padding: 20px;
       border-bottom: 1px solid #293241;
 
       &__item {
@@ -104,21 +95,10 @@
         margin-left: auto;
         border-radius: 10px;
         background-color: #e0fbfc;
-
-        transition-property: transform;
-        transition-duration: 0.5s;
-
-        &:hover {
-          transform: scale(1.05);
-
-          transition-property: transform;
-          transition-duration: 0.5s;
-        }
       }
     }
 
     &__description {
-      padding: 20px;
       box-sizing: border-box;
 
       &_title-container {
@@ -155,7 +135,6 @@
 
     &__comments {
       margin-top: 10px;
-      padding: 20px;
       box-sizing: border-box;
 
       &_title {
@@ -177,7 +156,6 @@
     box-sizing: border-box;
 
     &_title {
-      padding: 20px;
       font-size: 24px;
       font-weight: bold;
 
@@ -186,7 +164,6 @@
     }
 
     &_item {
-      padding: 20px;
       box-sizing: border-box;
       position: relative;
 
@@ -220,7 +197,6 @@
 
   &__item {
     width: 50%;
-    padding: 20px;
     box-sizing: border-box;
     text-align: center;
 

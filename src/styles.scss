@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+/* global styles  */
 
 body {
   padding: 0;
@@ -71,6 +71,52 @@ a:hover {
   border: 1px solid #293241;
 }
 
+.radius {
+
+  &-5 {
+    border-radius: 5px;
+  }
+
+  &-10 {
+    border-radius: 10px;
+  }
+}
+
+.radius-10 {
+  border-radius: 10px;
+}
+
 .color-red {
   color: red;
+}
+
+.padding {
+
+  &-5 {
+    padding: 5px;
+  }
+
+  &-10 {
+    padding: 10px;
+
+    &-20 {
+      padding: 10px 20px;
+    }
+  }
+
+  &-20 {
+    padding: 20px;
+  }
+}
+
+.scale {
+  transition-property: transform;
+  transition-duration: 0.5s;
+
+  &:hover {
+    transform: scale(1.05);
+
+    transition-property: transform;
+    transition-duration: 0.5s;
+  }
 }
