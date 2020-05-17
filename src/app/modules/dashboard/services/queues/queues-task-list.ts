@@ -11,7 +11,7 @@ const queueTaskList: ITask[] = [
     person: user,
     status: 6,
     comment: 'Задача решена',
-    refresh: '12 апр',
+    refresh: 1589026291315,
     observer: [],
   },
   {
@@ -23,7 +23,7 @@ const queueTaskList: ITask[] = [
     person: user,
     status: 6,
     comment: 'Задача решена',
-    refresh: '12 апр',
+    refresh: 1589126291315,
     observer: [],
   },
   {
@@ -35,7 +35,7 @@ const queueTaskList: ITask[] = [
     person: user,
     status: 6,
     comment: 'Задача решена',
-    refresh: '12 апр',
+    refresh: 1589621091315,
     observer: [],
   },
   {
@@ -44,8 +44,9 @@ const queueTaskList: ITask[] = [
     title: 'Добавить иконки статуса для задач',
     priority: 4,
     creator: user,
-    status: 1,
-    refresh: '12 апр',
+    status: 6,
+    comment: 'Задача решена',
+    refresh: 1589721091315,
     observer: [],
   },
 ];

@@ -55,7 +55,7 @@ export class TaskListService {
   }
 
   public getAllTasksList(): Observable<ITask[]> {
-    return of(taskList);
+    return this.sortBySelectedColumn(false, 4, false);
   }
 
   public getQueueTasksList(): Observable<ITask[]> {

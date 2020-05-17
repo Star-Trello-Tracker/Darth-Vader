@@ -11,7 +11,7 @@ export const taskList: ITask[] = [
     person: user,
     status: 6,
     comment: 'Задача решена',
-    refresh: '12 апр',
+    refresh: 1589026291315,
     observer: [],
   },
   {
@@ -23,7 +23,7 @@ export const taskList: ITask[] = [
     person: user,
     status: 6,
     comment: 'Задача решена',
-    refresh: '12 апр',
+    refresh: 1589126291315,
     observer: [],
   },
   {
@@ -35,7 +35,7 @@ export const taskList: ITask[] = [
     person: user,
     status: 6,
     comment: 'Задача решена',
-    refresh: '12 апр',
+    refresh: 1589621091315,
     observer: [],
   },
   {
@@ -46,7 +46,7 @@ export const taskList: ITask[] = [
     creator: user,
     status: 6,
     comment: 'Задача решена',
-    refresh: '12 апр',
+    refresh: 1589721091315,
     observer: [],
   },
   {
@@ -56,7 +56,7 @@ export const taskList: ITask[] = [
     priority: 5,
     creator: user,
     status: 2,
-    refresh: '12 апр',
+    refresh: 1589726291315,
     observer: [],
   },
   {
@@ -66,7 +66,7 @@ export const taskList: ITask[] = [
     priority: 6,
     creator: user,
     status: 4,
-    refresh: '12 апр',
+    refresh: 1589726291315,
     observer: [],
   },
   {
@@ -76,7 +76,7 @@ export const taskList: ITask[] = [
     priority: 2,
     creator: user,
     status: 1,
-    refresh: '12 апр',
+    refresh: 1589726291315,
     observer: [],
   },
 ];

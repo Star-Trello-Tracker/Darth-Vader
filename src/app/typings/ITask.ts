@@ -10,6 +10,6 @@ export interface ITask {
   person?: IUser;
   status: TaskStatus;
   comment?: string;
-  refresh: string;
+  refresh: number;
   observer?: IUser[];
 }
