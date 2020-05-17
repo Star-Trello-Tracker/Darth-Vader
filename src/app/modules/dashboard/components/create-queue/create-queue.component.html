@@ -27,6 +27,7 @@
         type="text"
         [class.create-queue__form__item_input_invalid]="invalidTitle"
         [(ngModel)]="title"
+        (keyup)="title = title.toUpperCase()"
       />
       <span class="create-queue__form__title_help padding-10-20">
         Ключ задач в этой очереди: {{ title
@@ -39,7 +40,7 @@
     >
       Описание:
       <input
-        class="create-queue__form__description_input create-queue__form__item_input"
+        class="create-queue__form__description_input create-queue__form__item_input padding-5"
         type="text"
         [class.create-queue__form__item_input_invalid]="invalidDescription"
         [(ngModel)]="description"

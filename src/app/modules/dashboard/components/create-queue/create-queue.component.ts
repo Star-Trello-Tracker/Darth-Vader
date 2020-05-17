@@ -37,7 +37,8 @@ export class CreateQueueComponent implements OnInit {
   public submit() {
     this.invalidTitle = false;
     this.invalidDescription = false;
-    if (this.title.length < 4) {
+
+    if (!this.checkTitleOnEnglish() || this.title.length < 4) {
       this.invalidTitle = true;
     }
 
@@ -62,6 +63,12 @@ export class CreateQueueComponent implements OnInit {
       this.router.navigateByUrl(
         `/${this.authService.getId()}/dashboard/menu/queues`
       );
+    });
+  }
+
+  private checkTitleOnEnglish() {
+    return this.title.split('').every((elem) => {
+      return elem.match('[a-zA-z]');
     });
   }
 }
