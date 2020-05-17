@@ -10,7 +10,10 @@ import { CommonService } from '../../../shared/services/common.service';
   providedIn: 'root',
 })
 export class TaskListService {
-  private personData = 'Авдеев Иван';
+  private personData: Partial<IUser> = {
+    id: 1,
+    name: 'Авдеев Иван',
+  };
   private taskMap = {
     1: 'priority',
     2: 'key',
@@ -84,11 +87,11 @@ export class TaskListService {
     return of(
       filtered.filter((el) => {
         return (
-          (author && el.creator.name === this.personData) ||
-          (person && el.person && el.person.name === this.personData) ||
+          (author && el.creator.name === this.personData.name) ||
+          (person && el.person && el.person.name === this.personData.name) ||
           (observer &&
             el.observer &&
-            el.observer.filter((u: IUser) => u.name === this.personData)
+            el.observer.filter((u: IUser) => u.name === this.personData.name)
               .length > 0)
         );
       })
