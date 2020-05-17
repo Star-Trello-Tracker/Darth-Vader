@@ -4,7 +4,6 @@
   &__item {
     box-sizing: border-box;
     text-align: left;
-    padding: 20px;
   }
 
   &__person {
@@ -13,9 +12,5 @@
     &_icon {
       margin-right: 5px;
     }
-  }
-
-  &__task-list {
-    padding: 10px 20px;
   }
 }

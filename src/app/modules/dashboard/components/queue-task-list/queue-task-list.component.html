@@ -2,28 +2,28 @@
   class="queues-list full-size flex flex-column"
   *ngIf="queue$ | async as queue"
 >
-  <div class="back-to-queues">
+  <div class="back-to-queues padding-20">
     <a [routerLink]="back2Queues" class="back-to-queues_link">
       <i class="fas fa-arrow-left back-to-queues_link_icon"></i>
       К списку очередей
     </a>
   </div>
 
-  <div class="queues-list__item queues-list__person full-width">
+  <div class="queues-list__item queues-list__person full-width padding-20">
     <i class="fas fa-key queues-list__person_icon"></i>
     {{ queueTitle.toUpperCase() }}
   </div>
 
-  <div class="queues-list__creator queues-list__item full-width">
+  <div class="queues-list__creator queues-list__item full-width padding-10-20">
     Создатель:
     <a class="queues-list__creator_link"> {{ queue.creator.name }}</a>
 
-    <div class="queues-list__creator_link__profile-layout">
+    <div class="queues-list__creator_link__profile-layout padding-20">
       <app-profile-layout [user]="queue.creator"></app-profile-layout>
     </div>
   </div>
 
-  <div class="queues-list__item queues-list__description full-width">
+  <div class="queues-list__item queues-list__description full-width padding-20">
     {{ queue.description }}
   </div>
 

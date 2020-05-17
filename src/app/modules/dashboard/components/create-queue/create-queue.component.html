@@ -1,11 +1,11 @@
-<div class="create-queue full-width flex flex-column">
-  <div class="back-to-queues">
+<div class="create-queue padding-20 full-width flex flex-column">
+  <div class="back-to-queues padding-20">
     <a
       [routerLink]="back2Queues"
       class="back-to-queues_link hover hover-underline"
     >
       <i class="fas fa-arrow-left back-to-queues_link_icon"></i>
-      Назад к списку очередей
+      К списку очередей
     </a>
   </div>
 
@@ -15,24 +15,28 @@
   </div>
 
   <div class="create-queue__form full-width flex flex-column">
-    <span class="create-queue__form_help">
+    <span class="create-queue__form_help padding-10-20">
       Минимальная длина ключа - 4 символа
     </span>
-    <label class="create-queue__form__title create-queue__form__item">
+    <label
+      class="create-queue__form__title create-queue__form__item padding-20"
+    >
       Название очереди:
       <input
-        class="create-queue__form__title_input create-queue__form__item_input"
+        class="create-queue__form__title_input create-queue__form__item_input padding-5"
         type="text"
         [class.create-queue__form__item_input_invalid]="invalidTitle"
         [(ngModel)]="title"
       />
-      <span class="create-queue__form__title_help">
+      <span class="create-queue__form__title_help padding-10-20">
         Ключ задач в этой очереди: {{ title
         }}<span *ngIf="title.length > 3">-N</span>
       </span>
     </label>
 
-    <label class="create-queue__form__description create-queue__form__item">
+    <label
+      class="create-queue__form__description create-queue__form__item padding-20"
+    >
       Описание:
       <input
         class="create-queue__form__description_input create-queue__form__item_input"
@@ -42,7 +46,7 @@
       />
     </label>
 
-    <button class="create-queue__form__submit hover" (click)="submit()">
+    <button class="create-queue__form__submit hover scale" (click)="submit()">
       Создать очередь
     </button>
   </div>

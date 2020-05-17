@@ -1,6 +1,6 @@
 <div class="tabs-for-phone full-width">
   <div
-    class="tabs-for-phone__item"
+    class="tabs-for-phone__item padding-20"
     [class.tabs-for-phone__item_show]="showTask"
     (click)="toggle(true)"
   >
@@ -8,7 +8,7 @@
   </div>
 
   <div
-    class="tabs-for-phone__item"
+    class="tabs-for-phone__item padding-20"
     [class.tabs-for-phone__item_show]="!showTask"
     (click)="toggle(false)"
   >
@@ -16,12 +16,12 @@
   </div>
 </div>
 
-<div class="task-page full-size flex" *ngIf="task$ | async as task">
+<div class="task-page full-size flex padding-20" *ngIf="task$ | async as task">
   <div
     class="task-page__task-interface task-page__task-interface__touch full-height flex flex-column"
     [class.task-page__task-interface__touch_show]="showTask"
   >
-    <div class="task-page__task-interface__title full-width flex">
+    <div class="task-page__task-interface__title full-width flex padding-20">
       <span class="task-page__task-interface__title_queue">
         Очередь:
         <a [routerLink]="getQueueLink(task.key)">{{ getQueue(task.key) }}</a>
@@ -34,7 +34,7 @@
         >: {{ task.title }}
         <i
           *ngIf="hasClipboard"
-          class="fas fa-copy task-page__task-interface__title_task_key_copy hover"
+          class="fas fa-copy task-page__task-interface__title_task_key_copy hover scale"
           (click)="copy(task)"
         ></i>
       </span>
@@ -45,7 +45,9 @@
       </div>
     </div>
 
-    <div class="task-page__task-interface__task-status full-width flex">
+    <div
+      class="task-page__task-interface__task-status full-width flex padding-20"
+    >
       <div
         class="task-page__task-interface__task-status__item task-page__task-interface__task-status__priority"
       >
@@ -105,14 +107,16 @@
       </div>
 
       <div
-        class="task-page__task-interface__task-status_close border hover hover-underline"
+        class="task-page__task-interface__task-status_close border hover scale"
         (click)="closeTask()"
       >
         Закрыть задачу
       </div>
     </div>
 
-    <div class="task-page__task-interface__description flex flex-column">
+    <div
+      class="task-page__task-interface__description flex flex-column padding-20"
+    >
       <div
         class="task-page__task-interface__description_title-container full-width flex"
       >
@@ -169,7 +173,7 @@
     </div>
 
     <div
-      class="task-page__task-interface__comments full-width flex flex-column"
+      class="task-page__task-interface__comments full-width flex flex-column padding-20"
     >
       <div class="task-page__task-interface__comments_title">
         Комментарии
@@ -187,11 +191,11 @@
     class="task-page__info task-page__info__touch flex flex-column"
     [class.task-page__info__touch_show]="!showTask"
   >
-    <div class="task-page__info_title full-width">
+    <div class="task-page__info_title full-width padding-20">
       Информация
     </div>
 
-    <div class="task-page__info_item full-width">
+    <div class="task-page__info_item full-width padding-20">
       Создатель:
       <a routerLink="." class="task-page__info_item_link profile-link">
         {{ task.creator.name }}
@@ -201,7 +205,7 @@
       </a>
     </div>
 
-    <div class="task-page__info_item full-width">
+    <div class="task-page__info_item full-width padding-20">
       Исполнитель:
       <a routerLink="." class="task-page__info_item_link profile-link">
         {{ task.person.name }}
@@ -214,7 +218,7 @@
       </a>
     </div>
 
-    <div class="task-page__info_item full-width">
+    <div class="task-page__info_item full-width padding-20">
       Наблюдатели:
       <a routerLink="." class="task-page__info_item_link profile-link">
         {{ task.observers[0].name }}
@@ -227,7 +231,7 @@
       </a>
     </div>
 
-    <div class="task-page__info_item full-width">
+    <div class="task-page__info_item full-width padding-20">
       Нужен ответ пользователей:
       <a routerLink="." class="task-page__info_item_link profile-link">
         {{ task.observers[0].name }}
@@ -240,11 +244,11 @@
       </a>
     </div>
 
-    <div class="task-page__info_item full-width">
+    <div class="task-page__info_item full-width padding-20">
       Story points: 10
     </div>
 
-    <div class="task-page__info_item full-width">
+    <div class="task-page__info_item full-width padding-20">
       <a>Спринт: Спринт 7 (05.02 - 05.18)</a>
     </div>
   </div>
