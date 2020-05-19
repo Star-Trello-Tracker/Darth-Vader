@@ -7,6 +7,7 @@ import { AuthService } from '../../../../auth-services/auth.service';
   styleUrls: ['./header.component.scss', './authorized-header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  public notifications = false;
   public get isAuth() {
     return this.authService.isAuth.getValue();
   }
@@ -21,5 +22,9 @@ export class HeaderComponent implements OnInit {
 
   public logout() {
     this.authService.logout();
+  }
+
+  public showNotifications() {
+    this.notifications = !this.notifications;
   }
 }

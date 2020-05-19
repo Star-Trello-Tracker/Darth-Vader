@@ -46,11 +46,11 @@
       <span class="auth-header__logo_title">Star Trello</span>
     </div>
 
-    <div class="auth-header__navigation__notifications hover">
-      <i class="fas fa-bell"></i>
-      <span class="auth-header__navigation__notifications_push flex">
-        1
-      </span>
+    <div
+      class="auth-header__navigation__notifications hover"
+      (click)="showNotifications()"
+    >
+      <app-notifications [show]="notifications"></app-notifications>
     </div>
 
     <a
