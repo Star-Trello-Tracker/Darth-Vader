@@ -1,0 +1,27 @@
+.popup {
+  min-width: 300px;
+  max-height: 500px;
+
+  overflow-y: scroll;
+  padding-right: 10px;
+  color: #293241;
+
+  &__title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+}
+
+.delete-all {
+  width: 100%;
+  justify-content: flex-end;
+}
+
+@media screen and (max-device-width: 420px) {
+  .popup {
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+  }
+}

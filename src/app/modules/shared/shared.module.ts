@@ -11,6 +11,10 @@ import { PriorityComponent } from './components/priority/priority.component';
 import { CommonService } from './services/common.service';
 import { TaskListPageComponent } from './components/task-list/task-list-page/task-list-page.component';
 import { UpdatePipe } from './pipes/update.pipe';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { PushPopupComponent } from './components/push-popup/push-popup.component';
+import { PushPopupItemComponent } from './components/push-popup-item/push-popup-item.component';
+import { NotificationsService } from './services/notifications/notifications.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,9 @@ import { UpdatePipe } from './pipes/update.pipe';
     PriorityComponent,
     TaskListPageComponent,
     UpdatePipe,
+    NotificationsComponent,
+    PushPopupComponent,
+    PushPopupItemComponent,
   ],
   exports: [
     ProfileLayoutComponent,
@@ -33,7 +40,7 @@ import { UpdatePipe } from './pipes/update.pipe';
     HeaderComponent,
     TaskListPageComponent,
   ],
-  providers: [CommonService],
+  providers: [CommonService, NotificationsService],
   imports: [CommonModule, RouterModule],
 })
 export class SharedModule {}

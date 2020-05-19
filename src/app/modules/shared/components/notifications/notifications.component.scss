@@ -1,0 +1,43 @@
+.push {
+  justify-content: center;
+  align-items: center;
+  width: 23px;
+  height: 23px;
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  color: white;
+
+  border-radius: 50%;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  background-color: red;
+}
+
+.list {
+  z-index: 10;
+  position: absolute;
+  left: -150px;
+  top: 110%;
+
+  background-color: white;
+  padding: 15px 5px 15px 15px;
+
+  &:hover {
+    cursor: default;
+  }
+}
+
+@media screen and (max-device-width: 420px) {
+  .list {
+    position: fixed;
+    left: 0;
+    top: 59px;
+    right: 0;
+    bottom: 0;
+
+    padding: 10px;
+  }
+}

@@ -1,0 +1,15 @@
+<i class="fas fa-bell"></i>
+
+<ng-container *ngIf="list$ | async as list">
+  <span class="push flex" *ngIf="list.length > 0">
+    {{ list.length }}
+  </span>
+
+  <div class="list border radius-10" *ngIf="show" (click)="stop($event)">
+    <app-push-popup
+      (delete)="deleteNotification($event)"
+      (deleteAll)="deleteAllNotifications()"
+      [list]="list"
+    ></app-push-popup>
+  </div>
+</ng-container>

@@ -1,0 +1,21 @@
+<div class="popup">
+  <div class="popup__title">Уведомления</div>
+
+  <div class="popup__no" *ngIf="list.length === 0">
+    Новых уведомлений нет
+  </div>
+
+  <div
+    class="delete-all flex hover hover-underline"
+    *ngIf="list.length !== 0"
+    (click)="deleteAllNotifications()"
+  >
+    Удалить всё
+  </div>
+
+  <app-push-popup-item
+    *ngFor="let item of list"
+    [push]="item"
+    (deleteNotification)="deleteNotification($event)"
+  ></app-push-popup-item>
+</div>
