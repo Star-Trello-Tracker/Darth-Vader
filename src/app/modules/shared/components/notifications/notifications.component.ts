@@ -35,12 +35,10 @@ export class NotificationsComponent implements OnInit, OnDestroy {
   }
 
   public deleteNotification(id: number) {
-    this.notificationService.deleteNotification(id);
-    this.getList();
+    this.list$ = this.notificationService.deleteNotification(id);
   }
 
   public deleteAllNotifications() {
-    this.notificationService.deleteAll();
-    this.getList();
+    this.list$ = this.notificationService.deleteAll();
   }
 }
