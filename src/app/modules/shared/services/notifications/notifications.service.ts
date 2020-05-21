@@ -15,20 +15,22 @@ export class NotificationsService {
 
   public getNotifications(): Observable<INotification[]> {
     if (!this.isTrue) {
+      this.isTrue = true;
       setTimeout(() => {
         this.data = notifications;
-        this.isTrue = true;
       }, 5000);
     }
 
     return of(this.data);
   }
 
-  public deleteNotification(id: number) {
+  public deleteNotification(id: number): Observable<INotification[]> {
     this.data = this.data.filter((elem) => elem.id !== id);
+    return of(this.data);
   }
 
-  public deleteAll() {
+  public deleteAll(): Observable<INotification[]> {
     this.data = [];
+    return of(this.data);
   }
 }
