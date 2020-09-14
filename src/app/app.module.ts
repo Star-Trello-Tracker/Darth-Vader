@@ -7,6 +7,7 @@ import { MainPageModule } from './modules/main-page/main-page.module';
 import { UserModule } from './modules/user/user.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { AuthService } from './auth-services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +17,7 @@ import { AuthService } from './auth-services/auth.service';
     MainPageModule,
     UserModule,
     SharedModule,
+    HttpClientModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
