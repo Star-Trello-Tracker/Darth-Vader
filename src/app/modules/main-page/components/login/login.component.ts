@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { config } from './config';
 import { AuthService } from '../../../../auth-services/auth.service';
+import { ISession } from '../../../../typings';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { AuthService } from '../../../../auth-services/auth.service';
 export class LoginComponent implements OnInit {
   public inputs = config;
   public data = {
-    login: '',
+    email: '',
     password: '',
   };
   public deviceWidth = window.innerWidth;
@@ -20,10 +21,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   public isDisabled() {
-    return !this.data.login || !this.data.password;
+    return !this.data.email || !this.data.password;
   }
 
   public submit() {
-    this.authService.login();
+    this.authService.login(this.data).subscribe((res: ISession) => {
+      if (res.token) {
+        this.authService.successLogin(res);
+      }
+    });
   }
 }

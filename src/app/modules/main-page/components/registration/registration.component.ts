@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { config } from './config';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../../auth-services/auth.service';
+import { ISession } from '../../../../typings';
 
 @Component({
   selector: 'app-registration',
@@ -11,8 +12,8 @@ import { AuthService } from '../../../../auth-services/auth.service';
 export class RegistrationComponent implements OnInit {
   public data = {
     email: '',
-    login: '',
-    password1: '',
+    username: '',
+    password: '',
     password2: '',
   };
   public inputs = config;
@@ -31,14 +32,18 @@ export class RegistrationComponent implements OnInit {
   }
 
   public submit() {
-    this.authService.login();
+    this.authService.register(this.data).subscribe((res: ISession) => {
+      if (res.token) {
+        this.authService.successRegister(res);
+      }
+    });
   }
 
   public isDisabled() {
     return (
       !this.data.email ||
-      !this.data.login ||
-      !this.data.password1 ||
+      !this.data.username ||
+      !this.data.password ||
       !this.data.password2 ||
       this.isInvalidPasswords()
     );
@@ -46,9 +51,9 @@ export class RegistrationComponent implements OnInit {
 
   public isInvalidPasswords() {
     return (
-      this.data.password1 &&
+      this.data.password &&
       this.data.password2 &&
-      this.data.password1 !== this.data.password2
+      this.data.password !== this.data.password2
     );
   }
 }

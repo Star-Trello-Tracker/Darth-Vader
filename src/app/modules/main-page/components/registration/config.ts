@@ -8,14 +8,14 @@ export const config = [
   {
     type: 'text',
     class: 'registration-page__content__registration__form__input_text',
-    placeholder: 'Укажите Ваше имя',
-    ngModel: 'login',
+    placeholder: 'Укажите Ваш username',
+    ngModel: 'username',
   },
   {
     type: 'password',
     class: 'registration-page__content__registration__form__input_text',
     placeholder: 'Придумайте пароль',
-    ngModel: 'password1',
+    ngModel: 'password',
   },
   {
     type: 'password',
