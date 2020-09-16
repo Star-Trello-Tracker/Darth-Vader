@@ -20,7 +20,7 @@
 <div class="auth-header full-width flex" *ngIf="isAuth">
   <div class="auth-header__navigation flex">
     <a
-      routerLink="."
+      [routerLink]="['/', id, 'dashboard']"
       class="auth-header__navigation__link auth-header__navigation__link_margin"
     >
       <span class="auth-header__navigation__link_text">На главную</span>
@@ -54,7 +54,7 @@
     </div>
 
     <a
-      routerLink="."
+      [routerLink]="['/', id, 'profile']"
       class="auth-header__navigation__link auth-header__navigation__link_margin"
     >
       <span class="auth-header__navigation__link_text">Профиль</span>

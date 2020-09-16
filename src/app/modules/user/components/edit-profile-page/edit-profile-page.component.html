@@ -1,0 +1,45 @@
+<div class="full-size flex flex-column edit-profile padding-20">
+  <div class="full-width flex padding-10 edit-profile-container">
+    <div class="edit-profile__avatar flex">
+      <i class="fas fa-user edit-profile__avatar__img"></i>
+    </div>
+
+    <div class="edit-profile__data flex flex-column">
+      <div class="edit-profile__data__item edit-profile__data__name">
+        Имя:
+        <input
+          class="edit-profile__data__item__input"
+          type="text"
+          [(ngModel)]="data.name"
+        />
+      </div>
+
+      <div class="edit-profile__data__item edit-profile__data__name">
+        Фамилия:
+        <input
+          class="edit-profile__data__item__input"
+          type="text"
+          [(ngModel)]="data.surname"
+        />
+      </div>
+
+      <div class="edit-profile__data__item edit-profile__data__name">
+        Telegram:
+        <input
+          class="edit-profile__data__item__input"
+          type="text"
+          [(ngModel)]="data.tgUsername"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <button
+      class="hover padding-10-20 radius-10 edit-profile__save-button"
+      (click)="editProfile()"
+    >
+      Сохранить
+    </button>
+  </div>
+</div>
