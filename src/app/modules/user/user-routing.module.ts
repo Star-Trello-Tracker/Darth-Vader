@@ -1,7 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { EditProfilePageComponent } from './components/edit-profile-page/edit-profile-page.component';
 
 const routes = [
+  {
+    path: 'profile',
+    component: ProfilePageComponent,
+  },
+  {
+    path: 'profile/edit',
+    component: EditProfilePageComponent,
+  },
   {
     path: 'dashboard',
     loadChildren: () =>
