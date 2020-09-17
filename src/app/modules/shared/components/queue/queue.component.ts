@@ -11,7 +11,7 @@ import { AuthService } from '../../../../auth-services/auth.service';
   ],
 })
 export class QueueComponent implements OnInit {
-  @Input() queue: IBoard;
+  @Input() queue: any;
 
   public get userId() {
     return this.authService.getId();

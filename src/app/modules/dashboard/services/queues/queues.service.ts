@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IQueue } from '../../../../typings';
 import { queues } from './queues';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QueuesService {
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
   public getPersonQueues(): Observable<IQueue[]> {
-    return of(queues);
+    return this.httpClient.get<IQueue[]>(`${environment.url}queues`);
   }
 
   public searchQueues(name: string): IQueue[] {
@@ -24,7 +26,6 @@ export class QueuesService {
   }
 
   public createQueue(queue: IQueue): Observable<IQueue> {
-    queues.push(queue);
-    return of(queue);
+    return this.httpClient.post<IQueue>(`${environment.url}queues`, queue);
   }
 }

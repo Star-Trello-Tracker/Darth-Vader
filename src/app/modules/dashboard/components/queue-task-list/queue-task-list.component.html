@@ -16,7 +16,9 @@
 
   <div class="queues-list__creator queues-list__item full-width padding-10-20">
     Создатель:
-    <a class="queues-list__creator_link"> {{ queue.creator.name }}</a>
+    <a class="queues-list__creator_link">
+      {{ queue.creator.name }}{{ queue.creator.surname }}</a
+    >
 
     <div class="queues-list__creator_link__profile-layout padding-20">
       <app-profile-layout [user]="queue.creator"></app-profile-layout>
