@@ -23,16 +23,23 @@ export class UserInterceptor implements HttpInterceptor {
       req = req.clone({
         headers: req.headers.set(
           'Authorization',
-          `Bearer ${this.authService.getToken()}`
+          `${this.authService.getToken()}`
         ),
       });
     }
     return next.handle(req).pipe(
       catchError((err: HttpErrorResponse) => {
+        console.log(err.status);
         if (err.status === 401) {
-          localStorage.clear();
+          console.log(true);
+          localStorage.removeItem('id');
+          localStorage.removeItem('isAuth');
+          localStorage.removeItem('userName');
+          localStorage.removeItem('token');
           this.authService.isAuth.next(false);
-          this.router.navigate(['/']);
+          this.authService.isNotAuth.next(true);
+
+          this.router.navigateByUrl(`/`);
         }
 
         return throwError(err);
