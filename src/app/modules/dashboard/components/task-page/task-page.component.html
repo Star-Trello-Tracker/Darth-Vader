@@ -16,6 +16,10 @@
   </div>
 </div>
 
+<div class="edit-load-popup" *ngIf="isUpdate">
+  Подождите, обновляем задачу....
+</div>
+
 <div class="task-page full-size flex padding-20" *ngIf="task$ | async as task">
   <div
     class="task-page__task-interface task-page__task-interface__touch full-height flex flex-column"
@@ -27,7 +31,7 @@
         <a [routerLink]="getQueueLink(task.key)">{{ getQueue(task.key) }}</a>
       </span>
 
-      <span class="task-page__task-interface__title_task">
+      <span class="task-page__task-interface__title_task" *ngIf="!isEditTitle">
         <span class="task-page__task-interface__title_task_key">{{
           task.key
         }}</span
@@ -39,9 +43,26 @@
         ></i>
       </span>
 
-      <div class="task-page__task-interface__title_edit hover hover-underline">
+      <div class="flex" *ngIf="isEditTitle">
+        <input type="text" [(ngModel)]="taskTitle" class="edit-title" />
+      </div>
+
+      <div
+        *ngIf="!isEditTitle"
+        class="task-page__task-interface__title_edit hover hover-underline"
+        (click)="editTitle()"
+      >
         <i class="fas fa-edit task-page__task-interface__title_edit_icon"></i>
         Редактировать название
+      </div>
+
+      <div
+        *ngIf="isEditTitle"
+        class="task-page__task-interface__title_edit hover hover-underline"
+        (click)="saveTitle(task.id)"
+      >
+        <i class="fas fa-edit task-page__task-interface__title_edit_icon"></i>
+        Сохранить название
       </div>
     </div>
 
@@ -64,14 +85,14 @@
 
           <select
             class="task-page__task-interface__task-status__item_name_select task-page__task-interface__task-status__priority_select hover"
-            (change)="changePriority($event)"
+            (change)="changePriority($event, task.id)"
           >
             <option
-              *ngFor="let status of priorityList; let index = index"
-              [selected]="index + 1 === task.priority"
+              *ngFor="let priority of priorityList; let index = index"
+              [selected]="priority === getTaskPriority(task.priority)"
               [value]="index + 1"
             >
-              {{ status }}
+              {{ priority }}
             </option>
           </select>
         </label>
@@ -93,11 +114,11 @@
 
           <select
             class="task-page__task-interface__task-status__item_name_select task-page__task-interface__task-status_name_select hover"
-            (change)="changeStatus($event)"
+            (change)="changeStatus($event, task.id)"
           >
             <option
               *ngFor="let status of statusList; let index = index"
-              [selected]="index + 1 === task.status"
+              [selected]="getTaskStatus(task.status) === status"
               [value]="index + 1"
             >
               {{ status }}
@@ -107,15 +128,24 @@
       </div>
 
       <div
+        *ngIf="task.status !== 'CLOSED'"
         class="task-page__task-interface__task-status_close border hover scale"
-        (click)="closeTask()"
+        (click)="closeTask(task.id)"
+      >
+        Закрыть задачу
+      </div>
+
+      <div
+        *ngIf="task.status === 'CLOSED'"
+        class="task-page__task-interface__task-status_close border hover scale"
+        (click)="openTask(task.id)"
       >
         Закрыть задачу
       </div>
     </div>
 
     <div
-      class="task-page__task-interface__description flex flex-column padding-20"
+      class="task-page__task-interface__description flex flex-column padding-20 full-width"
     >
       <div
         class="task-page__task-interface__description_title-container full-width flex"
@@ -126,50 +156,73 @@
           Описание задачи
         </div>
         <div
+          *ngIf="!isEditDescription"
           class="task-page__task-interface__description_title-container_edit hover hover-underline"
+          (click)="isEditDescription = true"
         >
           <i
             class="fas fa-edit task-page__task-interface__description_title-container_edit_icon"
           ></i>
           Редактировать описание
         </div>
+
+        <div
+          *ngIf="isEditDescription"
+          class="task-page__task-interface__description_title-container_edit hover hover-underline"
+          (click)="saveDescription(task.id)"
+        >
+          <i
+            class="fas fa-edit task-page__task-interface__description_title-container_edit_icon"
+          ></i>
+          Сохранить описание
+        </div>
       </div>
-      <p class="task-page__task-interface__description_text">
+      <p
+        class="task-page__task-interface__description_text"
+        *ngIf="!isEditDescription"
+      >
         {{ task.description }}
       </p>
 
-      <div
-        class="task-page__task-interface__description__attachments full-width flex flex-column"
-      >
-        <div class="task-page__task-interface__description__attachments_text">
-          Вложения
-        </div>
+      <textarea
+        cols="50"
+        rows="10"
+        [(ngModel)]="description"
+        *ngIf="isEditDescription"
+      ></textarea>
 
-        <div
-          class="task-page__task-interface__description__attachments_toggle hover hover-underline"
-          *ngIf="!showAttachments"
-          (click)="toggleAttachments()"
-        >
-          Показать вложения
-          <i class="far fa-eye"></i>
-        </div>
+      <!--      <div-->
+      <!--        class="task-page__task-interface__description__attachments full-width flex flex-column"-->
+      <!--      >-->
+      <!--        <div class="task-page__task-interface__description__attachments_text">-->
+      <!--          Вложения-->
+      <!--        </div>-->
 
-        <div
-          class="task-page__task-interface__description__attachments_toggle hover hover-underline"
-          *ngIf="showAttachments"
-          (click)="toggleAttachments()"
-        >
-          Скрыть вложения
-          <i class="fas fa-eye-slash"></i>
-        </div>
+      <!--        <div-->
+      <!--          class="task-page__task-interface__description__attachments_toggle hover hover-underline"-->
+      <!--          *ngIf="!showAttachments"-->
+      <!--          (click)="toggleAttachments()"-->
+      <!--        >-->
+      <!--          Показать вложения-->
+      <!--          <i class="far fa-eye"></i>-->
+      <!--        </div>-->
 
-        <div
-          class="task-page__task-interface__description__attachments_show hover-underline"
-          *ngIf="showAttachments"
-        >
-          Вложений нет
-        </div>
-      </div>
+      <!--        <div-->
+      <!--          class="task-page__task-interface__description__attachments_toggle hover hover-underline"-->
+      <!--          *ngIf="showAttachments"-->
+      <!--          (click)="toggleAttachments()"-->
+      <!--        >-->
+      <!--          Скрыть вложения-->
+      <!--          <i class="fas fa-eye-slash"></i>-->
+      <!--        </div>-->
+
+      <!--        <div-->
+      <!--          class="task-page__task-interface__description__attachments_show hover-underline"-->
+      <!--          *ngIf="showAttachments"-->
+      <!--        >-->
+      <!--          Вложений нет-->
+      <!--        </div>-->
+      <!--      </div>-->
     </div>
 
     <div
@@ -198,7 +251,7 @@
     <div class="task-page__info_item full-width padding-20">
       Создатель:
       <a routerLink="." class="task-page__info_item_link profile-link">
-        {{ task.creator.name }}
+        {{ task.creator.name }} {{ task.creator.surname }}
         <div class="task-page__info_item_link__profile-layout profile-layout">
           <app-profile-layout [user]="task.creator"></app-profile-layout>
         </div>
@@ -207,26 +260,46 @@
 
     <div class="task-page__info_item full-width padding-20">
       Исполнитель:
-      <a routerLink="." class="task-page__info_item_link profile-link">
-        {{ task.person.name }}
+      <a routerLink="." class="task-page__info_item_link profile-link hover">
+        {{ getAssigneeName(task.assignee) }}
         <div
-          *ngIf="task.person"
+          *ngIf="task.assignee"
           class="task-page__info_item_link__profile-layout profile-layout"
         >
-          <app-profile-layout [user]="task.person"></app-profile-layout>
+          <!--          <app-profile-layout [user]="task.assignee"></app-profile-layout>-->
         </div>
+
+        <label
+          *ngIf="canAssignUser(task.creator.id)"
+          class="task-page__info_item_link_assignee hover"
+        >
+          <select
+            *ngIf="usernames$ | async as usernames"
+            class="task-page__info_item_link_assignee_select"
+            (change)="assignUser($event)"
+          >
+            <option>Не назначено</option>
+            <option
+              *ngFor="let username of usernames"
+              [selected]="task.assignee?.username === assignUsername"
+              [value]="username[0]"
+            >
+              {{ username[1] }} {{ username[2] }}
+            </option>
+          </select>
+        </label>
       </a>
     </div>
 
     <div class="task-page__info_item full-width padding-20">
       Наблюдатели:
       <a routerLink="." class="task-page__info_item_link profile-link">
-        {{ task.observers[0].name }}
+        <!--        {{ task.observers[0].name }}-->
         <div
           *ngIf="task.observers"
           class="task-page__info_item_link__profile-layout profile-layout"
         >
-          <app-profile-layout [user]="task.observers[0]"></app-profile-layout>
+          <!--          <app-profile-layout [user]="task.observers[0]"></app-profile-layout>-->
         </div>
       </a>
     </div>
@@ -234,12 +307,12 @@
     <div class="task-page__info_item full-width padding-20">
       Нужен ответ пользователей:
       <a routerLink="." class="task-page__info_item_link profile-link">
-        {{ task.observers[0].name }}
+        <!--        {{ task.observers[0].name }}-->
         <div
           *ngIf="task.needAnswer"
           class="task-page__info_item_link__profile-layout profile-layout"
         >
-          <app-profile-layout [user]="task.needAnswer[0]"></app-profile-layout>
+          <!--          <app-profile-layout [user]="task.needAnswer[0]"></app-profile-layout>-->
         </div>
       </a>
     </div>

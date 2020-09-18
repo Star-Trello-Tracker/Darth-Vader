@@ -79,7 +79,7 @@
               *ngFor="let username of usernames; let index = index"
               [selected]="index === selectedAssignee"
             >
-              {{ username }}
+              {{ username[1] }} {{ username[2] }}
             </option>
           </select>
         </label>
@@ -104,7 +104,7 @@
               *ngFor="let username of notSelected(usernames); let index = index"
               [value]="username"
             >
-              {{ username }}
+              {{ username[1] }} {{ username[2] }}
             </option>
           </select>
         </label>

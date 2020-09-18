@@ -6,15 +6,15 @@
 
     <div class="profile-layout__about__person flex flex-column">
       <a class="profile-layout__about__person_name">
-        {{ user.name }}
+        {{ user.name }} {{ user.surname }}
       </a>
 
       <div class="profile-layout__about__person_job">
-        {{ user.job }}
+        Погроммист
       </div>
 
       <div class="profile-layout__about__person_online">
-        Был в сети сегодня в 12:50
+        Зарегистрирован: {{ user.created | update }}
       </div>
     </div>
   </div>

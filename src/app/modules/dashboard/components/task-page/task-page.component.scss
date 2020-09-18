@@ -172,6 +172,26 @@
         position: relative;
         padding: 5px;
 
+        &_assignee {
+          position: absolute;
+          left: 0;
+          opacity: 0;
+
+          &_select {
+            &:hover {
+              cursor: pointer;
+            }
+          }
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+
         &__profile-layout {
           display: none;
           background-color: white;
@@ -208,6 +228,28 @@
       background-color: #e0fbfc;
     }
   }
+}
+
+.edit-load-popup {
+  z-index: 999;
+  background-color: white;
+  opacity: 50%;
+
+  font-size: 50px;
+  color: black;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-title {
+  padding: 3px;
+  font-size: 20px;
+  border-radius: 3px;
 }
 
 @media screen and (max-device-width: 800px) {

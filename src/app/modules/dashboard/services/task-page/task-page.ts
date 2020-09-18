@@ -21,7 +21,7 @@ export const task: ITaskPage = {
         tenetur.`,
   comments: [],
   creator: user,
-  person: user,
+  assignee: user,
   observers: [user],
   needAnswer: [user],
   storyPoints: 10,

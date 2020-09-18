@@ -29,7 +29,7 @@ export interface ITaskPage {
    * 6 - solved
    * 7 - closed
    */
-  status: TaskStatus;
+  status: any;
 
   /**
    * Приоритет задачи
@@ -65,7 +65,7 @@ export interface ITaskPage {
   /**
    * Исполнитель
    */
-  person?: IUser;
+  assignee?: IUser;
 
   /**
    * Наблюдатели

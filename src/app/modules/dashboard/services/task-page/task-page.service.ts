@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ITaskPage, TaskPriority, TaskStatus } from '../../../../typings';
-import { task } from './task-page';
-import { of } from 'rxjs/internal/observable/of';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -46,26 +46,32 @@ export class TaskPageService {
     CRITICAL_BUG: 'Критичный баг',
   };
 
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
+
+  public getAllUsernames(): Observable<string[]> {
+    return this.httpClient.get<string[]>(`${environment.url}user/fullnames`);
+  }
 
   public getPriorityByEnam(priority) {
     return this.taskPriorityMap[priority];
   }
 
-  public getPriorityId(priority) {
-    return this.taskPriority.indexOf(priority);
+  public getPriorityId(priority): TaskStatus {
+    return this.taskPriority.indexOf(priority) as TaskStatus;
   }
 
-  public getStatusByEnum(status) {
+  public getStatusByEnum(status: string) {
     return this.taskStatusMap[status];
   }
 
-  public getStatusId(status) {
+  public getStatusId(status: string) {
+    console.log(status);
+    console.log(this.taskStatus.indexOf(status));
     return this.taskStatus.indexOf(status) + 1;
   }
 
-  public getTask(): Observable<ITaskPage> {
-    return of(task);
+  public getTask(path: string): Observable<any> {
+    return this.httpClient.get(`${environment.url}tasks/${path}`);
   }
 
   public getTaskStatus(status: TaskStatus): string {
@@ -76,8 +82,11 @@ export class TaskPageService {
     return this.taskStatus;
   }
 
-  public changeTaskStatus(status: TaskStatus) {
-    task.status = status;
+  public changeTaskStatus(status: TaskStatus, id: number): Observable<any> {
+    return this.httpClient.post<any>(
+      `${environment.url}tasks/${id}/status/change`,
+      status
+    );
   }
 
   public getTaskPriority(priority: TaskPriority): string {
@@ -88,7 +97,24 @@ export class TaskPageService {
     return this.taskPriority;
   }
 
-  public changeTaskPriority(priority: TaskPriority) {
-    task.priority = priority;
+  public changeTaskPriority(
+    priority: TaskPriority,
+    id: number
+  ): Observable<any> {
+    return this.httpClient.post<any>(
+      `${environment.url}tasks/${id}/priority/change`,
+      priority
+    );
+  }
+
+  public editTitle(title: string, taskId: number) {
+    // return this.httpClient.post(`${environment.url}tasks/${taskId}/title/change`, { title });
+  }
+
+  public editDescription(description: string, id: number): Observable<any> {
+    return this.httpClient.post<any>(
+      `${environment.url}tasks/${id}/description/change`,
+      description
+    );
   }
 }

@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ITaskPage, TaskPriority, TaskStatus } from '../../../../typings';
+import {
+  ITaskPage,
+  IUser,
+  TaskPriority,
+  TaskStatus,
+} from '../../../../typings';
 import { TaskPageService } from '../../services/task-page/task-page.service';
 import { AuthService } from '../../../../auth-services/auth.service';
 import { CommonService } from '../../../shared/services/common.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-page',
@@ -11,10 +17,23 @@ import { CommonService } from '../../../shared/services/common.service';
   styleUrls: ['./task-page.component.scss'],
 })
 export class TaskPageComponent implements OnInit {
-  public showTask = true;
   public task$: Observable<ITaskPage>;
+  public usernames$: Observable<string[]>;
+
+  public isUpdate = false;
+
+  public showTask = true;
   public showAttachments = false;
   public hasClipboard = !!navigator.clipboard;
+  public taskKey = this.router.url.split('/').pop();
+
+  public assignUsername = '';
+
+  public isEditTitle = false;
+  public taskTitle = '';
+
+  public isEditDescription = false;
+  public description = '';
 
   public get statusList(): string[] {
     return this.taskPageService.getTaskStatusList();
@@ -27,19 +46,38 @@ export class TaskPageComponent implements OnInit {
   constructor(
     private taskPageService: TaskPageService,
     private authService: AuthService,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.task$ = this.taskPageService.getTask();
+    this.getTaskData();
+    this.taskPageService.getTask(this.taskKey).subscribe((res: ITaskPage) => {
+      this.taskTitle = res.title;
+      this.description = res.description;
+      console.log(res);
+    });
+    this.usernames$ = this.taskPageService.getAllUsernames();
+  }
+
+  private getTaskData() {
+    this.task$ = this.taskPageService.getTask(this.taskKey);
+  }
+
+  public getTaskPriorityId(priority: string): TaskStatus {
+    return this.taskPageService.getPriorityId(priority);
   }
 
   public getTaskPriority(priority: TaskPriority): string {
-    return this.taskPageService.getTaskPriority(priority);
+    return this.taskPageService.getPriorityByEnam(priority);
   }
 
-  public getTaskStatus(status: TaskStatus): string {
-    return this.taskPageService.getTaskStatus(status);
+  public getTaskStatus(status: string): string {
+    return this.taskPageService.getStatusByEnum(status);
+  }
+
+  public getTaskStatusId(status: string) {
+    return this.taskPageService.getStatusId(status);
   }
 
   public toggle(tab: boolean) {
@@ -66,24 +104,86 @@ export class TaskPageComponent implements OnInit {
     });
   }
 
-  public changeStatus(event: Event) {
-    this.taskPageService.changeTaskStatus(
-      // @ts-ignore
-      (event.target.options.selectedIndex + 1) as TaskStatus
-    );
-    this.task$ = this.taskPageService.getTask();
+  public changeStatus(event: Event, taskId: number) {
+    this.isUpdate = true;
+    this.taskPageService
+      .changeTaskStatus(
+        // @ts-ignore
+        (event.target.options.selectedIndex + 1) as TaskStatus,
+        taskId
+      )
+      .subscribe((res) => {
+        this.getTaskData();
+        this.isUpdate = false;
+      });
   }
 
-  public closeTask() {
-    this.taskPageService.changeTaskStatus(7);
-    this.task$ = this.taskPageService.getTask();
+  public closeTask(taskId: number) {
+    this.isUpdate = true;
+    this.taskPageService.changeTaskStatus(7, taskId).subscribe((res) => {
+      this.getTaskData();
+      this.isUpdate = false;
+    });
   }
 
-  changePriority(event: Event) {
-    this.taskPageService.changeTaskPriority(
-      // @ts-ignore
-      (event.target.options.selectedIndex + 1) as TaskPriority
-    );
-    this.task$ = this.taskPageService.getTask();
+  public openTask(taskId: number) {
+    this.isUpdate = true;
+    this.taskPageService.changeTaskStatus(1, taskId).subscribe((res) => {
+      this.getTaskData();
+      this.isUpdate = false;
+    });
+  }
+
+  public changePriority(event: Event, taskId: number) {
+    this.isUpdate = true;
+    this.taskPageService
+      .changeTaskPriority(
+        // @ts-ignore
+        (event.target.options.selectedIndex + 1) as TaskPriority,
+        taskId
+      )
+      .subscribe((res) => {
+        this.getTaskData();
+        this.isUpdate = false;
+      });
+  }
+
+  public getAssigneeName(person: IUser) {
+    if (!person) {
+      return 'Не назначен';
+    }
+
+    return `${person.name} ${person.surname}`;
+  }
+
+  public canAssignUser(id: number): boolean {
+    return id === parseInt(this.authService.getId(), 10);
+  }
+
+  public assignUser(event: Event) {
+    // @ts-ignore
+    this.assignUsername = event.target.value;
+  }
+
+  public editTitle() {
+    this.isEditTitle = true;
+  }
+
+  public saveTitle(id: number) {
+    this.isUpdate = true;
+    this.taskPageService.editTitle(this.taskTitle, id);
+    this.isEditTitle = false;
+    this.isUpdate = false;
+  }
+
+  public saveDescription(id: number) {
+    this.isUpdate = true;
+    this.taskPageService
+      .editDescription(this.description, id)
+      .subscribe((res) => {
+        this.getTaskData();
+        this.isEditDescription = false;
+        this.isUpdate = false;
+      });
   }
 }
