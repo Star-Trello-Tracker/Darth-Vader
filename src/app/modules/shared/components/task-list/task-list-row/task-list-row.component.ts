@@ -10,7 +10,7 @@ import { CommonService } from '../../../services/common.service';
   styleUrls: ['./task-list-row.component.scss'],
 })
 export class TaskListRowComponent implements OnInit {
-  @Input() data: ITask;
+  @Input() data: any;
 
   public get queueUrl() {
     return `/${this.authService.getId()}/dashboard/${this.commonService.getQueueByTaskKey(
@@ -29,7 +29,7 @@ export class TaskListRowComponent implements OnInit {
   ) {}
 
   public getTaskStatus(status: TaskStatus) {
-    return this.taskPageService.getTaskStatus(status);
+    return this.taskPageService.getStatusByEnum(status);
   }
 
   ngOnInit(): void {}
