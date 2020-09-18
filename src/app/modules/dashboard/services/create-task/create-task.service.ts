@@ -18,6 +18,6 @@ export class CreateTaskService {
   }
 
   public getAllUsernames(): Observable<string[]> {
-    return this.httpClient.get<string[]>(`${environment.url}user/usernames`);
+    return this.httpClient.get<string[]>(`${environment.url}user/fullnames`);
   }
 }

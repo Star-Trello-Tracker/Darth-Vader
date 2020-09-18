@@ -32,7 +32,7 @@ export class AuthService {
   public successRegister(data: any) {
     this.setStorage(data);
 
-    this.router.navigateByUrl(`/${data.userId}`);
+    this.router.navigateByUrl(`/${data.userId}/profile/edit`);
   }
 
   public setStorage(data: any) {

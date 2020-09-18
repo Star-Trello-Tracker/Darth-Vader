@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserInfoPageService } from '../../services/user-info-page.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../../auth-services/auth.service';
 
 @Component({
   selector: 'app-edit-profile-page',
@@ -7,14 +10,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditProfilePageComponent implements OnInit {
   public data = {
-    name: 'Иван',
-    surname: 'Авдеев',
+    name: '',
+    surname: '',
     tgUsername: '',
   };
 
-  constructor() {}
+  public isLoad = false;
 
-  ngOnInit(): void {}
+  constructor(
+    private editInfoPageService: UserInfoPageService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
-  public editProfile() {}
+  ngOnInit(): void {
+    this.editInfoPageService.getUserInfo().subscribe((res) => {
+      this.data.name = res.name;
+      this.data.surname = res.surname;
+      this.data.tgUsername = res.tgUsername;
+
+      this.isLoad = true;
+    });
+  }
+
+  public isDisabled() {
+    return !this.data.name && !this.data.surname;
+  }
+
+  public editProfile() {
+    this.editInfoPageService.editProfile(this.data).subscribe((res) => {
+      this.router.navigateByUrl(`${this.authService.getId()}/profile`);
+    });
+  }
 }

@@ -59,7 +59,9 @@ export class CreateTaskComponent implements OnInit {
   public getSelectedAssignee(usernames: string[]) {
     return this.selectedAssignee === -1
       ? 'Не назначено'
-      : usernames[this.selectedAssignee];
+      : `${usernames[this.selectedAssignee][1] || ''} ${
+          usernames[this.selectedAssignee][2] || ''
+        }`;
   }
 
   public changeSelectedAssignee(event: Event) {
@@ -82,12 +84,12 @@ export class CreateTaskComponent implements OnInit {
     }
 
     if (!this.selectedObservers.includes(username)) {
-      this.selectedObservers.push(username);
+      this.selectedObservers.push(username.split(','));
     }
   }
 
   public notSelected(usernames: string[]) {
-    return usernames.filter((el, i) => {
+    return usernames.filter((el) => {
       return !this.selectedObservers.includes(el);
     });
   }
@@ -97,7 +99,7 @@ export class CreateTaskComponent implements OnInit {
       return 'Не выбраны';
     }
 
-    return this.selectedObservers.join(', ');
+    return this.selectedObservers.map((el) => `${el[1]} ${el[2]}`).join(', ');
   }
 
   public createTask(queues: string[]) {

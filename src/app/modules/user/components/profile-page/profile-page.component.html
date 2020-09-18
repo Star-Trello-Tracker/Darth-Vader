@@ -1,4 +1,7 @@
-<div class="full-size flex flex-column profile padding-20">
+<div
+  class="full-size flex flex-column profile padding-20"
+  *ngIf="userData$ | async as data"
+>
   <div class="full-width flex padding-10 profile-container">
     <div class="profile__avatar flex">
       <i class="fas fa-user profile__avatar__img"></i>
@@ -7,17 +10,21 @@
     <div class="profile__data flex flex-column">
       <div class="profile__data__item profile__data__name">
         Имя:
-        <span class="profile__data__name_text">Авдеев Иван</span>
+        <span class="profile__data__name_text">{{
+          getUserFullname(data.surname, data.name)
+        }}</span>
       </div>
 
       <div class="profile__data__item profile__data__name">
         Логин:
-        <span class="profile__data__name_text">avdeev1</span>
+        <span class="profile__data__name_text">{{ data.username }}</span>
       </div>
 
       <div class="profile__data__item profile__data__name">
         Telegram:
-        <span class="profile__data__name_text">Не указано</span>
+        <span class="profile__data__name_text">{{
+          data.tgUsername || "Не указано"
+        }}</span>
       </div>
     </div>
   </div>

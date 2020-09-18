@@ -5,4 +5,5 @@ export interface IUser {
   surname?: string;
   job: string;
   offline: number;
+  created?: number;
 }

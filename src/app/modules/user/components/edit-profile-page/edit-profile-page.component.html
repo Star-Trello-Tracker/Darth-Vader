@@ -1,4 +1,4 @@
-<div class="full-size flex flex-column edit-profile padding-20">
+<div class="full-size flex flex-column edit-profile padding-20" *ngIf="isLoad">
   <div class="full-width flex padding-10 edit-profile-container">
     <div class="edit-profile__avatar flex">
       <i class="fas fa-user edit-profile__avatar__img"></i>
@@ -11,6 +11,7 @@
           class="edit-profile__data__item__input"
           type="text"
           [(ngModel)]="data.name"
+          placeholder="Ваше имя"
         />
       </div>
 
@@ -20,6 +21,7 @@
           class="edit-profile__data__item__input"
           type="text"
           [(ngModel)]="data.surname"
+          placeholder="Ваша фамилия"
         />
       </div>
 
@@ -29,6 +31,7 @@
           class="edit-profile__data__item__input"
           type="text"
           [(ngModel)]="data.tgUsername"
+          placeholder="Ваш телеграм"
         />
       </div>
     </div>
@@ -38,6 +41,8 @@
     <button
       class="hover padding-10-20 radius-10 edit-profile__save-button"
       (click)="editProfile()"
+      [disabled]="isDisabled()"
+      [class.disabled]="isDisabled()"
     >
       Сохранить
     </button>

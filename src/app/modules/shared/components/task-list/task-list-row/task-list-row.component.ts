@@ -28,7 +28,7 @@ export class TaskListRowComponent implements OnInit {
     private commonService: CommonService
   ) {}
 
-  public getTaskStatus(status: TaskStatus) {
+  public getTaskStatus(status: string) {
     return this.taskPageService.getStatusByEnum(status);
   }
 

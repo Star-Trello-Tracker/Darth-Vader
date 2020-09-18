@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { UserInfoPageService } from '../../services/user-info-page.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -6,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-page.component.scss'],
 })
 export class ProfilePageComponent implements OnInit {
-  constructor() {}
+  public userData$: Observable<any>;
 
-  ngOnInit(): void {}
+  constructor(private userInfoPageService: UserInfoPageService) {}
+
+  ngOnInit(): void {
+    this.userData$ = this.userInfoPageService.getUserInfo();
+  }
+
+  public getUserFullname(surname: string, name: string) {
+    return `${surname} ${name}`;
+  }
 }

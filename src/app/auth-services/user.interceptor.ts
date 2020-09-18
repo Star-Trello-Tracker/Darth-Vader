@@ -29,7 +29,6 @@ export class UserInterceptor implements HttpInterceptor {
     }
     return next.handle(req).pipe(
       catchError((err: HttpErrorResponse) => {
-        console.log(err.status);
         if (err.status === 401) {
           console.log(true);
           localStorage.removeItem('id');
