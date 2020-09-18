@@ -18,6 +18,16 @@ export class TaskPageService {
     'Закрыта',
   ];
 
+  private taskStatusMap = {
+    OPEN: 'Открыта',
+    IN_PROGRESS: 'В работе',
+    NEED_INFO: 'Нужна информация',
+    IN_REVIEW: 'В ревью',
+    TESTING: 'В тестировании',
+    SOLVED: 'Решена',
+    CLOSED: 'Закрыта',
+  };
+
   private taskPriority: string[] = [
     'Минор',
     'Средний',
@@ -27,7 +37,32 @@ export class TaskPageService {
     'Критичный баг',
   ];
 
+  private taskPriorityMap = {
+    MINOR: 'Минор',
+    NORMAL: 'Средний',
+    HIGH: 'Высокий',
+    BLOCKER: 'Блокер',
+    BUG: 'Баг',
+    CRITICAL_BUG: 'Критичный баг',
+  };
+
   constructor() {}
+
+  public getPriorityByEnam(priority) {
+    return this.taskPriorityMap[priority];
+  }
+
+  public getPriorityId(priority) {
+    return this.taskPriority.indexOf(priority);
+  }
+
+  public getStatusByEnum(status) {
+    return this.taskStatusMap[status];
+  }
+
+  public getStatusId(status) {
+    return this.taskStatus.indexOf(status) + 1;
+  }
 
   public getTask(): Observable<ITaskPage> {
     return of(task);

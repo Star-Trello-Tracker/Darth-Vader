@@ -8,13 +8,16 @@ import { TaskPageService } from '../../../dashboard/services/task-page/task-page
   styleUrls: ['./priority.component.scss'],
 })
 export class PriorityComponent implements OnInit {
-  @Input() priority: TaskPriority;
+  @Input() priority;
+  public priorityId = 1;
 
   public get placeholder() {
-    return this.taskPageService.getTaskPriority(this.priority);
+    return this.taskPageService.getPriorityByEnam(this.priority);
   }
 
   constructor(private taskPageService: TaskPageService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.priorityId = this.taskPageService.getPriorityId(this.placeholder) + 1;
+  }
 }

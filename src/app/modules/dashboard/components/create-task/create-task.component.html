@@ -1,0 +1,134 @@
+<div
+  class="create-task flex flex-column padding-20 full-size"
+  *ngIf="queues$ | async as queues"
+>
+  <div class="create-task__header">
+    Создать задачу
+  </div>
+
+  <div class="hr"></div>
+
+  <div class="create-container flex full-size">
+    <div class="create-task__queue flex">
+      Выберите очередь:
+      <span class="create-task__queue_selected">
+        {{ getSelectedQueue(queues) }}
+        <label class="create-task__queue_label">
+          <select
+            class="create-task__queue_label_select hover"
+            (change)="changeSelectedQueue($event)"
+          >
+            <option
+              *ngFor="let queue of queues; let index = index"
+              [selected]="index === selectedQueue"
+            >
+              {{ queue }}
+            </option>
+          </select>
+        </label>
+      </span>
+    </div>
+
+    <div class="create-task__title flex">
+      Введите название:
+      <input
+        type="text"
+        class="create-task__title_input"
+        [(ngModel)]="taskTitle"
+      />
+    </div>
+
+    <div class="create-task__priority flex">
+      Приоритет:
+      <span class="create-task__priority_selected">
+        {{ getSelectedPriority() }}
+        <label class="create-task__priority_label">
+          <select
+            class="create-task__priority_label_select hover"
+            (change)="changeSelectedPriority($event)"
+          >
+            <option
+              *ngFor="let priority of prioritiesList; let index = index"
+              [selected]="index === selectedPriority - 1"
+            >
+              {{ priority }}
+            </option>
+          </select>
+        </label>
+      </span>
+    </div>
+  </div>
+
+  <div class="create-container flex full-size">
+    <div
+      class="create-task__assignee flex"
+      *ngIf="usernames$ | async as usernames"
+    >
+      Назначить задачу на:
+      <span class="create-task__assignee_selected"
+        >{{ getSelectedAssignee(usernames) }}
+        <label class="create-task__assignee_label">
+          <select
+            class="create-task__assignee_label_select hover"
+            (change)="changeSelectedAssignee($event)"
+          >
+            <option [selected]="selectedAssignee === -1">
+              Не назначать
+            </option>
+            <option
+              *ngFor="let username of usernames; let index = index"
+              [selected]="index === selectedAssignee"
+            >
+              {{ username }}
+            </option>
+          </select>
+        </label>
+      </span>
+    </div>
+
+    <div
+      class="create-task__observers flex"
+      *ngIf="usernames$ | async as usernames"
+    >
+      Наблюдатели:
+      <span class="create-task__observers_selected"
+        >{{ getSelectedObservers() }}
+        <label class="create-task__observers_label">
+          <select
+            class="create-task__observers_label_select hover"
+            (change)="changeSelectedObservers($event)"
+          >
+            <option></option>
+            <option>Не назначать</option>
+            <option
+              *ngFor="let username of notSelected(usernames); let index = index"
+              [value]="username"
+            >
+              {{ username }}
+            </option>
+          </select>
+        </label>
+      </span>
+    </div>
+  </div>
+
+  <div class="create-task__description flex flex-column full-width">
+    <div class="create-task__description__header">Описание задачи:</div>
+    <textarea
+      class="create-task__description__text"
+      [(ngModel)]="taskDescription"
+      id=""
+      cols="50"
+      rows="10"
+    ></textarea>
+  </div>
+
+  <div class="create-task__submit">
+    <div
+      class="create-task__submit__button hover padding-10-20 radius-10"
+      (click)="createTask(queues)"
+    >
+      Создать
+    </div>
+  </div>
+</div>

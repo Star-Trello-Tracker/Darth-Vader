@@ -5,6 +5,8 @@ import { of } from 'rxjs/internal/observable/of';
 import { Observable } from 'rxjs';
 import { ITask, IUser } from '../../../../typings';
 import { CommonService } from '../../../shared/services/common.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +23,10 @@ export class TaskListService {
     4: 'refresh',
   };
 
-  constructor(private commonService: CommonService) {}
+  constructor(
+    private commonService: CommonService,
+    private httpClient: HttpClient
+  ) {}
 
   public getQueues(): string[] {
     const queuesList = Array.from(
@@ -46,20 +51,25 @@ export class TaskListService {
     );
   }
 
-  public getDefaultTaskList(isQueue: boolean): Observable<ITask[]> {
+  public getDefaultTaskList(
+    isQueue: boolean,
+    path?: string
+  ): Observable<ITask[]> {
     if (!isQueue) {
       return this.getAllTasksList();
     }
 
-    return this.getQueueTasksList();
+    return this.getQueueTasksList(path);
   }
 
   public getAllTasksList(): Observable<ITask[]> {
     return this.sortBySelectedColumn(false, 4, false);
   }
 
-  public getQueueTasksList(): Observable<ITask[]> {
-    return of(queue.taskList);
+  public getQueueTasksList(path: string): Observable<ITask[]> {
+    return this.httpClient.get<ITask[]>(
+      `${environment.url}queues/${path}/tasks`
+    );
   }
 
   public getFilteredData(

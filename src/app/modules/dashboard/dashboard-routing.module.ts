@@ -10,6 +10,7 @@ import { QueueTaskListComponent } from './components/queue-task-list/queue-task-
 import { BoardPageComponent } from './components/board-page/board-page.component';
 import { CreateQueueComponent } from './components/create-queue/create-queue.component';
 import { TaskPageComponent } from './components/task-page/task-page.component';
+import { CreateTaskComponent } from './components/create-task/create-task.component';
 
 const routes = [
   {
@@ -37,7 +38,11 @@ const routes = [
             component: DashboardTasksListComponent,
           },
           {
-            path: 'queues',
+            path: 'create-task',
+            component: CreateTaskComponent,
+          },
+          {
+            path: 'search',
             component: SearchComponent,
           },
           {

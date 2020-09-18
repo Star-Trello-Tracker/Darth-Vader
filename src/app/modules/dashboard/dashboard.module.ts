@@ -19,6 +19,8 @@ import { CreateQueueComponent } from './components/create-queue/create-queue.com
 import { QueuesService } from './services/queues/queues.service';
 import { TaskPageComponent } from './components/task-page/task-page.component';
 import { TaskPageService } from './services/task-page/task-page.service';
+import { CreateTaskComponent } from './components/create-task/create-task.component';
+import { CreateTaskService } from './services/create-task/create-task.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { TaskPageService } from './services/task-page/task-page.service';
     BoardPageComponent,
     CreateQueueComponent,
     TaskPageComponent,
+    CreateTaskComponent,
   ],
   imports: [
     CommonModule,
@@ -46,6 +49,7 @@ import { TaskPageService } from './services/task-page/task-page.service';
     QueuesTaskListService,
     QueuesService,
     TaskPageService,
+    CreateTaskService,
   ],
 })
 export class DashboardModule {}

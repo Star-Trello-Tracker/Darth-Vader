@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ITask } from '../../../../../typings';
 import { TaskListService } from '../../../../dashboard/services/task-list/task-list.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-list-page',
@@ -10,6 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class TaskListPageComponent implements OnInit {
   @Input() queue = false;
+  private path = this.router.url.split('/').pop();
+
   public list$: Observable<ITask[]>;
 
   public all = true;
@@ -25,10 +28,13 @@ export class TaskListPageComponent implements OnInit {
     return this.queuesList[this.selectedQueue];
   }
 
-  constructor(private taskListService: TaskListService) {}
+  constructor(
+    private taskListService: TaskListService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.list$ = this.taskListService.getDefaultTaskList(this.queue);
+    this.list$ = this.taskListService.getDefaultTaskList(this.queue, this.path);
     this.queuesList = this.taskListService.getQueues();
   }
 

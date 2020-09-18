@@ -1,0 +1,151 @@
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+.create-task {
+  box-sizing: border-box;
+
+  &__header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  &__queue {
+    margin-right: 40px;
+    position: relative;
+
+    &_selected {
+      color: #ee6c4d;
+      margin-left: 5px;
+      display: inline-block;
+      position: relative;
+    }
+
+    &_label {
+      position: absolute;
+      left: 0;
+      opacity: 0;
+    }
+  }
+
+  &__title {
+    align-items: center;
+    margin-right: 40px;
+
+    &_input {
+      padding: 3px;
+      margin-left: 5px;
+      width: 200px;
+
+      font-size: 16px;
+    }
+  }
+
+  &__priority {
+    position: relative;
+
+    &_selected {
+      color: #ee6c4d;
+      margin-left: 5px;
+      display: inline-block;
+      position: relative;
+    }
+
+    &_label {
+      position: absolute;
+      left: 0;
+      opacity: 0;
+    }
+  }
+
+  &__assignee {
+    position: relative;
+    align-items: center;
+    margin-right: 40px;
+
+    &_selected {
+      color: #ee6c4d;
+      margin-left: 5px;
+      display: inline-block;
+      position: relative;
+
+      min-width: 110px;
+    }
+
+    &_label {
+      position: absolute;
+      left: 0;
+      opacity: 0;
+    }
+  }
+
+  &__observers {
+    position: relative;
+    align-items: center;
+
+    &_selected {
+      color: #ee6c4d;
+      margin-left: 5px;
+      display: inline-block;
+      position: relative;
+    }
+
+    &_label {
+      position: absolute;
+      left: 0;
+      opacity: 0;
+
+      &_select {
+      }
+    }
+  }
+
+  &__description {
+    margin-top: 20px;
+
+    &__header {
+      font-weight: bolder;
+      margin-bottom: 10px;
+    }
+
+    &__text {
+      padding: 5px;
+      font-size: 16px;
+    }
+  }
+
+  &__submit {
+    margin-top: 20px;
+
+    &__button {
+      display: inline-block;
+
+      background-color: #e0fbfc;
+      color: #3d5a80;
+      border: 1px solid #3d5a80;
+
+      transition-property: transform;
+      transition-duration: 0.5s;
+
+      &:hover {
+        transform: scale(1.05);
+        text-decoration: none;
+
+        transition-property: transform;
+        transition-duration: 0.5s;
+      }
+    }
+  }
+}
+
+.hr {
+  width: 100%;
+  border-bottom: 1px solid #293241;
+}
+
+.create-container {
+  margin-top: 20px;
+  align-items: center;
+}
