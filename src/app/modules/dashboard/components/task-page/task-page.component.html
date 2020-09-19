@@ -295,10 +295,10 @@
             class="task-page__info_item_link_assignee_select"
             (change)="assignUser($event, task.id)"
           >
-            <option [selected]="!task.assignee">Не назначено</option>
+            <option>Не назначено</option>
             <option
               *ngFor="let username of usernames"
-              [selected]="task.assignee?.username === assignUsername"
+              [selected]="task.assignee?.username === username[0]"
               [value]="username[0]"
             >
               {{ username[1] }} {{ username[2] }}
@@ -334,12 +334,11 @@
     <div class="task-page__info_item full-width padding-20">
       Нужен ответ пользователей:
       <a routerLink="." class="task-page__info_item_link profile-link">
-        <!--        {{ task.observers[0].name }}-->
         <div
-          *ngIf="task.needAnswer"
+          *ngIf="task.calledUsers"
           class="task-page__info_item_link__profile-layout profile-layout"
         >
-          <!--          <app-profile-layout [user]="task.needAnswer[0]"></app-profile-layout>-->
+          <!--          <app-profile-layout [user]="task.calledUsers[0]"></app-profile-layout>-->
         </div>
       </a>
     </div>

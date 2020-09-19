@@ -66,20 +66,12 @@ export class TaskPageComponent implements OnInit {
     this.task$ = this.taskPageService.getTask(this.taskKey);
   }
 
-  public getTaskPriorityId(priority: string): number {
-    return this.taskPageService.getPriorityId(priority);
-  }
-
   public getTaskPriority(priority: TaskPriority): string {
     return this.taskPageService.getPriorityByEnam(priority);
   }
 
   public getTaskStatus(status: string): string {
     return this.taskPageService.getStatusByEnum(status);
-  }
-
-  public getTaskStatusId(status: string) {
-    return this.taskPageService.getStatusId(status);
   }
 
   public toggle(tab: boolean) {
