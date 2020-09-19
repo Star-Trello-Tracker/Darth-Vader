@@ -1,0 +1,133 @@
+:host {
+  width: 100%;
+}
+
+.create-comment-toggle {
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.toggle {
+  background-color: #3d5a80;
+  color: #e0fbfc;
+  transition-property: transform;
+  transition-duration: 1s;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+
+    transition-property: transform;
+    transition-duration: 1s;
+  }
+}
+
+.create-comment {
+  margin-top: 20px;
+  width: 100%;
+
+  box-sizing: border-box;
+
+  position: relative;
+
+  border: 1px solid #293241;
+
+  &__call-users {
+    margin-bottom: 10px;
+
+    &_user {
+      margin-right: 5px;
+
+      &_last {
+        margin-right: 0;
+      }
+    }
+
+    &_helper {
+      position: absolute;
+      background-color: #e0fbfc;
+      align-items: center;
+
+      border: 1px solid #293241;
+
+      box-sizing: border-box;
+
+      &_username {
+        padding: 10px 15px;
+        border-bottom: 1px solid #293241;
+        text-align: center;
+
+        box-sizing: border-box;
+
+        justify-content: center;
+        align-items: center;
+
+        &_checked {
+          //color: #293241;
+          font-size: 14px;
+          margin-right: 5px;
+        }
+
+        &_first {
+          border-radius: 5px 5px 0 0;
+        }
+
+        &_last {
+          border-bottom: none;
+          border-radius: 0 0 5px 5px;
+        }
+
+        &:hover {
+          background-color: #293241;
+          color: #e0fbfc;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &__input {
+    box-sizing: border-box;
+    min-width: 100%;
+    max-width: 100%;
+    font-size: 16px;
+    min-height: 130px;
+    max-height: 130px;
+    padding: 10px;
+
+    margin-bottom: 10px;
+  }
+
+  &__buttons {
+    margin-top: 10px;
+    align-items: center;
+    box-sizing: border-box;
+
+    &_button {
+      padding: 10px 20px;
+      font-size: 18px;
+
+      border-radius: 5px;
+      background-color: #e0fbfc;
+      color: #293241;
+      border: 1px solid #293241;
+      outline: none;
+
+      transition-property: transform;
+      transition-duration: 1s;
+
+      &:hover {
+        cursor: pointer;
+
+        transform: scale(1.05);
+
+        transition-property: transform;
+        transition-duration: 1s;
+      }
+    }
+
+    &_submit {
+      margin-right: 20px;
+    }
+  }
+}

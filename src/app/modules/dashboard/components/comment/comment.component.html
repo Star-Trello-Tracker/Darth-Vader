@@ -1,0 +1,59 @@
+<app-create-comment
+  (editComment)="editCommentEmit($event)"
+  *ngIf="isEdit"
+  [config]="config"
+  [commentForEdit]="comment"
+  [isEdit]="true"
+></app-create-comment>
+
+<div *ngIf="!isEdit" class="comment flex flex-column radius-10">
+  <div class="comment__header padding-10-20 flex">
+    <div class="comment__header__creator__avatar flex">
+      <i class="fas fa-user comment__header__creator__avatar_img"></i>
+    </div>
+    <a
+      [routerLink]="['/', comment.creator.id, 'profile']"
+      class="comment__header__creator_link"
+    >
+      {{ comment.creator.name }} {{ comment.creator.surname }}
+    </a>
+    <div class="comment__header__called" *ngIf="comment.whoCalled.length > 0">
+      призвал в комментарии:
+      <a
+        [routerLink]="['/', user.id, 'profile']"
+        class="comment__header__creator_link"
+        *ngFor="let user of comment.whoCalled; let index = index"
+      >
+        {{ user.name }} {{ user.surname }}
+        <span *ngIf="index !== comment.whoCalled.length - 1">, </span>
+      </a>
+    </div>
+
+    <div class="comment__header__createTime">
+      {{ comment.created | update }}
+    </div>
+  </div>
+
+  <div class="comment__main flex full-width padding-20">
+    {{ comment.text }}
+  </div>
+
+  <div
+    *ngIf="checkAbillityToEdit(comment.creator.id)"
+    class="comment__edit-buttons full-width flex padding-10"
+  >
+    <button
+      (click)="editComment()"
+      class="comment__edit-buttons_button comment__edit-buttons_edit"
+    >
+      Редактировать
+    </button>
+
+    <button
+      (click)="delete()"
+      class="comment__edit-buttons_button comment__edit-buttons_delete"
+    >
+      Удалить
+    </button>
+  </div>
+</div>

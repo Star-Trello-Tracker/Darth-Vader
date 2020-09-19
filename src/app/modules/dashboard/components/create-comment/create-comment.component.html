@@ -1,0 +1,82 @@
+<div
+  *ngIf="!createMode && !isEdit"
+  class="create-comment-toggle full-width flex"
+>
+  <div
+    class="toggle padding-10-20 border radius-10"
+    (click)="showCreateCommentForm()"
+  >
+    Добавить комментарий
+  </div>
+</div>
+
+<div
+  *ngIf="createMode || isEdit"
+  class="create-comment full-width padding-20 radius-10 flex flex-column"
+>
+  <div class="create-comment__call-users">
+    Призвать пользователей:
+    <span
+      class="hover hover-underline create-comment__call-users_user"
+      *ngFor="let user of calledUsers; let index = index"
+      [class.create-comment__call-users_user_last]="
+        index === calledUsers.length - 1
+      "
+    >
+      {{ user[1] }} {{ user[2] }}
+      <span *ngIf="index !== calledUsers.length - 1">, </span>
+    </span>
+  </div>
+
+  <div
+    class="create-comment__call-users_helper radius-10 flex flex-column"
+    *ngIf="isSearch"
+    [style.left.px]="left"
+    [style.top.px]="top"
+  >
+    <div
+      *ngIf="usernamesToShow.length === 0"
+      class="create-comment__call-users_helper_username full-width flex"
+    >
+      Нет совпадений
+    </div>
+    <div
+      class="create-comment__call-users_helper_username full-width flex"
+      *ngFor="let username of usernamesToShow; let index = index"
+      [class.create-comment__call-users_helper_username_last]="
+        index === usernamesToShow.length - 1
+      "
+      [class.create-comment__call-users_helper_username_first]="index === 0"
+      (click)="callUser(username, field)"
+    >
+      <i
+        *ngIf="calledUsers.includes(username)"
+        class="fa fa-check-circle create-comment__call-users_helper_username_checked"
+        aria-hidden="true"
+      ></i>
+      @{{ username[0] }} ({{ username[1] }} {{ username[2] }})
+    </div>
+  </div>
+  <textarea
+    #field
+    class="create-comment__input radius-10"
+    (keyup)="findUser($event)"
+    [(ngModel)]="comment"
+  ></textarea>
+
+  <div class="create-comment__buttons full-width flex">
+    <button
+      class="create-comment__buttons_button create-comment__buttons_submit"
+      (click)="createComment()"
+    >
+      Отправить
+    </button>
+
+    <button
+      class="create-comment__buttons_button create-comment__buttons_cancel"
+      (click)="cancel()"
+    >
+      Отмена
+    </button>
+  </div>
+</div>

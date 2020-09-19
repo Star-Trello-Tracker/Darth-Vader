@@ -1,0 +1,19 @@
+<app-comment
+  (editCommentEmitter)="editCommentEmit($event)"
+  (deleteComment)="delete($event)"
+  *ngFor="let comment of config.comments"
+  [comment]="comment"
+  [config]="config"
+></app-comment>
+
+<div
+  *ngIf="config.comments?.length === 0"
+  class="full-width padding-20 radius-10 no-comments"
+>
+  Комментариев пока нет.
+</div>
+
+<app-create-comment
+  [config]="config"
+  (newComment)="newComment($event)"
+></app-create-comment>

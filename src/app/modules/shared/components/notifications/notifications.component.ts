@@ -17,6 +17,7 @@ export class NotificationsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getList();
+    // @ts-ignore
     this.timerId = setInterval(() => {
       this.getList();
     }, 1000);

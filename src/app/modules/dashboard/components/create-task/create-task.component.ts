@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { TaskPageService } from '../../services/task-page/task-page.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../auth-services/auth.service';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-create-task',
@@ -34,12 +35,13 @@ export class CreateTaskComponent implements OnInit {
     private createTaskService: CreateTaskService,
     private taskPageService: TaskPageService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
     this.queues$ = this.createTaskService.getAllQueues();
-    this.usernames$ = this.createTaskService.getAllUsernames();
+    this.usernames$ = this.userService.getAllUsernames();
   }
 
   public getSelectedPriority() {
@@ -71,7 +73,9 @@ export class CreateTaskComponent implements OnInit {
   public changeSelectedAssignee(event: Event, username: string[]) {
     // @ts-ignore
     this.selectedAssignee = event.target.options.selectedIndex - 1;
-    this.selectedAssigneeUsername = username[this.selectedAssignee][0];
+    this.selectedAssigneeUsername = username[this.selectedAssignee]
+      ? username[this.selectedAssignee][0]
+      : 'Не назначено';
   }
 
   public changeSelectedObservers(event: Event) {

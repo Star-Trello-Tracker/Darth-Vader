@@ -19,4 +19,8 @@ export class UserService {
       `${environment.url}user/${this.authService.getId()}`
     );
   }
+
+  public getAllUsernames(): Observable<string[]> {
+    return this.httpClient.get<string[]>(`${environment.url}user/fullnames`);
+  }
 }

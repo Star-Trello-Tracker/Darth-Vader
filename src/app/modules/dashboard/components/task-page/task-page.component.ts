@@ -1,10 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ITask, IUser, TaskPriority, TaskStatus } from '../../../../typings';
+import {
+  IComment,
+  ITask,
+  IUser,
+  TaskPriority,
+  TaskStatus,
+} from '../../../../typings';
 import { TaskPageService } from '../../services/task-page/task-page.service';
 import { AuthService } from '../../../../auth-services/auth.service';
 import { CommonService } from '../../../shared/services/common.service';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user/user.service';
+import { CommentsService } from '../../services/comments/comments.service';
 
 @Component({
   selector: 'app-task-page',
@@ -15,7 +23,7 @@ export class TaskPageComponent implements OnInit {
   public task$: Observable<ITask>;
   public usernames$: Observable<string[]>;
 
-  private username = '';
+  public username = '';
 
   public isUpdate = false;
 
@@ -44,7 +52,9 @@ export class TaskPageComponent implements OnInit {
     private taskPageService: TaskPageService,
     private authService: AuthService,
     private commonService: CommonService,
-    private router: Router
+    private router: Router,
+    private userService: UserService,
+    private commentsService: CommentsService
   ) {}
 
   ngOnInit(): void {
@@ -58,8 +68,9 @@ export class TaskPageComponent implements OnInit {
       this.taskTitle = res.title;
       this.description = res.description;
       this.assignUsername = res.assignee?.username;
+      console.log(res);
     });
-    this.usernames$ = this.taskPageService.getAllUsernames();
+    this.usernames$ = this.userService.getAllUsernames();
   }
 
   private getTaskData() {
@@ -204,7 +215,7 @@ export class TaskPageComponent implements OnInit {
     });
   }
 
-  public assignYorself(id: number) {
+  public assignYourself(id: number) {
     this.isUpdate = true;
     this.taskPageService.assignUser(this.username, id).subscribe((res) => {
       this.getTaskData();
@@ -215,5 +226,23 @@ export class TaskPageComponent implements OnInit {
   public checkAbilityToUpdateInfo(task: ITask) {
     const id = parseInt(this.authService.getId(), 10);
     return id === task.creator.id || (task.assignee && id === task.assignee.id);
+  }
+
+  public createComment(comment: IComment) {
+    this.commentsService.createComment(comment).subscribe((res) => {
+      this.getTaskData();
+    });
+  }
+
+  editComment(comment: IComment) {
+    this.commentsService.editComment(comment).subscribe((res) => {
+      this.getTaskData();
+    });
+  }
+
+  public deleteCommentById(id: number) {
+    this.commentsService.deleteComment(id).subscribe((res) => {
+      this.getTaskData();
+    });
   }
 }
