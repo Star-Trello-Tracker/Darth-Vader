@@ -27,4 +27,10 @@ export class QueuesService {
   public createQueue(queue: Partial<IQueue>): Observable<IQueue> {
     return this.httpClient.post<IQueue>(`${environment.url}queues`, queue);
   }
+
+  public getQueue(queueTitle: string): Observable<IQueue> {
+    return this.httpClient.get<IQueue>(
+      `${environment.url}queues/${queueTitle}`
+    );
+  }
 }

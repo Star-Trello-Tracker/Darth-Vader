@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { QueuesTaskListService } from '../../services/queues/queues-task-list.service';
 import { Router } from '@angular/router';
 import { IQueue } from '../../../../typings';
 import { AuthService } from '../../../../auth-services/auth.service';
+import { QueuesService } from '../../services/queues/queues.service';
 
 @Component({
   selector: 'app-queue-list',
@@ -23,7 +23,7 @@ export class QueueTaskListComponent implements OnInit {
   }
 
   constructor(
-    private queuesTaskListService: QueuesTaskListService,
+    private queuesService: QueuesService,
     private router: Router,
     private authService: AuthService
   ) {}
@@ -33,7 +33,7 @@ export class QueueTaskListComponent implements OnInit {
   }
 
   private getData() {
-    this.queue$ = this.queuesTaskListService.getQueue(this.queueTitle);
+    this.queue$ = this.queuesService.getQueue(this.queueTitle);
   }
 
   public goToCreateTaskPage(event: Event) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IQueue, IUser } from '../../../../typings';
+import { IQueue } from '../../../../typings';
 import { Router } from '@angular/router';
 import { QueuesService } from '../../services/queues/queues.service';
 import { AuthService } from '../../../../auth-services/auth.service';
@@ -14,13 +14,6 @@ export class CreateQueueComponent implements OnInit {
   public description = '';
   public invalidTitle = false;
   public invalidDescription = false;
-
-  public creator: IUser = {
-    id: 1,
-    name: 'Авдеев Иван',
-    job: 'Разработчик интерфейсов',
-    offline: 1123,
-  };
 
   public get back2Queues() {
     return `/${this.authService.getId()}/dashboard/menu/queues`;

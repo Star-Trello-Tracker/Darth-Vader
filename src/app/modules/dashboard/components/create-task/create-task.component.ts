@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CreateTaskService } from '../../services/create-task/create-task.service';
 import { Observable } from 'rxjs';
 import { TaskPageService } from '../../services/task-page/task-page.service';
-import { TaskPriority } from '../../../../typings';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../auth-services/auth.service';
 
@@ -17,7 +16,7 @@ export class CreateTaskComponent implements OnInit {
 
   public selectedObservers = [];
   public selectedQueue = 0;
-  public selectedPriority: TaskPriority = 1;
+  public selectedPriority = 1;
   public selectedAssignee = -1;
   public selectedAssigneeUsername = '';
   public taskTitle = '';

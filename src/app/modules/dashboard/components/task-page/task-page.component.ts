@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import {
-  ITaskPage,
-  IUser,
-  TaskPriority,
-  TaskStatus,
-} from '../../../../typings';
+import { ITask, IUser, TaskPriority, TaskStatus } from '../../../../typings';
 import { TaskPageService } from '../../services/task-page/task-page.service';
 import { AuthService } from '../../../../auth-services/auth.service';
 import { CommonService } from '../../../shared/services/common.service';
@@ -17,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./task-page.component.scss'],
 })
 export class TaskPageComponent implements OnInit {
-  public task$: Observable<ITaskPage>;
+  public task$: Observable<ITask>;
   public usernames$: Observable<string[]>;
 
   private username = '';
@@ -59,7 +54,7 @@ export class TaskPageComponent implements OnInit {
       .subscribe((res) => {
         this.username = res;
       });
-    this.taskPageService.getTask(this.taskKey).subscribe((res: ITaskPage) => {
+    this.taskPageService.getTask(this.taskKey).subscribe((res: ITask) => {
       this.taskTitle = res.title;
       this.description = res.description;
       this.assignUsername = res.assignee?.username;
@@ -71,7 +66,7 @@ export class TaskPageComponent implements OnInit {
     this.task$ = this.taskPageService.getTask(this.taskKey);
   }
 
-  public getTaskPriorityId(priority: string): TaskStatus {
+  public getTaskPriorityId(priority: string): number {
     return this.taskPageService.getPriorityId(priority);
   }
 
@@ -105,7 +100,7 @@ export class TaskPageComponent implements OnInit {
     )}`;
   }
 
-  public copy(task: ITaskPage) {
+  public copy(task: ITask) {
     navigator.clipboard.writeText(`${task.key}: ${task.title}`).catch((err) => {
       console.log('Something went wrong', err);
     });
@@ -225,7 +220,7 @@ export class TaskPageComponent implements OnInit {
     });
   }
 
-  public checkAbilityToUpdateInfo(task: ITaskPage) {
+  public checkAbilityToUpdateInfo(task: ITask) {
     const id = parseInt(this.authService.getId(), 10);
     return id === task.creator.id || (task.assignee && id === task.assignee.id);
   }

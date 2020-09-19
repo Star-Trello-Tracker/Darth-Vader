@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ITask, TaskStatus } from '../../../../../typings';
+import { ITask } from '../../../../../typings';
 import { AuthService } from '../../../../../auth-services/auth.service';
 import { TaskPageService } from '../../../../dashboard/services/task-page/task-page.service';
 import { CommonService } from '../../../services/common.service';
