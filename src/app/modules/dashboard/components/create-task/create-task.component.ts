@@ -19,6 +19,7 @@ export class CreateTaskComponent implements OnInit {
   public selectedQueue = 0;
   public selectedPriority: TaskPriority = 1;
   public selectedAssignee = -1;
+  public selectedAssigneeUsername = '';
   public taskTitle = '';
   public taskDescription = '';
 
@@ -64,9 +65,10 @@ export class CreateTaskComponent implements OnInit {
         }`;
   }
 
-  public changeSelectedAssignee(event: Event) {
+  public changeSelectedAssignee(event: Event, username: string) {
     // @ts-ignore
     this.selectedAssignee = event.target.options.selectedIndex - 1;
+    this.selectedAssigneeUsername = username[this.selectedAssignee][0];
   }
 
   public changeSelectedObservers(event: Event) {
@@ -108,6 +110,8 @@ export class CreateTaskComponent implements OnInit {
       description: this.taskDescription,
       priorityCode: this.selectedPriority,
       queueTitle: this.getSelectedQueue(queues),
+      assignee: this.selectedAssigneeUsername,
+      observers: this.selectedObservers.map((el) => el[0]),
     };
 
     this.createTaskService.createTask(data).subscribe((res: any) => {
