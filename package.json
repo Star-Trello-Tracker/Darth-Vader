@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "dev": "ng serve --proxy-config proxy.conf.json",
-    "dev:prod": "ng serve --prod --proxy-config proxy.prod.conf.json",
+    "dev": "ng serve --proxy-config",
+    "dev:prod": "ng serve --prod",
     "deps": "npm i",
     "build": "ng build",
     "build:prod": "ng build --prod",
