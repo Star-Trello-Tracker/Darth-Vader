@@ -13,7 +13,6 @@ import { SearchComponent } from './components/search/search.component';
 import { BoardsService } from './services/boards/boards.service';
 import { FormsModule } from '@angular/forms';
 import { QueueTaskListComponent } from './components/queue-task-list/queue-task-list.component';
-import { QueuesTaskListService } from './services/queues/queues-task-list.service';
 import { BoardPageComponent } from './components/board-page/board-page.component';
 import { CreateQueueComponent } from './components/create-queue/create-queue.component';
 import { QueuesService } from './services/queues/queues.service';
@@ -47,7 +46,6 @@ import { UserService } from './services/user/user.service';
   providers: [
     TaskListService,
     BoardsService,
-    QueuesTaskListService,
     QueuesService,
     TaskPageService,
     CreateTaskService,

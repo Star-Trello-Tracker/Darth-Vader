@@ -26,16 +26,13 @@
         ? data.assignee.name + " " + data.assignee.surname
         : "Нет исполнителя"
     }}
-    <div class="row__person__profile-layout" *ngIf="data.person">
-      <app-profile-layout [user]="data.person"></app-profile-layout>
+    <div class="row__person__profile-layout" *ngIf="data.assignee">
+      <app-profile-layout [user]="data.assignee"></app-profile-layout>
     </div>
   </a>
 
   <div class="row__item row__status flex flex-column">
     {{ getTaskStatus(data.status) }}
-    <span *ngIf="data.comment" class="row__status_comment">{{
-      data.comment
-    }}</span>
   </div>
 
   <div class="row__item row__date flex">

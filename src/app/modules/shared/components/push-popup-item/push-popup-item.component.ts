@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { INotification } from '../../typings';
 import { AuthService } from '../../../../auth-services/auth.service';
-import { NotificationsService } from '../../services/notifications/notifications.service';
 
 @Component({
   selector: 'app-push-popup-item',

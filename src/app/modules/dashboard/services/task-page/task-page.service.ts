@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ITaskPage, TaskPriority, TaskStatus } from '../../../../typings';
+import { TaskPriority } from '../../../../typings';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
 import { map } from 'rxjs/operators';
@@ -57,8 +57,8 @@ export class TaskPageService {
     return this.taskPriorityMap[priority];
   }
 
-  public getPriorityId(priority): TaskStatus {
-    return this.taskPriority.indexOf(priority) as TaskStatus;
+  public getPriorityId(priority): number {
+    return this.taskPriority.indexOf(priority);
   }
 
   public getStatusByEnum(status: string) {
@@ -73,22 +73,18 @@ export class TaskPageService {
     return this.httpClient.get(`${environment.url}tasks/${path}`);
   }
 
-  public getTaskStatus(status: TaskStatus): string {
-    return this.taskStatus[status - 1];
-  }
-
   public getTaskStatusList(): string[] {
     return this.taskStatus;
   }
 
-  public changeTaskStatus(status: TaskStatus, id: number): Observable<any> {
+  public changeTaskStatus(status: number, id: number): Observable<any> {
     return this.httpClient.post<any>(
       `${environment.url}tasks/${id}/status/change`,
       status
     );
   }
 
-  public getTaskPriority(priority: TaskPriority): string {
+  public getTaskPriority(priority: number): string {
     return this.taskPriority[priority - 1];
   }
 

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IBoard } from '../../../../typings';
+import { IQueue } from '../../../../typings';
 import { AuthService } from '../../../../auth-services/auth.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { AuthService } from '../../../../auth-services/auth.service';
   ],
 })
 export class QueueComponent implements OnInit {
-  @Input() queue: any;
+  @Input() queue: IQueue;
 
   public get userId() {
     return this.authService.getId();

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { notifications } from './notifications';
 import { Observable } from 'rxjs';
 import { INotification } from '../../typings';
 import { of } from 'rxjs/internal/observable/of';
@@ -17,7 +16,7 @@ export class NotificationsService {
     if (!this.isTrue) {
       this.isTrue = true;
       setTimeout(() => {
-        this.data = notifications;
+        this.data = [];
       }, 5000);
     }
 

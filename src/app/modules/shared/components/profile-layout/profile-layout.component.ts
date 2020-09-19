@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IUser } from '../../../../typings/IUser';
+import { IUser } from '../../../../typings';
 
 @Component({
   selector: 'app-profile-layout',
