@@ -2,6 +2,16 @@
   class="create-task flex flex-column padding-20 full-size"
   *ngIf="queues$ | async as queues"
 >
+  <div
+    *ngIf="queues.length === 0"
+    class="create-task__no-queues full-size flex flex-column"
+  >
+    Невозможно создать задачу, т.к. нет очередей.
+    <a class="hover hover-underline create-task__no-queues_link"
+      >Создайте сначала очередь</a
+    >
+  </div>
+
   <div class="create-task__header">
     Создать задачу
   </div>

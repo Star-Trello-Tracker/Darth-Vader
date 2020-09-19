@@ -16,8 +16,4 @@ export class CreateTaskService {
   public createTask(task) {
     return this.httpClient.post(`${environment.url}tasks`, task);
   }
-
-  public getAllUsernames(): Observable<string[]> {
-    return this.httpClient.get<string[]>(`${environment.url}user/fullnames`);
-  }
 }

@@ -187,8 +187,7 @@
       </p>
 
       <textarea
-        cols="50"
-        rows="10"
+        class="edit-task-description"
         [(ngModel)]="description"
         *ngIf="isEditDescription"
       ></textarea>
@@ -229,16 +228,23 @@
 
     <div
       class="task-page__task-interface__comments full-width flex flex-column padding-20"
+      *ngIf="usernames$ | async as usernames"
     >
       <div class="task-page__task-interface__comments_title">
         Комментарии
       </div>
 
-      <div
-        class="task-page__task-interface__comments__list full-width flex flex-column"
-      >
-        Комментариев нет
-      </div>
+      <app-comments-list
+        [config]="{
+          key: task.key,
+          comments: task.comments,
+          username: username,
+          usernames: usernames
+        }"
+        (createComment)="createComment($event)"
+        (editCommentEmitter)="editComment($event)"
+        (deleteComment)="deleteCommentById($event)"
+      ></app-comments-list>
     </div>
   </div>
 
@@ -252,7 +258,10 @@
 
     <div class="task-page__info_item full-width padding-20">
       Создатель:
-      <a routerLink="." class="task-page__info_item_link profile-link">
+      <a
+        [routerLink]="['/', task.creator.id, 'profile']"
+        class="task-page__info_item_link profile-link"
+      >
         {{ task.creator.name }} {{ task.creator.surname }}
         <div class="task-page__info_item_link__profile-layout profile-layout">
           <app-profile-layout [user]="task.creator"></app-profile-layout>
@@ -266,7 +275,7 @@
         *ngIf="!task.assignee && !canAssignUser(task.creator.id)"
         routerLink="."
         class="task-page__info_item_link profile-link hover"
-        (click)="assignYorself(task.id)"
+        (click)="assignYourself(task.id)"
       >
         Назначить на себя
       </a>
@@ -311,7 +320,7 @@
     <div class="task-page__info_item full-width padding-20 flex">
       Наблюдатели:
       <a
-        routerLink="."
+        [routerLink]="['/', observer.id, 'profile']"
         class="task-page__info_item_link profile-link"
         *ngFor="let observer of task.observers; let index = index"
       >
@@ -333,12 +342,18 @@
 
     <div class="task-page__info_item full-width padding-20">
       Нужен ответ пользователей:
-      <a routerLink="." class="task-page__info_item_link profile-link">
+      <a
+        *ngFor="let user of task.calledUsers; let index = index"
+        [routerLink]="['/', user.id, 'profile']"
+        class="task-page__info_item_link profile-link"
+      >
+        {{ user.name }} {{ user.surname }}
+        <span *ngIf="index !== task.calledUsers.length - 1">, </span>
         <div
           *ngIf="task.calledUsers"
           class="task-page__info_item_link__profile-layout profile-layout"
         >
-          <!--          <app-profile-layout [user]="task.calledUsers[0]"></app-profile-layout>-->
+          <app-profile-layout [user]="user"></app-profile-layout>
         </div>
       </a>
     </div>

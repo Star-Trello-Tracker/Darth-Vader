@@ -105,22 +105,21 @@ export class TaskPageService {
   public editTitle(title: string, taskId: number): Observable<any> {
     return this.httpClient.post(
       `${environment.url}tasks/${taskId}/title/change`,
-      title
+      { text: title }
     );
   }
 
   public editDescription(description: string, id: number): Observable<any> {
     return this.httpClient.post<any>(
       `${environment.url}tasks/${id}/description/change`,
-      description
+      { text: description }
     );
   }
 
   public assignUser(username: string, id: number): Observable<any> {
-    return this.httpClient.post<any>(
-      `${environment.url}tasks/${id}/assign`,
-      username
-    );
+    return this.httpClient.post<any>(`${environment.url}tasks/${id}/assign`, {
+      text: username,
+    });
   }
 
   public setObserver(taskId: number): Observable<any> {

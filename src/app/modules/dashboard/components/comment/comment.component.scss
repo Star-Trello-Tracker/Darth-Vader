@@ -1,0 +1,85 @@
+:host {
+  width: 100%;
+}
+
+.comment {
+  width: 100%;
+  box-sizing: border-box;
+
+  border: 1px solid #293241;
+  margin-bottom: 30px;
+
+  align-items: center;
+
+  &__header {
+    box-sizing: border-box;
+    width: 100%;
+    align-items: center;
+    border-bottom: 1px solid #293241;
+
+    &__creator {
+      &_link {
+        font-size: 18px;
+        margin-right: 10px;
+        color: #ee6c4d;
+      }
+
+      &__avatar {
+        border-radius: 50%;
+        border: 1px solid #293241;
+        width: 25px;
+        height: 25px;
+
+        justify-content: center;
+        align-items: center;
+
+        margin-right: 10px;
+
+        &_img {
+          font-size: 18px;
+          color: #293241;
+        }
+      }
+    }
+
+    &__createTime {
+      margin-left: auto;
+    }
+  }
+
+  &__main {
+    box-sizing: border-box;
+  }
+
+  &__edit-buttons {
+    box-sizing: border-box;
+    align-items: center;
+    border-top: 1px solid #293241;
+
+    &_button {
+      margin-left: auto;
+      padding: 10px;
+      border: 1px solid #293241;
+      outline: none;
+      border-radius: 5px;
+      font-size: 13px;
+      background-color: #e0fbfc;
+      color: #293241;
+
+      transition-property: transform;
+      transition-duration: 1s;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.03);
+
+        transition-property: transform;
+        transition-duration: 1s;
+      }
+    }
+
+    &_delete {
+      margin-left: 10px;
+    }
+  }
+}

@@ -6,6 +6,7 @@
 
   &__task-interface {
     width: 75%;
+    height: auto;
 
     box-sizing: border-box;
     border-right: 1px solid #293241;
@@ -137,6 +138,8 @@
       margin-top: 10px;
       box-sizing: border-box;
 
+      border-top: 1px solid #293241;
+
       &_title {
         font-size: 24px;
         font-weight: bold;
@@ -256,6 +259,18 @@
 
 .observe-button {
   padding: 5px;
+}
+
+.edit-task-description {
+  box-sizing: border-box;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 150px;
+  max-height: 150px;
+
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
 }
 
 @media screen and (max-device-width: 800px) {

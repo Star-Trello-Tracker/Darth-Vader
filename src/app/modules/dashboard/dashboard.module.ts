@@ -21,6 +21,10 @@ import { TaskPageService } from './services/task-page/task-page.service';
 import { CreateTaskComponent } from './components/create-task/create-task.component';
 import { CreateTaskService } from './services/create-task/create-task.service';
 import { UserService } from './services/user/user.service';
+import { CommentsListComponent } from './components/comments-list/comments-list.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { CreateCommentComponent } from './components/create-comment/create-comment.component';
+import { CommentsService } from './services/comments/comments.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,9 @@ import { UserService } from './services/user/user.service';
     CreateQueueComponent,
     TaskPageComponent,
     CreateTaskComponent,
+    CommentsListComponent,
+    CommentComponent,
+    CreateCommentComponent,
   ],
   imports: [
     CommonModule,
@@ -50,6 +57,7 @@ import { UserService } from './services/user/user.service';
     TaskPageService,
     CreateTaskService,
     UserService,
+    CommentsService,
   ],
 })
 export class DashboardModule {}

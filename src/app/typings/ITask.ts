@@ -1,4 +1,5 @@
 import { IUser } from './IUser';
+import { IComment } from './IComment';
 
 export type TaskStatus =
   | 'OPEN'
@@ -73,7 +74,7 @@ export interface ITask {
   /**
    * Комментарии к задаче
    */
-  comments?: any[];
+  comments?: IComment[];
 
   /**
    * Дата последнего обновления задачи
