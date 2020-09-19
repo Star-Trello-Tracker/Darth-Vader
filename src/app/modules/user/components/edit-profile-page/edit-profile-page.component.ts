@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserInfoPageService } from '../../services/user-info-page.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../../auth-services/auth.service';
 
 @Component({
@@ -20,17 +20,20 @@ export class EditProfilePageComponent implements OnInit {
   constructor(
     private editInfoPageService: UserInfoPageService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.editInfoPageService.getUserInfo().subscribe((res) => {
-      this.data.name = res.name;
-      this.data.surname = res.surname;
-      this.data.tgUsername = res.tgUsername;
+    this.editInfoPageService
+      .getUserInfo(this.activatedRoute.parent.snapshot.paramMap.get('userId'))
+      .subscribe((res) => {
+        this.data.name = res.name;
+        this.data.surname = res.surname;
+        this.data.tgUsername = res.tgUsername;
 
-      this.isLoad = true;
-    });
+        this.isLoad = true;
+      });
   }
 
   public isDisabled() {

@@ -57,5 +57,4 @@ export const queue: IQueue = {
   description: 'Очередь для задач в проекте Darth-Vader',
   creator: user,
   taskList: queueTaskList,
-  link: 'task',
 };

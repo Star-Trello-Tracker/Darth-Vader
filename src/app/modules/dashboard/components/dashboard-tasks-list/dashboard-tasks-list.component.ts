@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user/user.service';
+import { IUser } from '../../../../typings';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard-tasks-list',
@@ -6,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-tasks-list.component.scss'],
 })
 export class DashboardTasksListComponent implements OnInit {
-  constructor() {}
+  public user$: Observable<IUser>;
 
-  ngOnInit(): void {}
+  constructor(private userService: UserService) {}
+
+  ngOnInit(): void {
+    this.user$ = this.userService.getUserData();
+  }
 }

@@ -47,7 +47,14 @@
       />
     </label>
 
-    <button class="create-queue__form__submit hover scale" (click)="submit()">
+    <button
+      class="create-queue__form__submit hover scale"
+      (click)="submit()"
+      [class.create-queue__form__submit_disabled]="
+        title.length < 4 && description.length === 0
+      "
+      [disabled]="title.length < 4 && description.length === 0"
+    >
       Создать очередь
     </button>
   </div>

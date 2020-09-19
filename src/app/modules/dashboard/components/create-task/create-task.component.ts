@@ -27,6 +27,10 @@ export class CreateTaskComponent implements OnInit {
     return this.taskPageService.getTaskPriorityList();
   }
 
+  public get isDisabled() {
+    return this.taskTitle === '' || this.taskDescription === '';
+  }
+
   constructor(
     private createTaskService: CreateTaskService,
     private taskPageService: TaskPageService,
@@ -65,7 +69,7 @@ export class CreateTaskComponent implements OnInit {
         }`;
   }
 
-  public changeSelectedAssignee(event: Event, username: string) {
+  public changeSelectedAssignee(event: Event, username: string[]) {
     // @ts-ignore
     this.selectedAssignee = event.target.options.selectedIndex - 1;
     this.selectedAssigneeUsername = username[this.selectedAssignee][0];
@@ -105,6 +109,10 @@ export class CreateTaskComponent implements OnInit {
   }
 
   public createTask(queues: string[]) {
+    if (this.isDisabled) {
+      return;
+    }
+
     const data = {
       title: this.taskTitle,
       description: this.taskDescription,

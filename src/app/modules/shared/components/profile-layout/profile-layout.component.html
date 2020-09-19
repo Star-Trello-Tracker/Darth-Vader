@@ -5,7 +5,10 @@
     </div>
 
     <div class="profile-layout__about__person flex flex-column">
-      <a class="profile-layout__about__person_name">
+      <a
+        class="profile-layout__about__person_name"
+        [routerLink]="['/', user.id, 'profile']"
+      >
         {{ user.name }} {{ user.surname }}
       </a>
 

@@ -125,6 +125,7 @@
 
   <div class="create-task__submit">
     <div
+      [class.create-task__submit__button_disabled]="isDisabled"
       class="create-task__submit__button hover padding-10-20 radius-10"
       (click)="createTask(queues)"
     >

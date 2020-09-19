@@ -48,7 +48,7 @@
       </div>
 
       <div
-        *ngIf="!isEditTitle"
+        *ngIf="!isEditTitle && checkAbilityToUpdateInfo(task)"
         class="task-page__task-interface__title_edit hover hover-underline"
         (click)="editTitle()"
       >
@@ -84,6 +84,7 @@
           {{ getTaskPriority(task.priority) }}
 
           <select
+            *ngIf="checkAbilityToUpdateInfo(task)"
             class="task-page__task-interface__task-status__item_name_select task-page__task-interface__task-status__priority_select hover"
             (change)="changePriority($event, task.id)"
           >
@@ -113,6 +114,7 @@
           {{ getTaskStatus(task.status) }}
 
           <select
+            *ngIf="checkAbilityToUpdateInfo(task)"
             class="task-page__task-interface__task-status__item_name_select task-page__task-interface__task-status_name_select hover"
             (change)="changeStatus($event, task.id)"
           >
@@ -128,7 +130,7 @@
       </div>
 
       <div
-        *ngIf="task.status !== 'CLOSED'"
+        *ngIf="task.status !== 'CLOSED' && checkAbilityToUpdateInfo(task)"
         class="task-page__task-interface__task-status_close border hover scale"
         (click)="closeTask(task.id)"
       >
@@ -156,7 +158,7 @@
           Описание задачи
         </div>
         <div
-          *ngIf="!isEditDescription"
+          *ngIf="!isEditDescription && checkAbilityToUpdateInfo(task)"
           class="task-page__task-interface__description_title-container_edit hover hover-underline"
           (click)="isEditDescription = true"
         >
@@ -260,13 +262,28 @@
 
     <div class="task-page__info_item full-width padding-20">
       Исполнитель:
-      <a routerLink="." class="task-page__info_item_link profile-link hover">
+      <a
+        *ngIf="!task.assignee && !canAssignUser(task.creator.id)"
+        routerLink="."
+        class="task-page__info_item_link profile-link hover"
+        (click)="assignYorself(task.id)"
+      >
+        Назначить на себя
+      </a>
+      <a
+        routerLink="."
+        class="task-page__info_item_link profile-link hover"
+        *ngIf="
+          canAssignUser(task.creator.id) ||
+          (task.assignee && !canAssignUser(task.creator.id))
+        "
+      >
         {{ getAssigneeName(task.assignee) }}
         <div
           *ngIf="task.assignee"
           class="task-page__info_item_link__profile-layout profile-layout"
         >
-          <!--          <app-profile-layout [user]="task.assignee"></app-profile-layout>-->
+          <app-profile-layout [user]="task.assignee"></app-profile-layout>
         </div>
 
         <label

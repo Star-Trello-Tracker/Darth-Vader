@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IQueue } from '../../../../typings';
-import { queues } from './queues';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
 
@@ -15,7 +14,7 @@ export class QueuesService {
     return this.httpClient.get<IQueue[]>(`${environment.url}queues`);
   }
 
-  public searchQueues(name: string): IQueue[] {
+  public searchQueues(name: string, queues: IQueue[]): IQueue[] {
     if (name === '') {
       return [];
     }
@@ -25,7 +24,7 @@ export class QueuesService {
     });
   }
 
-  public createQueue(queue: IQueue): Observable<IQueue> {
+  public createQueue(queue: Partial<IQueue>): Observable<IQueue> {
     return this.httpClient.post<IQueue>(`${environment.url}queues`, queue);
   }
 }

@@ -22,7 +22,7 @@ export class BoardsListComponent implements OnInit {
     this.boards$ = this.boardsService.getPersonBoards();
   }
 
-  public find() {
-    this.filterBoards = this.boardsService.searchBoard(this.search);
+  public find(boards: IBoard[]) {
+    this.filterBoards = this.boardsService.searchBoard(boards, this.search);
   }
 }

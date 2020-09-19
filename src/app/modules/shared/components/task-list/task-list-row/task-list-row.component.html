@@ -14,14 +14,18 @@
   </a>
 
   <a class="row__item row__person row__creator flex">
-    {{ data.creator.name }}
+    {{ data.creator.name }} {{ data.creator.surname }}
     <div class="row__person__profile-layout">
       <app-profile-layout [user]="data.creator"></app-profile-layout>
     </div>
   </a>
 
   <a class="row__item row__person flex">
-    {{ (data.person && data.person.name) || "Нет исполнителя" }}
+    {{
+      data.assignee
+        ? data.assignee.name + " " + data.assignee.surname
+        : "Нет исполнителя"
+    }}
     <div class="row__person__profile-layout" *ngIf="data.person">
       <app-profile-layout [user]="data.person"></app-profile-layout>
     </div>

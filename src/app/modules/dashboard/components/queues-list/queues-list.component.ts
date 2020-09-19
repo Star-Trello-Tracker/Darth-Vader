@@ -30,7 +30,7 @@ export class QueuesListComponent implements OnInit {
     this.queues$ = this.queuesService.getPersonQueues();
   }
 
-  public find() {
-    this.filterQueues = this.queuesService.searchQueues(this.search);
+  public find(queues: IQueue[]) {
+    this.filterQueues = this.queuesService.searchQueues(this.search, queues);
   }
 }

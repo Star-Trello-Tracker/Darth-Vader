@@ -7,5 +7,4 @@ export interface IQueue {
   description: string;
   creator: IUser;
   taskList: ITask[];
-  link: string;
 }

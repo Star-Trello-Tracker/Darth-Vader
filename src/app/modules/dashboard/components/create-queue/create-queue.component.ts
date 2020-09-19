@@ -50,16 +50,16 @@ export class CreateQueueComponent implements OnInit {
       return;
     }
 
-    const queue: IQueue = {
-      id: 1,
+    const queue: Partial<IQueue> = {
       title: this.title,
       description: this.description,
-      creator: this.creator,
-      link: this.title,
-      taskList: [],
     };
 
     this.queuesService.createQueue(queue).subscribe((res) => {
+      if (this.title.length < 4) {
+        return;
+      }
+
       this.router.navigateByUrl(
         `/${this.authService.getId()}/dashboard/menu/queues`
       );

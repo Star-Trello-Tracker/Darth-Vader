@@ -10,7 +10,7 @@ import { CommonService } from '../../../services/common.service';
   styleUrls: ['./task-list-row.component.scss'],
 })
 export class TaskListRowComponent implements OnInit {
-  @Input() data: any;
+  @Input() data: ITask;
 
   public get queueUrl() {
     return `/${this.authService.getId()}/dashboard/${this.commonService.getQueueByTaskKey(
