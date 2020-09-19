@@ -20,6 +20,8 @@ export class TaskPageComponent implements OnInit {
   public task$: Observable<ITaskPage>;
   public usernames$: Observable<string[]>;
 
+  private username = '';
+
   public isUpdate = false;
 
   public showTask = true;
@@ -52,6 +54,11 @@ export class TaskPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTaskData();
+    this.taskPageService
+      .getUsername(this.authService.getId())
+      .subscribe((res) => {
+        this.username = res;
+      });
     this.taskPageService.getTask(this.taskKey).subscribe((res: ITaskPage) => {
       this.taskTitle = res.title;
       this.description = res.description;
@@ -208,5 +215,18 @@ export class TaskPageComponent implements OnInit {
       this.getTaskData();
       this.isUpdate = false;
     });
+  }
+
+  public assignYorself(id: number) {
+    this.isUpdate = true;
+    this.taskPageService.assignUser(this.username, id).subscribe((res) => {
+      this.getTaskData();
+      this.isUpdate = false;
+    });
+  }
+
+  public checkAbilityToUpdateInfo(task: ITaskPage) {
+    const id = parseInt(this.authService.getId(), 10);
+    return id === task.creator.id || (task.assignee && id === task.assignee.id);
   }
 }

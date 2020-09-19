@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../../../auth-services/auth.service';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 
@@ -8,15 +7,10 @@ import { environment } from '../../../../environments/environment';
   providedIn: 'root',
 })
 export class UserInfoPageService {
-  constructor(
-    private httpClient: HttpClient,
-    private authService: AuthService
-  ) {}
+  constructor(private httpClient: HttpClient) {}
 
-  public getUserInfo(): Observable<any> {
-    return this.httpClient.get(
-      `${environment.url}/user/${this.authService.getId()}`
-    );
+  public getUserInfo(id: string): Observable<any> {
+    return this.httpClient.get(`${environment.url}/user/${id}`);
   }
 
   public editProfile(data): Observable<any> {

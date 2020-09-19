@@ -136,6 +136,15 @@
         transition-property: transform;
         transition-duration: 0.5s;
       }
+
+      &_disabled {
+        opacity: 50%;
+
+        &:hover {
+          cursor: default;
+          transform: none;
+        }
+      }
     }
   }
 }

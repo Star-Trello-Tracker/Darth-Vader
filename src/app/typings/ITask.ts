@@ -5,11 +5,14 @@ export interface ITask {
   id: number;
   key: string;
   title: string;
-  priority: TaskPriority;
+  priority: any;
   creator: IUser;
   person?: IUser;
-  status: TaskStatus;
+  assignee?: IUser;
+  status: any;
   comment?: string;
   refresh: number;
+  refreshed?: number;
   observer?: IUser[];
+  observers?: IUser[];
 }

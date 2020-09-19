@@ -21,6 +21,7 @@ import { TaskPageComponent } from './components/task-page/task-page.component';
 import { TaskPageService } from './services/task-page/task-page.service';
 import { CreateTaskComponent } from './components/create-task/create-task.component';
 import { CreateTaskService } from './services/create-task/create-task.service';
+import { UserService } from './services/user/user.service';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { CreateTaskService } from './services/create-task/create-task.service';
     QueuesService,
     TaskPageService,
     CreateTaskService,
+    UserService,
   ],
 })
 export class DashboardModule {}

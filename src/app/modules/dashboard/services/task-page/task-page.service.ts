@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { ITaskPage, TaskPriority, TaskStatus } from '../../../../typings';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -131,5 +132,11 @@ export class TaskPageService {
       `${environment.url}tasks/${taskId}/observe`,
       {}
     );
+  }
+
+  public getUsername(id: string): Observable<any> {
+    return this.httpClient
+      .get(`${environment.url}user/${id}`)
+      .pipe(map((res: any) => res.username));
   }
 }

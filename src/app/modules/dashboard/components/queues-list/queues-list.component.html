@@ -21,6 +21,10 @@
     <ng-container *ngIf="queues.length > 0">
       <app-queue *ngFor="let queue of queues" [queue]="queue"></app-queue>
     </ng-container>
+
+    <ng-container *ngIf="queues.length === 0">
+      <div class="no-queues full-width full-height flex">Очередей пока нет</div>
+    </ng-container>
   </div>
 
   <div class="item__search queues__search full-width flex flex-column">
@@ -35,7 +39,7 @@
         placeholder="Введите название доски"
         type="text"
         [(ngModel)]="search"
-        (keyup)="find()"
+        (keyup)="find(queues)"
       />
     </label>
 

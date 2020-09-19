@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { boards } from './boards';
 import { of } from 'rxjs/internal/observable/of';
 import { Observable } from 'rxjs';
 import { IBoard } from '../../../../typings';
@@ -11,10 +10,10 @@ export class BoardsService {
   constructor() {}
 
   public getPersonBoards(): Observable<IBoard[]> {
-    return of(boards);
+    return of([]);
   }
 
-  public searchBoard(name: string): IBoard[] {
+  public searchBoard(boards: IBoard[], name: string): IBoard[] {
     if (name === '') {
       return [];
     }

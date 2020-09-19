@@ -64,6 +64,15 @@
       color: white;
 
       margin: 20px 0 0 20px;
+
+      &_disabled {
+        opacity: 50%;
+
+        &:hover {
+          transform: none;
+          cursor: default;
+        }
+      }
     }
   }
 }

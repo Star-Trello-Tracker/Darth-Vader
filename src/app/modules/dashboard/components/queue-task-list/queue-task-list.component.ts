@@ -18,6 +18,10 @@ export class QueueTaskListComponent implements OnInit {
     return `/${this.authService.getId()}/dashboard/menu/queues`;
   }
 
+  public get id(): string {
+    return this.authService.getId();
+  }
+
   constructor(
     private queuesTaskListService: QueuesTaskListService,
     private router: Router,
@@ -30,5 +34,10 @@ export class QueueTaskListComponent implements OnInit {
 
   private getData() {
     this.queue$ = this.queuesTaskListService.getQueue(this.queueTitle);
+  }
+
+  public goToCreateTaskPage(event: Event) {
+    event.preventDefault();
+    this.router.navigateByUrl(`/${this.id}/dashboard/menu/create-task`);
   }
 }
