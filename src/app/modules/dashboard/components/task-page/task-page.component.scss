@@ -166,6 +166,8 @@
     &_item {
       box-sizing: border-box;
       position: relative;
+      flex-wrap: wrap;
+      align-items: center;
 
       &_link {
         display: inline-block;
@@ -250,6 +252,10 @@
   padding: 3px;
   font-size: 20px;
   border-radius: 3px;
+}
+
+.observe-button {
+  padding: 5px;
 }
 
 @media screen and (max-device-width: 800px) {

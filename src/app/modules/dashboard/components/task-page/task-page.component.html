@@ -276,9 +276,9 @@
           <select
             *ngIf="usernames$ | async as usernames"
             class="task-page__info_item_link_assignee_select"
-            (change)="assignUser($event)"
+            (change)="assignUser($event, task.id)"
           >
-            <option>Не назначено</option>
+            <option [selected]="!task.assignee">Не назначено</option>
             <option
               *ngFor="let username of usernames"
               [selected]="task.assignee?.username === assignUsername"
@@ -291,17 +291,27 @@
       </a>
     </div>
 
-    <div class="task-page__info_item full-width padding-20">
+    <div class="task-page__info_item full-width padding-20 flex">
       Наблюдатели:
-      <a routerLink="." class="task-page__info_item_link profile-link">
-        <!--        {{ task.observers[0].name }}-->
-        <div
-          *ngIf="task.observers"
-          class="task-page__info_item_link__profile-layout profile-layout"
-        >
-          <!--          <app-profile-layout [user]="task.observers[0]"></app-profile-layout>-->
+      <a
+        routerLink="."
+        class="task-page__info_item_link profile-link"
+        *ngFor="let observer of task.observers; let index = index"
+      >
+        {{ observer.name }} {{ observer.surname }}
+        <span *ngIf="index !== task.observers.length - 1">,</span>
+        <div class="task-page__info_item_link__profile-layout profile-layout">
+          <app-profile-layout [user]="observer"></app-profile-layout>
         </div>
       </a>
+
+      <div
+        *ngIf="notObserver(task.observers)"
+        class="observe-button hover hover-underline"
+        (click)="setObserver(task.id)"
+      >
+        Наблюдать
+      </div>
     </div>
 
     <div class="task-page__info_item full-width padding-20">

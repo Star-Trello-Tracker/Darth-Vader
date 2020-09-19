@@ -70,7 +70,7 @@
         <label class="create-task__assignee_label">
           <select
             class="create-task__assignee_label_select hover"
-            (change)="changeSelectedAssignee($event)"
+            (change)="changeSelectedAssignee($event, usernames)"
           >
             <option [selected]="selectedAssignee === -1">
               Не назначать

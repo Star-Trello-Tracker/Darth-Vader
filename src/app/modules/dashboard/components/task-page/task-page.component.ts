@@ -55,7 +55,7 @@ export class TaskPageComponent implements OnInit {
     this.taskPageService.getTask(this.taskKey).subscribe((res: ITaskPage) => {
       this.taskTitle = res.title;
       this.description = res.description;
-      console.log(res);
+      this.assignUsername = res.assignee?.username;
     });
     this.usernames$ = this.taskPageService.getAllUsernames();
   }
@@ -160,9 +160,16 @@ export class TaskPageComponent implements OnInit {
     return id === parseInt(this.authService.getId(), 10);
   }
 
-  public assignUser(event: Event) {
+  public assignUser(event: Event, id: number) {
+    this.isUpdate = true;
     // @ts-ignore
     this.assignUsername = event.target.value;
+    this.taskPageService
+      .assignUser(this.assignUsername, id)
+      .subscribe((res) => {
+        this.getTaskData();
+        this.isUpdate = false;
+      });
   }
 
   public editTitle() {
@@ -171,9 +178,11 @@ export class TaskPageComponent implements OnInit {
 
   public saveTitle(id: number) {
     this.isUpdate = true;
-    this.taskPageService.editTitle(this.taskTitle, id);
-    this.isEditTitle = false;
-    this.isUpdate = false;
+    this.taskPageService.editTitle(this.taskTitle, id).subscribe((res) => {
+      this.getTaskData();
+      this.isEditTitle = false;
+      this.isUpdate = false;
+    });
   }
 
   public saveDescription(id: number) {
@@ -185,5 +194,19 @@ export class TaskPageComponent implements OnInit {
         this.isEditDescription = false;
         this.isUpdate = false;
       });
+  }
+
+  public notObserver(observers: IUser[]): boolean {
+    return observers.every((element) => {
+      return element.id !== parseInt(this.authService.getId(), 10);
+    });
+  }
+
+  public setObserver(id: number) {
+    this.isUpdate = true;
+    this.taskPageService.setObserver(id).subscribe((res) => {
+      this.getTaskData();
+      this.isUpdate = false;
+    });
   }
 }

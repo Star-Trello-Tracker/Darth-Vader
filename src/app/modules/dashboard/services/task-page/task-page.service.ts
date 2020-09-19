@@ -65,8 +65,6 @@ export class TaskPageService {
   }
 
   public getStatusId(status: string) {
-    console.log(status);
-    console.log(this.taskStatus.indexOf(status));
     return this.taskStatus.indexOf(status) + 1;
   }
 
@@ -107,14 +105,31 @@ export class TaskPageService {
     );
   }
 
-  public editTitle(title: string, taskId: number) {
-    // return this.httpClient.post(`${environment.url}tasks/${taskId}/title/change`, { title });
+  public editTitle(title: string, taskId: number): Observable<any> {
+    return this.httpClient.post(
+      `${environment.url}tasks/${taskId}/title/change`,
+      title
+    );
   }
 
   public editDescription(description: string, id: number): Observable<any> {
     return this.httpClient.post<any>(
       `${environment.url}tasks/${id}/description/change`,
       description
+    );
+  }
+
+  public assignUser(username: string, id: number): Observable<any> {
+    return this.httpClient.post<any>(
+      `${environment.url}tasks/${id}/assign`,
+      username
+    );
+  }
+
+  public setObserver(taskId: number): Observable<any> {
+    return this.httpClient.post<any>(
+      `${environment.url}tasks/${taskId}/observe`,
+      {}
     );
   }
 }
