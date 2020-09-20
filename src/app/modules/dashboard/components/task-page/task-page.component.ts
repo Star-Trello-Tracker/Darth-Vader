@@ -38,6 +38,7 @@ export class TaskPageComponent implements OnInit {
   public taskTitle = '';
 
   public isEditDescription = false;
+  public isPreview = false;
   public description = '';
 
   public get statusList(): string[] {
@@ -243,5 +244,9 @@ export class TaskPageComponent implements OnInit {
     this.commentsService.deleteComment(id).subscribe((res) => {
       this.getTaskData();
     });
+  }
+
+  editToggle(isPreview: boolean) {
+    this.isPreview = isPreview;
   }
 }

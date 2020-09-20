@@ -127,11 +127,52 @@
     &__header {
       font-weight: bolder;
       margin-bottom: 10px;
+
+      &_buttons {
+        box-sizing: border-box;
+        margin-bottom: 5px;
+
+        &_btn {
+          padding: 10px 20px;
+          margin-right: 10px;
+
+          border-radius: 10px 10px 0 0;
+          border: 1px solid #293241;
+
+          background-color: #e0fbfc;
+
+          &:hover {
+            cursor: pointer;
+          }
+
+          &:focus,
+          &:active {
+            outline: none;
+          }
+
+          &_active {
+            opacity: 50%;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
     }
 
     &__text {
-      padding: 5px;
+      padding: 10px;
       font-size: 16px;
+
+      box-sizing: border-box;
+      min-height: 150px;
+
+      &_preview {
+        box-sizing: border-box;
+        padding: 10px 20px;
+        min-height: 150px;
+      }
     }
   }
 

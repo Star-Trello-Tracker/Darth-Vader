@@ -25,6 +25,7 @@ import { CommentsListComponent } from './components/comments-list/comments-list.
 import { CommentComponent } from './components/comment/comment.component';
 import { CreateCommentComponent } from './components/create-comment/create-comment.component';
 import { CommentsService } from './services/comments/comments.service';
+import { NgxMdModule } from 'ngx-md';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { CommentsService } from './services/comments/comments.service';
     MainPageModule,
     SharedModule,
     FormsModule,
+    NgxMdModule,
   ],
   providers: [
     TaskListService,

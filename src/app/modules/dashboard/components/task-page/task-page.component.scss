@@ -119,6 +119,7 @@
 
       &_text {
         margin-bottom: 20px;
+        box-sizing: border-box;
       }
 
       &__attachments {
@@ -271,6 +272,48 @@
   padding: 5px;
   font-size: 16px;
   border-radius: 5px;
+}
+
+.edit-task-description-container {
+  box-sizing: border-box;
+}
+
+.edit-task-description-buttons {
+  box-sizing: border-box;
+  margin-bottom: 5px;
+
+  &_btn {
+    padding: 10px 20px;
+    margin-right: 10px;
+
+    border-radius: 10px 10px 0 0;
+    border: 1px solid #293241;
+
+    background-color: #e0fbfc;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus,
+    &:active {
+      outline: none;
+    }
+
+    &_active {
+      opacity: 50%;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.descr-preview {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 @media screen and (max-device-width: 800px) {

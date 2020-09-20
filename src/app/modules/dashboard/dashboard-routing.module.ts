@@ -34,10 +34,6 @@ const routes = [
             component: QueuesListComponent,
           },
           {
-            path: 'tasks',
-            component: DashboardTasksListComponent,
-          },
-          {
             path: 'create-task',
             component: CreateTaskComponent,
           },
