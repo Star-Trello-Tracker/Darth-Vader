@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { INotification } from '../../typings';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '../../../../auth-services/auth.service';
+import { INotification } from '../../../../typings';
+import { NotificationsService } from '../../services/notifications/notifications.service';
 
 @Component({
   selector: 'app-push-popup-item',
@@ -9,17 +10,23 @@ import { AuthService } from '../../../../auth-services/auth.service';
 })
 export class PushPopupItemComponent implements OnInit {
   @Input() push: INotification;
-  @Output() deleteNotification = new EventEmitter();
 
   public get id() {
     return this.authService.getId();
   }
 
-  constructor(private authService: AuthService) {}
+  public get notificationText() {
+    return this.notificationsService.getNotificationText(this.push.type);
+  }
+
+  constructor(
+    private authService: AuthService,
+    private notificationsService: NotificationsService
+  ) {}
 
   ngOnInit(): void {}
 
   public delete(id: number) {
-    this.deleteNotification.emit(id);
+    this.notificationsService.deleteNotification(id);
   }
 }

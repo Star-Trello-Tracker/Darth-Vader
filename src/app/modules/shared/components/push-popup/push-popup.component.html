@@ -8,7 +8,7 @@
   <div
     class="delete-all flex hover hover-underline"
     *ngIf="list.length !== 0"
-    (click)="deleteAllNotifications()"
+    (click)="deleteAll()"
   >
     Удалить всё
   </div>
@@ -16,6 +16,5 @@
   <app-push-popup-item
     *ngFor="let item of list"
     [push]="item"
-    (deleteNotification)="deleteNotification($event)"
   ></app-push-popup-item>
 </div>

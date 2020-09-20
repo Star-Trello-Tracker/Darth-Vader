@@ -22,7 +22,9 @@ export class CommentComponent implements OnInit {
     return parseInt(this.authService.getId(), 10) === id;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.comment);
+  }
 
   public editComment() {
     this.isEdit = true;

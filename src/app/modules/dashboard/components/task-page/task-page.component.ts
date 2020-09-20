@@ -68,7 +68,6 @@ export class TaskPageComponent implements OnInit {
       this.taskTitle = res.title;
       this.description = res.description;
       this.assignUsername = res.assignee?.username;
-      console.log(res);
     });
     this.usernames$ = this.userService.getAllUsernames();
   }

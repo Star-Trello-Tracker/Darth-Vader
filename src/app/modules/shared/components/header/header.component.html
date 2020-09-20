@@ -48,9 +48,9 @@
 
     <div
       class="auth-header__navigation__notifications hover"
-      (click)="showNotifications()"
+      (click)="showNotifications($event)"
     >
-      <app-notifications [show]="notifications"></app-notifications>
+      <app-notifications [show]="notifications.getValue()"></app-notifications>
     </div>
 
     <a
