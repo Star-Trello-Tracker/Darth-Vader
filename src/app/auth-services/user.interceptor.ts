@@ -29,7 +29,7 @@ export class UserInterceptor implements HttpInterceptor {
     }
     return next.handle(req).pipe(
       catchError((err: HttpErrorResponse) => {
-        if (err.status === 401) {
+        if (err.status === 401 || err.status === 500) {
           localStorage.removeItem('id');
           localStorage.removeItem('isAuth');
           localStorage.removeItem('userName');
@@ -38,6 +38,10 @@ export class UserInterceptor implements HttpInterceptor {
           this.authService.isNotAuth.next(true);
 
           this.router.navigateByUrl(`/`);
+        }
+
+        if (err.status === 404) {
+          this.router.navigateByUrl(`/${this.authService.getId()}/page/404`);
         }
 
         return throwError(err);

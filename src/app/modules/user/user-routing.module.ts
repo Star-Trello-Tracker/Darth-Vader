@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { EditProfilePageComponent } from './components/edit-profile-page/edit-profile-page.component';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 
 const routes = [
   {
@@ -18,8 +19,12 @@ const routes = [
       import('../dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
+    path: 'page/404',
+    component: NotFoundPageComponent,
+  },
+  {
     path: '**',
-    redirectTo: 'dashboard',
+    redirectTo: 'page/404',
   },
 ];
 

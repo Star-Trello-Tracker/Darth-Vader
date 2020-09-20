@@ -15,6 +15,15 @@
           ></i>
         </div>
 
+        <div
+          class="login-page__content__login__form__bad-request"
+          [class.login-page__content__login__form__bad-request_show]="
+            badRequest
+          "
+        >
+          Неправильный логин/пароль
+        </div>
+
         <label
           class="login-page__content__login__form__input full-width flex flex-column"
           *ngFor="let input of inputs; let i = index"
