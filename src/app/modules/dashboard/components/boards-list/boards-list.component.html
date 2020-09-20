@@ -10,11 +10,12 @@
   <div class="item__list boards__list full-width flex padding-10">
     <div
       class="item__list__create boards__list__create flex hover border padding-20 scale radius-10"
+      [routerLink]="['/', userId, 'dashboard', 'create-board']"
     >
       <i
         class="fas fa-plus item__list__create_icon boards__list__create_icon"
       ></i>
-      Создать доску
+      Создать спринт
     </div>
 
     <app-dashboard-board

@@ -1,0 +1,52 @@
+<div class="create-board padding-20 full-width flex flex-column">
+  <div class="back-to-boards padding-20">
+    <a
+      [routerLink]="back2Boards"
+      class="back-to-boards_link hover hover-underline"
+    >
+      <i class="fas fa-arrow-left back-to-boards_link_icon"></i>
+      К списку очередей
+    </a>
+  </div>
+
+  <div class="create-board__title">
+    Создание спринта
+    <i class="fas fa-plus queues__list__create_icon"></i>
+  </div>
+
+  <div class="create-board__form full-width flex flex-column">
+    <label
+      class="create-board__form__title create-board__form__item padding-20"
+    >
+      Название спринта:
+      <input
+        class="create-board__form__title_input create-board__form__item_input padding-5"
+        type="text"
+        [(ngModel)]="title"
+      />
+    </label>
+  </div>
+
+  <label
+    class="create-board__form__description create-board__form__item padding-20"
+  >
+    Описание:
+    <input
+      class="create-board__form__description_input create-board__form__item_input padding-5"
+      type="text"
+      [class.create-board__form__item_input_invalid]="invalidDescription"
+      [(ngModel)]="description"
+    />
+  </label>
+
+  <button
+    class="create-board__form__submit hover scale"
+    (click)="submit()"
+    [class.create-board__form__submit_disabled]="
+      title.length < 4 && description.length === 0
+    "
+    [disabled]="title.length < 4 && description.length === 0"
+  >
+    Создать очередь
+  </button>
+</div>

@@ -67,7 +67,7 @@
 
 .disabled {
   transition-property: none;
-  opacity: 50%;
+  opacity: 0.5;
 
   &:hover {
     transform: none;
