@@ -1,13 +1,18 @@
 <div class="item">
   <i class="fas fa-bell icon"></i>
   <span>
-    <a class="link link-person">{{ push.user.name }}</a
-    >призывает Вас в комментарии задачи
     <a
-      [routerLink]="['/', 'dashboard', 'task', push.task]"
+      [routerLink]="['/', push.initiator.id, 'profile']"
+      class="link link-person"
+    >
+      {{ push.initiator.name }} {{ push.initiator.surname }}</a
+    >
+    {{ notificationText }}
+    <a
+      [routerLink]="['/', id, 'dashboard', 'task', push.task.key]"
       class="link link-task"
     >
-      {{ push.task }}
+      {{ push.task.key }}: {{ push.task.title }}
     </a>
   </span>
 

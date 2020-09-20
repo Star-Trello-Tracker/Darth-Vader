@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '../../../../auth-services/auth.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,8 @@ import { AuthService } from '../../../../auth-services/auth.service';
   styleUrls: ['./header.component.scss', './authorized-header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  public notifications = false;
+  @Input() notifications: BehaviorSubject<boolean>;
+
   public get isAuth() {
     return this.authService.isAuth.getValue();
   }
@@ -24,7 +26,9 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();
   }
 
-  public showNotifications() {
-    this.notifications = !this.notifications;
+  public showNotifications(event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.notifications.next(!this.notifications.getValue());
   }
 }

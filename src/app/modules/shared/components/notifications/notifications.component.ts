@@ -1,7 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { INotification } from '../../typings';
 import { NotificationsService } from '../../services/notifications/notifications.service';
+import { INotification } from '../../../../typings';
 
 @Component({
   selector: 'app-notifications',
@@ -10,7 +9,7 @@ import { NotificationsService } from '../../services/notifications/notifications
 })
 export class NotificationsComponent implements OnInit, OnDestroy {
   @Input() show: boolean;
-  public list$: Observable<INotification[]>;
+  public list: INotification[] = [];
   private timerId: number;
 
   constructor(private notificationService: NotificationsService) {}
@@ -28,18 +27,15 @@ export class NotificationsComponent implements OnInit, OnDestroy {
   }
 
   private getList() {
-    this.list$ = this.notificationService.getNotifications();
+    // this.list$ = this.notificationService.getNotifications();
+    this.notificationService.getNotifications().subscribe((res) => {
+      if (res.length !== this.list.length) {
+        this.list = res;
+      }
+    });
   }
 
   public stop(event: MouseEvent) {
     event.stopPropagation();
-  }
-
-  public deleteNotification(id: number) {
-    this.list$ = this.notificationService.deleteNotification(id);
-  }
-
-  public deleteAllNotifications() {
-    this.list$ = this.notificationService.deleteAll();
   }
 }

@@ -6,7 +6,10 @@
   [isEdit]="true"
 ></app-create-comment>
 
-<div *ngIf="!isEdit" class="comment flex flex-column radius-10">
+<div
+  *ngIf="!isEdit && !comment.autoComment"
+  class="comment flex flex-column radius-10"
+>
   <div class="comment__header padding-10-20 flex">
     <div class="comment__header__creator__avatar flex">
       <i class="fas fa-user comment__header__creator__avatar_img"></i>
@@ -55,5 +58,26 @@
     >
       Удалить
     </button>
+  </div>
+</div>
+
+<div
+  *ngIf="comment.autoComment"
+  class="comment auto-comment flex flex-column radius-10"
+>
+  <div class="comment__header auto-comment__header padding-10-20 flex">
+    <div class="comment__header__createTime auto-comment__header__createTime">
+      {{ comment.created | update }}
+    </div>
+  </div>
+
+  <div class="comment__main auto-comment__main flex full-width padding-20">
+    <a
+      [routerLink]="['/', comment.creator.id, 'profile']"
+      class="comment__header__creator_link auto-comment__main__creator_link"
+    >
+      {{ comment.creator.name }} {{ comment.creator.surname }}
+    </a>
+    {{ comment.text }}.
   </div>
 </div>

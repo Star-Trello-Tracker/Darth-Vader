@@ -7,4 +7,5 @@ export interface IComment {
   whoCalled: IUser[];
   created: number;
   taskId: number;
+  autoComment: boolean;
 }

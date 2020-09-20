@@ -83,3 +83,13 @@
     }
   }
 }
+
+.auto-comment {
+  &__main {
+    align-items: center;
+
+    &__creator_link {
+      margin-right: 5px;
+    }
+  }
+}

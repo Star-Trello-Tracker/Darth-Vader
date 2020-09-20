@@ -1,5 +1,8 @@
-<div class="app-container full-size flex flex-column">
-  <app-header></app-header>
+<div
+  class="app-container full-size flex flex-column"
+  (click)="closeNotifications()"
+>
+  <app-header [notifications]="isShowNotifications"></app-header>
 
   <div class="content full-size flex flex-column">
     <router-outlet></router-outlet>
