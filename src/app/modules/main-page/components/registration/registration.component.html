@@ -1,6 +1,4 @@
 <div class="registration-page full-size flex flex-column">
-  <!--  <app-header [showMainPageButton]="true"></app-header>-->
-
   <div class="registration-page__content full-size flex flex-column">
     <div
       class="registration-page__content__registration full-width flex flex-column"
@@ -19,6 +17,15 @@
           <i
             class="fas fa-calendar-alt registration-page__content__registration__form__logo_icon"
           ></i>
+        </div>
+
+        <div
+          class="registration-page__content__registration__form__bad-request"
+          [class.registration-page__content__registration__form__bad-request_show]="
+            badRequest
+          "
+        >
+          Введенные email/логин уже заняты
         </div>
 
         <label

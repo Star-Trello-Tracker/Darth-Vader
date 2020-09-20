@@ -3,6 +3,9 @@ import { config } from './config';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../../auth-services/auth.service';
 import { ISession } from '../../../../typings';
+import { catchError, map } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
+import { of, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-registration',
@@ -10,6 +13,7 @@ import { ISession } from '../../../../typings';
   styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent implements OnInit {
+  public badRequest = false;
   public data = {
     email: '',
     username: '',
@@ -32,11 +36,22 @@ export class RegistrationComponent implements OnInit {
   }
 
   public submit() {
-    this.authService.register(this.data).subscribe((res: ISession) => {
-      if (res.token) {
-        this.authService.successRegister(res);
-      }
-    });
+    this.badRequest = false;
+    this.authService
+      .register(this.data)
+      .pipe(
+        catchError((err: HttpErrorResponse) => {
+          if (err.status === 400) {
+            this.badRequest = true;
+          }
+          return of(err);
+        })
+      )
+      .subscribe((res: ISession) => {
+        if (res.status !== 400) {
+          this.authService.successRegister(res);
+        }
+      });
   }
 
   public isDisabled() {

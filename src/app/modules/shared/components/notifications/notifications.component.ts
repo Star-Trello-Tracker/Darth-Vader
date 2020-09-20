@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NotificationsService } from '../../services/notifications/notifications.service';
 import { INotification } from '../../../../typings';
+import { AuthService } from '../../../../auth-services/auth.service';
 
 @Component({
   selector: 'app-notifications',
@@ -12,7 +13,10 @@ export class NotificationsComponent implements OnInit, OnDestroy {
   public list: INotification[] = [];
   private timerId: number;
 
-  constructor(private notificationService: NotificationsService) {}
+  constructor(
+    private notificationService: NotificationsService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.getList();
@@ -27,7 +31,10 @@ export class NotificationsComponent implements OnInit, OnDestroy {
   }
 
   private getList() {
-    // this.list$ = this.notificationService.getNotifications();
+    if (!this.authService.isAuth.getValue()) {
+      clearInterval(this.timerId);
+      return;
+    }
     this.notificationService.getNotifications().subscribe((res) => {
       if (res.length !== this.list.length) {
         this.list = res;
