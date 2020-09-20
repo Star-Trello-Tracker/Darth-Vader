@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IBoard } from '../../../../typings';
 import { BoardsService } from '../../services/boards/boards.service';
+import { AuthService } from '../../../../auth-services/auth.service';
 
 @Component({
   selector: 'app-boards',
@@ -16,7 +17,14 @@ export class BoardsListComponent implements OnInit {
   public filterBoards: IBoard[] = [];
   public search = '';
 
-  constructor(private boardsService: BoardsService) {}
+  public get userId() {
+    return this.authService.getId();
+  }
+
+  constructor(
+    private boardsService: BoardsService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.boards$ = this.boardsService.getPersonBoards();

@@ -11,6 +11,7 @@ import { BoardPageComponent } from './components/board-page/board-page.component
 import { CreateQueueComponent } from './components/create-queue/create-queue.component';
 import { TaskPageComponent } from './components/task-page/task-page.component';
 import { CreateTaskComponent } from './components/create-task/create-task.component';
+import { CreateBoardComponent } from './components/create-board/create-board.component';
 
 const routes = [
   {
@@ -51,6 +52,10 @@ const routes = [
       {
         path: 'create-queue',
         component: CreateQueueComponent,
+      },
+      {
+        path: 'create-board',
+        component: CreateBoardComponent,
       },
       {
         path: 'board/:id',

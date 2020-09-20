@@ -15,7 +15,7 @@
 
     padding-top: 100px;
 
-    opacity: 80%;
+    opacity: 0.8;
 
     align-items: center;
     justify-content: flex-start;
@@ -151,7 +151,7 @@
           }
 
           &_active {
-            opacity: 50%;
+            opacity: 0.5;
 
             &:hover {
               cursor: pointer;
@@ -198,7 +198,7 @@
       }
 
       &_disabled {
-        opacity: 50%;
+        opacity: 0.5;
 
         &:hover {
           cursor: default;

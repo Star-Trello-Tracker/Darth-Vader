@@ -1,0 +1,67 @@
+:host {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.back-to-boards {
+  display: flex;
+  align-self: flex-start;
+
+  &_link {
+    display: inline-block;
+    color: #ee6c4d;
+
+    &_icon {
+      margin-right: 5px;
+    }
+  }
+}
+
+.create-board {
+  box-sizing: border-box;
+
+  &__title {
+    align-self: flex-start;
+    box-sizing: border-box;
+
+    font-size: 28px;
+    padding: 30px 20px;
+  }
+
+  &__form {
+    box-sizing: border-box;
+
+    &__item {
+      font-size: 22px;
+      box-sizing: border-box;
+
+      &_input {
+        font-size: 18px;
+        border-radius: 5px;
+        margin-left: 5px;
+
+        width: 300px;
+      }
+    }
+
+    &__submit {
+      padding: 10px 20px;
+      font-size: 18px;
+
+      border-radius: 10px;
+      background-color: #3d5a80;
+      color: white;
+
+      margin: 20px 0 0 20px;
+
+      &_disabled {
+        opacity: 0.5;
+
+        &:hover {
+          transform: none;
+          cursor: default;
+        }
+      }
+    }
+  }
+}

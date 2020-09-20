@@ -239,7 +239,7 @@
 .edit-load-popup {
   z-index: 999;
   background-color: white;
-  opacity: 50%;
+  opacity: 0.5;
 
   font-size: 50px;
   color: black;
@@ -301,7 +301,7 @@
     }
 
     &_active {
-      opacity: 50%;
+      opacity: 0.5;
 
       &:hover {
         cursor: pointer;
