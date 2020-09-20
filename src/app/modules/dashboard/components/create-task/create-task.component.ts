@@ -15,6 +15,8 @@ export class CreateTaskComponent implements OnInit {
   public queues$: Observable<string[]>;
   public usernames$: Observable<string[]>;
 
+  public isPreview = false;
+
   public selectedObservers = [];
   public selectedQueue = 0;
   public selectedPriority = 1;
@@ -130,5 +132,9 @@ export class CreateTaskComponent implements OnInit {
         `${this.authService.getId()}/dashboard/task/${res.key}`
       );
     });
+  }
+
+  editToggle(isPreview: boolean) {
+    this.isPreview = isPreview;
   }
 }

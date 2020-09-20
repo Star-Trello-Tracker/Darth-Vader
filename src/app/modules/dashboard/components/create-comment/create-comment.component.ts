@@ -15,6 +15,7 @@ export class CreateCommentComponent implements OnInit {
   @Output() editComment = new EventEmitter();
 
   public createMode = false;
+  public isPreview = false;
 
   public comment = '';
   public isSearch = false;
@@ -137,5 +138,9 @@ export class CreateCommentComponent implements OnInit {
 
   public showCreateCommentForm() {
     this.createMode = true;
+  }
+
+  editToggle(isPreview: boolean) {
+    this.isPreview = isPreview;
   }
 }

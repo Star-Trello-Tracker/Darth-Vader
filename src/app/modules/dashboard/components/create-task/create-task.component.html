@@ -124,13 +124,37 @@
 
   <div class="create-task__description flex flex-column full-width">
     <div class="create-task__description__header">Описание задачи:</div>
+    <div class="create-task__description__header_buttons full-width flex">
+      <button
+        (click)="editToggle(false)"
+        [class.create-task__description__header_buttons_btn_active]="!isPreview"
+        class="create-task__description__header_buttons_btn write"
+      >
+        Write
+      </button>
+
+      <button
+        (click)="editToggle(true)"
+        [class.create-task__description__header_buttons_btn_active]="isPreview"
+        class="create-task__description__header_buttons_btn preview"
+      >
+        Preview
+      </button>
+    </div>
     <textarea
-      class="create-task__description__text"
+      *ngIf="!isPreview"
+      class="create-task__description__text full-width border radius-10"
       [(ngModel)]="taskDescription"
-      id=""
-      cols="50"
-      rows="10"
     ></textarea>
+
+    <div
+      class="create-task__description__text_preview full-width border radius-10"
+      *ngIf="isPreview"
+    >
+      <ngx-md>
+        {{ taskDescription || "Nothing to show" }}
+      </ngx-md>
+    </div>
   </div>
 
   <div class="create-task__submit">
