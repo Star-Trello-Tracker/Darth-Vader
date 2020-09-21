@@ -49,6 +49,10 @@ export class TaskPageComponent implements OnInit {
     return this.taskPageService.getTaskPriorityList();
   }
 
+  public get id() {
+    return this.authService.getId();
+  }
+
   constructor(
     private taskPageService: TaskPageService,
     private authService: AuthService,

@@ -40,6 +40,7 @@ import { NotificationsService } from './services/notifications/notifications.ser
     HeaderComponent,
     TaskListPageComponent,
     UpdatePipe,
+    PriorityComponent,
   ],
   providers: [CommonService, NotificationsService],
   imports: [CommonModule, RouterModule],

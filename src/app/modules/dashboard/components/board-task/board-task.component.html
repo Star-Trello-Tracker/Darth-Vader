@@ -1,0 +1,50 @@
+<div class="board-task full-width padding-10 flex flex-column border radius-10">
+  <div class="board-task__status flex full-width">
+    <div class="board-task__status_priority flex full-width">
+      <app-priority [priority]="task.priority"></app-priority>
+      <span class="board-task__status_priority_text">{{ task.priority }}</span>
+
+      <div
+        class="board-task__status_priority_edit"
+        *ngIf="canEditStatus"
+        (click)="isEditStatus = !isEditStatus"
+      >
+        <i class="fas fa-edit"></i>
+      </div>
+
+      <div class="status-list flex flex-column" *ngIf="isEditStatus">
+        <div
+          class="status-list_item full-width"
+          *ngFor="let status of getTaskList(); let index = index"
+          [class.status-list_item_first]="index === 0"
+          [class.status-list_item_last]="index === getTaskList().length - 1"
+          (click)="changeStatus(status)"
+        >
+          {{ status }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="board-task__title full-width">
+    <a
+      class="board-task__title_link"
+      [routerLink]="['/', id, 'dashboard', 'task', task.key]"
+    >
+      <span class="board-task__title_link_key">{{ task.key }}:</span>
+      {{ task.title }}
+    </a>
+  </div>
+
+  <div class="board-task__info full-width flex">
+    <div class="board-task__info_comments">
+      <i class="fa fa-comments" aria-hidden="true"></i>
+      {{ task.comments?.length || 0 }}
+    </div>
+
+    <div class="board-task__info_watchers">
+      <i class="fas fa-users"></i>
+      {{ task.observers.length }}
+    </div>
+  </div>
+</div>

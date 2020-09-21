@@ -99,5 +99,7 @@ export interface ITask {
   /**
    * Спринт
    */
-  agile?: any;
+  boardId?: number;
+
+  boardName: string;
 }

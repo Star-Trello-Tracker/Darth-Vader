@@ -27,6 +27,7 @@ import { CreateCommentComponent } from './components/create-comment/create-comme
 import { CommentsService } from './services/comments/comments.service';
 import { NgxMdModule } from 'ngx-md';
 import { CreateBoardComponent } from './components/create-board/create-board.component';
+import { BoardTaskComponent } from './components/board-task/board-task.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { CreateBoardComponent } from './components/create-board/create-board.com
     CommentComponent,
     CreateCommentComponent,
     CreateBoardComponent,
+    BoardTaskComponent,
   ],
   imports: [
     CommonModule,
