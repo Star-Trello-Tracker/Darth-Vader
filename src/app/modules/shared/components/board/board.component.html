@@ -1,6 +1,6 @@
 <a
   class="item board flex flex-column border hover"
-  [routerLink]="['/', userId, 'dashboard', 'board', board.link]"
+  [routerLink]="['/', userId, 'dashboard', 'board', board.id]"
 >
   <div class="item_background board_background flex flex-column">
     <div class="item__title board__title">
@@ -8,7 +8,7 @@
     </div>
 
     <div class="item__creator board__creator">
-      {{ board.creator.name }}
+      {{ board.creator.name || "" }} {{ board.creator.surname || "" }}
     </div>
   </div>
 </a>

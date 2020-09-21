@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../auth-services/auth.service';
 import { IQueue } from '../../../../typings';
 import { Router } from '@angular/router';
+import { BoardsService } from '../../services/boards/boards.service';
 
 @Component({
   selector: 'app-create-board',
@@ -10,35 +11,28 @@ import { Router } from '@angular/router';
 })
 export class CreateBoardComponent implements OnInit {
   public title = '';
-  public description = '';
-  public invalidDescription = false;
 
   public get back2Boards() {
     return `/${this.authService.getId()}/dashboard/menu/boards`;
   }
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private boardService: BoardsService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
   public submit() {
-    this.invalidDescription = false;
-
-    if (!this.description) {
-      this.invalidDescription = true;
-    }
-
-    if (this.invalidDescription) {
-      return;
-    }
-
     const board: any = {
-      title: this.title,
-      description: this.description,
+      text: this.title,
     };
 
-    console.log(board);
-
-    this.router.navigateByUrl(`/${this.authService.getId()}/dashboard/board/1`);
+    this.boardService.createBoard(board).subscribe((res: any) => {
+      this.router.navigateByUrl(
+        `/${this.authService.getId()}/dashboard/board/${res.id}`
+      );
+    });
   }
 }

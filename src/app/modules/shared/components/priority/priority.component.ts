@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TaskPriority } from '../../../../typings';
 import { TaskPageService } from '../../../dashboard/services/task-page/task-page.service';
 
 @Component({

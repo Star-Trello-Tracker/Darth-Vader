@@ -392,12 +392,17 @@
       </a>
     </div>
 
-    <div class="task-page__info_item full-width padding-20">
-      Story points: 10
-    </div>
+    <!--    <div class="task-page__info_item full-width padding-20">-->
+    <!--      Story points: 10-->
+    <!--    </div>-->
 
-    <div class="task-page__info_item full-width padding-20">
-      <a>Спринт: Спринт 7 (05.02 - 05.18)</a>
+    <div
+      *ngIf="task.boardId !== 0"
+      class="task-page__info_item full-width padding-20"
+    >
+      <a [routerLink]="['/', id, 'dashboard', 'board', task.boardId]"
+        >Доска: {{ task.boardName }}</a
+      >
     </div>
   </div>
 </div>

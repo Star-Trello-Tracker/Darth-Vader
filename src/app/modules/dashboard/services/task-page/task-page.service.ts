@@ -80,7 +80,7 @@ export class TaskPageService {
   public changeTaskStatus(status: number, id: number): Observable<any> {
     return this.httpClient.post<any>(
       `${environment.url}tasks/${id}/status/change`,
-      status
+      { code: status }
     );
   }
 
@@ -98,7 +98,7 @@ export class TaskPageService {
   ): Observable<any> {
     return this.httpClient.post<any>(
       `${environment.url}tasks/${id}/priority/change`,
-      priority
+      { code: priority }
     );
   }
 

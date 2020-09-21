@@ -1,1 +1,45 @@
-<p>board-page works!</p>
+<div
+  *ngIf="isLoad"
+  class="board padding-20 full-size flex flex-column padding-20"
+>
+  <div class="board__header full-width padding-20 flex">
+    Доска: {{ board.title }}
+
+    <div
+      *ngIf="canAddTasks"
+      class="board__header_add-task flex padding-10"
+      (click)="addTask()"
+    >
+      <i class="fa fa-plus board__header_add-task_icon" aria-hidden="true"></i>
+      Добавить задачу
+    </div>
+
+    <input
+      *ngIf="canAddTasks"
+      type="text"
+      class="board__header_add-task_input"
+      [(ngModel)]="taskKey"
+    />
+  </div>
+
+  <div class="board__columns full-size flex padding-20">
+    <div
+      *ngFor="let status of statusList"
+      class="board__columns_column radius-10"
+    >
+      <div class="board__columns_column_header padding-10 full-width">
+        {{ status }}
+      </div>
+
+      <app-board-task
+        *ngFor="let task of filterTasks(status)"
+        [task]="task"
+        (statusChange)="changeStatus($event)"
+      ></app-board-task>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isLoad" class="loader full-size">
+  Подождите, загружаем доску...
+</div>

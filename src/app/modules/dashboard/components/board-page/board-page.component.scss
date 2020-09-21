@@ -1,0 +1,88 @@
+:host {
+  width: 100%;
+  height: 100%;
+
+  box-sizing: border-box;
+}
+
+.board {
+  box-sizing: border-box;
+
+  &__header {
+    box-sizing: border-box;
+    font-size: 24px;
+
+    border-bottom: 1px solid #293241;
+
+    align-items: center;
+
+    &_add-task {
+      margin-left: 20px;
+      font-size: 18px;
+
+      box-sizing: border-box;
+      align-items: center;
+      background-color: #e0fbfc;
+
+      border-radius: 10px;
+
+      &_icon {
+        margin-right: 5px;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &_input {
+        padding: 3px;
+        font-size: 16px;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  &__columns {
+    box-sizing: border-box;
+    overflow-x: scroll;
+
+    padding-left: 0;
+
+    &_column {
+      max-height: 90%;
+      position: relative;
+
+      min-width: 250px;
+      max-width: 250px;
+      border: 1px solid #293241;
+      margin-right: 20px;
+
+      padding: 5px 15px 5px 5px;
+      box-sizing: border-box;
+
+      overflow-y: scroll;
+
+      &_header {
+        box-sizing: border-box;
+        border-bottom: 1px solid #293241;
+
+        font-size: 18px;
+        font-weight: bolder;
+
+        border-radius: 10px 10px 0 0;
+
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: white;
+  font-size: 24px;
+  opacity: 0.5;
+}
